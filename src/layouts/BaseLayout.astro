@@ -1,0 +1,158 @@
+---
+import '../styles/global.css';
+import ChaosLayer from '../components/ChaosLayer.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import { site, nav } from '../lib/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** The landing page owns the hero, so it suppresses the standard header. */
+  bareHeader?: boolean;
+  /** KaTeX CSS is ~23KB + fonts — only load it on pages with math. */
+  math?: boolean;
+  /** Absolute or root-relative OG image URL. */
+  image?: string;
+}
+
+const {
+  title,
+  description = site.description,
+  bareHeader = false,
+  math = false,
+  image,
+} = Astro.props;
+
+const pageTitle = title ? `${title} — ${site.name}` : site.title;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = image ? new URL(image, Astro.site) : undefined;
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title={site.name} href="/rss.xml" />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+
+    {/* Preload the two faces used above the fold; the rest load on demand. */}
+    <link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/jetbrains-mono-400.woff2" as="font" type="font/woff2" crossorigin />
+
+    {math && <link rel="stylesheet" href="/katex/katex.min.css" />}
+
+    {/*
+      Blocking, and deliberately so: it must stamp data-theme before first paint
+      or every load flashes the wrong theme.
+    */}
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body>
+    <a href="#content" class="skip-link">Skip to content</a>
+
+    <ChaosLayer />
+
+    {
+      !bareHeader && (
+        <header class="site-head wrap">
+          <nav aria-label="Primary">
+            {nav.map((n) => (
+              <a
+                href={n.href}
+                aria-current={
+                  n.href === '/' ? (path === '/' ? 'page' : undefined) : path.startsWith(n.href) ? 'page' : undefined
+                }>
+                {n.label}
+              </a>
+            ))}
+          </nav>
+          <ThemeToggle />
+        </header>
+      )
+    }
+
+    <slot />
+
+    <footer class="site-foot wrap content">
+      <span class="mono">{site.name} · {site.handle}</span>
+      <span class="mono"><a href="/rss.xml">rss</a></span>
+    </footer>
+
+    <style>
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        z-index: 100;
+        padding: 0.6rem 1rem;
+        background: var(--bg-raised);
+        color: var(--fg);
+        font-family: var(--font-mono);
+        font-size: 0.8125rem;
+      }
+      .skip-link:focus {
+        left: 0.5rem;
+        top: 0.5rem;
+      }
+    </style>
+
+    <script>
+      /*
+       * Drives --chaos-opacity.
+       *
+       * The reference calls getBoundingClientRect() on every scroll event, which
+       * thrashes layout. This throttles to one rAF per frame and writes a single
+       * custom property that CSS consumes.
+       */
+      const root = document.documentElement;
+      const anchor = document.getElementById('content');
+
+      if (anchor) {
+        let queued = false;
+
+        const update = () => {
+          queued = false;
+          const top = anchor.getBoundingClientRect().top;
+          const span = window.innerHeight * 1.5;
+          // 1 while content is far below, easing to 0 as it reaches the top
+          const progress = Math.min(Math.max(1 - top / span, 0), 1);
+          const opacity = 1 - progress;
+          root.style.setProperty('--chaos-opacity', opacity.toFixed(3));
+          // once invisible, drop the social links out of the tab order
+          root.dataset.chaos = opacity < 0.05 ? 'hidden' : 'visible';
+        };
+
+        const onScroll = () => {
+          if (queued) return;
+          queued = true;
+          requestAnimationFrame(update);
+        };
+
+        addEventListener('scroll', onScroll, { passive: true });
+        addEventListener('resize', onScroll, { passive: true });
+        update();
+      }
+    </script>
+  </body>
+</html>

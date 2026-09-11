@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getPosts } from '../../lib/posts';
+
+const posts = await getPosts();
+---
+
+<BaseLayout title="writeups" description="Writeups and research notes.">
+  <main id="content" class="content wrap">
+    <header class="page-head">
+      <h1>writeups</h1>
+      <p class="mono">{posts.length} {posts.length === 1 ? 'post' : 'posts'}</p>
+    </header>
+
+    {
+      posts.length > 0 ? (
+        posts.map((post) => <PostCard post={post} />)
+      ) : (
+        <p class="mono">nothing published yet.</p>
+      )
+    }
+  </main>
+</BaseLayout>
+
+<style>
+  .page-head {
+    padding-block: 3rem 1rem;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  .page-head h1 {
+    font-size: clamp(2rem, 6vw, 3.25rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .page-head p {
+    margin-top: 0.5rem;
+  }
+</style>

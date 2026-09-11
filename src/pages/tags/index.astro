@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TagChip from '../../components/TagChip.astro';
+import { getTags } from '../../lib/posts';
+
+const tags = await getTags();
+---
+
+<BaseLayout title="tags" description="Browse writeups by tag.">
+  <main id="content" class="content wrap">
+    <header class="page-head">
+      <h1>tags</h1>
+      <p class="mono">{tags.length} {tags.length === 1 ? 'tag' : 'tags'}</p>
+    </header>
+
+    {
+      tags.length > 0 ? (
+        <div class="tag-cloud">
+          {tags.map(({ tag, count }) => (
+            <TagChip tag={tag} count={count} />
+          ))}
+        </div>
+      ) : (
+        <p class="mono">no tags yet.</p>
+      )
+    }
+  </main>
+</BaseLayout>
+
+<style>
+  .page-head {
+    padding-block: 3rem 1rem;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  .page-head h1 {
+    font-size: clamp(2rem, 6vw, 3.25rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .page-head p {
+    margin-top: 0.5rem;
+  }
+
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-block: 2rem;
+  }
+</style>

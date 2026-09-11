@@ -1,0 +1,70 @@
+---
+/**
+ * Theme toggle. The no-flash inline script lives in BaseLayout's <head>;
+ * this only handles the click and keeps the button's label in sync.
+ */
+---
+
+<button class="theme-toggle" type="button" aria-live="polite">
+  <span class="sr-only">Toggle colour theme</span>
+  <span class="theme-toggle__icon" aria-hidden="true"></span>
+</button>
+
+<style>
+  .theme-toggle {
+    display: grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+    background: none;
+    border: 1px solid var(--line-strong);
+    border-radius: 2px;
+    color: var(--dim);
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .theme-toggle:hover {
+    color: var(--fg);
+    border-color: var(--fg);
+  }
+
+  .theme-toggle__icon {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1.5px solid currentColor;
+    /* filled half tracks the active theme */
+    background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+  }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.theme-toggle');
+
+  if (btn) {
+    const root = document.documentElement;
+
+    const current = () =>
+      root.dataset.theme ??
+      (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+
+    const sync = () => {
+      btn.setAttribute('aria-label', `Switch to ${current() === 'dark' ? 'light' : 'dark'} theme`);
+    };
+
+    btn.addEventListener('click', () => {
+      const next = current() === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try {
+        localStorage.setItem('theme', next);
+      } catch {
+        /* private mode or blocked storage: the toggle still works for this page view */
+      }
+      sync();
+    });
+
+    sync();
+  }
+</script>

@@ -1,0 +1,164 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import TagChip from '../components/TagChip.astro';
+import type { Post } from '../lib/posts';
+import '../styles/prose.css';
+
+interface Props {
+  post: Post;
+  readingTime: string;
+}
+
+const { post, readingTime } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, math, draft } = post.data;
+---
+
+<BaseLayout title={title} description={description} math={math}>
+  <main id="content" class="content wrap">
+    <article>
+      <header class="post-head">
+        <div class="post-meta">
+          <FormattedDate date={pubDate} class="mono" />
+          <span class="mono post-dot">·</span>
+          <span class="mono">{readingTime}</span>
+          {draft && <span class="post-draft">draft</span>}
+        </div>
+
+        <h1 class="post-title">{title}</h1>
+        <p class="post-desc">{description}</p>
+
+        {
+          tags.length > 0 && (
+            <div class="post-tags">
+              {tags.map((t) => (
+                <TagChip tag={t} />
+              ))}
+            </div>
+          )
+        }
+
+        {
+          updatedDate && (
+            <p class="mono post-updated">
+              updated <FormattedDate date={updatedDate} />
+            </p>
+          )
+        }
+      </header>
+
+      <div class="prose">
+        <slot />
+      </div>
+    </article>
+
+    <nav class="post-nav">
+      <a href="/blog">← all writeups</a>
+    </nav>
+  </main>
+</BaseLayout>
+
+<style>
+  .post-head {
+    padding-block: 2.5rem 2rem;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 2.5rem;
+    max-width: var(--measure);
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .post-dot {
+    color: var(--faint);
+  }
+
+  .post-draft {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+    color: var(--bg);
+    background: var(--accent);
+    border-radius: 3px;
+    padding: 0.05rem 0.35rem;
+  }
+
+  .post-title {
+    font-size: clamp(1.9rem, 5.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  .post-desc {
+    margin-top: 0.75rem;
+    color: var(--dim);
+    font-size: 1.0625rem;
+    text-wrap: pretty;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 1.1rem;
+  }
+
+  .post-updated {
+    margin-top: 0.9rem;
+  }
+
+  .post-nav {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .post-nav a {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--dim);
+    text-decoration: none;
+  }
+
+  .post-nav a:hover {
+    color: var(--fg);
+  }
+</style>
+
+<script>
+  /* Copy-to-clipboard on every code block. Useful on writeups full of payloads. */
+  for (const pre of document.querySelectorAll<HTMLPreElement>('.prose pre.astro-code')) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'code-block';
+    pre.parentNode?.insertBefore(wrapper, pre);
+    wrapper.appendChild(pre);
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'code-block__copy';
+    btn.textContent = 'copy';
+    btn.setAttribute('aria-label', 'Copy code to clipboard');
+
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(pre.innerText);
+        btn.textContent = 'copied';
+        btn.dataset.copied = 'true';
+      } catch {
+        btn.textContent = 'failed';
+      }
+      setTimeout(() => {
+        btn.textContent = 'copy';
+        delete btn.dataset.copied;
+      }, 1600);
+    });
+
+    wrapper.appendChild(btn);
+  }
+</script>

@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroTrail from '../components/HeroTrail.astro';
+import PostCard from '../components/PostCard.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import { getPosts } from '../lib/posts';
+import { site } from '../lib/site';
+
+const posts = (await getPosts()).slice(0, 5);
+---
+
+<BaseLayout bareHeader>
+  <div class="corner-toggle">
+    <ThemeToggle />
+  </div>
+
+  <HeroTrail />
+
+  <main id="content" class="content wrap">
+    <section class="intro">
+      <p class="intro__lede">
+        {site.description} I take things apart, work out why they broke, and write it down.
+      </p>
+    </section>
+
+    <section class="recent" aria-labelledby="recent-heading">
+      <div class="recent__head">
+        <h2 id="recent-heading" class="mono">recent writeups</h2>
+        <a class="mono" href="/blog">all →</a>
+      </div>
+
+      {
+        posts.length > 0 ? (
+          posts.map((post) => <PostCard post={post} />)
+        ) : (
+          <p class="empty mono">nothing published yet.</p>
+        )
+      }
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .corner-toggle {
+    position: fixed;
+    top: 1.25rem;
+    right: 3.5rem;
+    z-index: 20;
+  }
+
+  .intro {
+    padding-block: 4rem 2rem;
+  }
+
+  .intro__lede {
+    max-width: var(--measure);
+    font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+    line-height: 1.5;
+    letter-spacing: -0.015em;
+    text-wrap: pretty;
+  }
+
+  .recent__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  .recent__head h2 {
+    font-weight: 400;
+    text-transform: lowercase;
+  }
+
+  .recent__head a {
+    text-decoration: none;
+  }
+
+  .recent__head a:hover {
+    color: var(--fg);
+  }
+
+  .empty {
+    padding-block: 2rem;
+  }
+
+  @media (max-width: 640px) {
+    .corner-toggle {
+      right: 1.25rem;
+    }
+  }
+</style>

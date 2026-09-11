@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getTags, getPostsByTag } from '../../lib/posts';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const tags = await getTags();
+  return Promise.all(
+    tags.map(async ({ tag }) => ({
+      params: { tag },
+      props: { tag, posts: await getPostsByTag(tag) },
+    }))
+  );
+}) satisfies GetStaticPaths;
+
+const { tag, posts } = Astro.props;
+---
+
+<BaseLayout title={`#${tag}`} description={`Writeups tagged ${tag}.`}>
+  <main id="content" class="content wrap">
+    <header class="page-head">
+      <h1><span class="page-head__hash">#</span>{tag}</h1>
+      <p class="mono">{posts.length} {posts.length === 1 ? 'post' : 'posts'}</p>
+    </header>
+
+    {posts.map((post) => <PostCard post={post} />)}
+
+    <nav class="page-nav">
+      <a href="/tags">← all tags</a>
+    </nav>
+  </main>
+</BaseLayout>
+
+<style>
+  .page-head {
+    padding-block: 3rem 1rem;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  .page-head h1 {
+    font-size: clamp(2rem, 6vw, 3.25rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .page-head__hash {
+    color: var(--faint);
+  }
+
+  .page-head p {
+    margin-top: 0.5rem;
+  }
+
+  .page-nav {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .page-nav a {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--dim);
+    text-decoration: none;
+  }
+
+  .page-nav a:hover {
+    color: var(--fg);
+  }
+</style>

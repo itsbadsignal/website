@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404" description="Nothing here.">
+  <main id="content" class="content wrap">
+    <div class="four">
+      <p class="four__code mono">SIGSEGV</p>
+      <h1 class="four__title">404</h1>
+      <p class="four__body">
+        segmentation fault — that page isn't mapped.
+      </p>
+      <pre class="four__dump mono">{`$ ./site --route ${''}
+[*] resolving ...
+[!] no such symbol
+[*] core dumped`}</pre>
+      <a class="four__back mono" href="/">← back to index</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .four {
+    padding-block: 6rem 4rem;
+    max-width: var(--measure);
+  }
+
+  .four__code {
+    color: var(--accent);
+  }
+
+  .four__title {
+    font-size: clamp(4rem, 18vw, 9rem);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    margin-block: 0.5rem 1rem;
+  }
+
+  .four__body {
+    color: var(--dim);
+    font-size: 1.125rem;
+  }
+
+  .four__dump {
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--bg-raised);
+    white-space: pre-wrap;
+    line-height: 1.6;
+  }
+
+  .four__back {
+    display: inline-block;
+    margin-top: 2rem;
+    color: var(--dim);
+    text-decoration: none;
+  }
+
+  .four__back:hover {
+    color: var(--fg);
+  }
+</style>

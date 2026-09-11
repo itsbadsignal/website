@@ -1,0 +1,200 @@
+---
+/**
+ * The cursor-following ghost trail: N stacked copies of the name, each lerping
+ * toward the one in front of it.
+ *
+ * Three corrections to the reference implementation:
+ *   - it runs requestAnimationFrame forever, even scrolled far past the hero.
+ *     An IntersectionObserver stops the loop when the hero leaves the viewport.
+ *   - it has no touch handling. On (hover: none) the trail never starts and the
+ *     layers render stacked and static.
+ *   - reduced-motion is ignored there; here the loop never starts.
+ */
+import { site } from '../lib/site';
+
+const LAYERS = 8;
+---
+
+<div class="hero">
+  <h1 class="hero__name">
+    <span class="sr-only">{site.name}</span>
+    {
+      Array.from({ length: LAYERS }, (_, i) => (
+        <span class="hero__layer" aria-hidden="true" data-layer={i} style={`--i:${i}`}>
+          {site.name}
+        </span>
+      ))
+    }
+  </h1>
+
+  <a class="hero__scroll" href="#content">
+    <span>scroll</span>
+    <span class="hero__caret">v</span>
+  </a>
+</div>
+
+<style>
+  .hero {
+    position: relative;
+    z-index: 2;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    opacity: var(--chaos-opacity);
+  }
+
+  .hero__name {
+    position: relative;
+    display: grid;
+    place-items: center;
+    font-size: clamp(3.5rem, 16vw, 11rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    text-transform: lowercase;
+    margin: 0;
+  }
+
+  /* every layer occupies the same grid cell, so they stack */
+  .hero__layer {
+    grid-area: 1 / 1;
+    will-change: transform;
+    /* front layer is solid; each one behind is fainter and more blurred */
+    opacity: calc(1 - var(--i) * 0.11);
+    filter: blur(calc(var(--i) * 0.9px));
+  }
+
+  .hero__scroll {
+    position: absolute;
+    bottom: 3.5rem;
+    left: 50%;
+    translate: -50% 0;
+    display: grid;
+    justify-items: center;
+    gap: 0.3rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--dim);
+    text-decoration: none;
+  }
+
+  .hero__scroll:hover {
+    color: var(--fg);
+  }
+
+  .hero__caret {
+    animation: hero-bob 1.8s ease-in-out infinite;
+  }
+
+  @keyframes hero-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+
+  /* No pointer: stack the layers dead-centre with no ghosting. */
+  @media (hover: none) {
+    .hero__layer {
+      opacity: 0;
+      filter: none;
+    }
+    .hero__layer[data-layer='0'] {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__layer {
+      opacity: 0;
+      filter: none;
+      transform: none !important;
+    }
+    .hero__layer[data-layer='0'] {
+      opacity: 1;
+    }
+    .hero__caret {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const hero = document.querySelector<HTMLElement>('.hero');
+  const layers = Array.from(document.querySelectorAll<HTMLElement>('.hero__layer'));
+
+  const staticOnly =
+    !hero ||
+    layers.length === 0 ||
+    window.matchMedia('(hover: none)').matches ||
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!staticOnly) {
+    // Each layer trails the one before it by a fixed offset.
+    const pos = layers.map((_, i) => ({ x: -5 * (i + 1), y: -5 * (i + 1), rot: 0 }));
+    let target = { x: -5, y: -5, rot: 0 };
+    let raf = 0;
+    let running = false;
+
+    const paint = () => {
+      for (let i = 0; i < layers.length; i++) {
+        const p = pos[i]!;
+        layers[i]!.style.transform = `translate(${p.x.toFixed(2)}px, ${p.y.toFixed(2)}px) rotate(${p.rot.toFixed(3)}deg)`;
+      }
+    };
+
+    const tick = () => {
+      pos[0]!.x += (target.x - pos[0]!.x) * 0.15;
+      pos[0]!.y += (target.y - pos[0]!.y) * 0.15;
+      pos[0]!.rot += (target.rot - pos[0]!.rot) * 0.12;
+
+      for (let i = layers.length - 1; i > 0; i--) {
+        const parent = pos[i - 1]!;
+        const cur = pos[i]!;
+        const offset = (i + 1) * 5;
+        cur.x += (parent.x - offset - cur.x) * 0.15;
+        cur.y += (parent.y - offset - cur.y) * 0.15;
+        cur.rot += (parent.rot - cur.rot) * 0.12;
+      }
+
+      paint();
+      raf = requestAnimationFrame(tick);
+    };
+
+    const start = () => {
+      if (running) return;
+      running = true;
+      raf = requestAnimationFrame(tick);
+    };
+
+    const stop = () => {
+      if (!running) return;
+      running = false;
+      cancelAnimationFrame(raf);
+    };
+
+    document.addEventListener(
+      'pointermove',
+      (e) => {
+        if (e.pointerType !== 'mouse') return;
+        const cx = (e.clientX / window.innerWidth - 0.5) * 2;
+        const cy = (e.clientY / window.innerHeight - 0.5) * 2;
+        target = { x: -5 + cx * 12, y: -5 + cy * 14, rot: cx * 2 };
+      },
+      { passive: true }
+    );
+
+    // Burn no frames once the hero has scrolled away.
+    const io = new IntersectionObserver(
+      ([entry]) => (entry?.isIntersecting ? start() : stop()),
+      { threshold: 0 }
+    );
+    io.observe(hero);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop();
+      else if (hero.getBoundingClientRect().bottom > 0) start();
+    });
+
+    paint();
+  }
+</script>

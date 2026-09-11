@@ -1,0 +1,10 @@
+---
+interface Props {
+  date: Date;
+  class?: string;
+}
+const { date, class: className } = Astro.props;
+const iso = date.toISOString();
+---
+
+<time datetime={iso} class={className}>{iso.slice(0, 10)}</time>
