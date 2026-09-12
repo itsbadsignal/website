@@ -8,9 +8,9 @@ import rehypeKatex from 'rehype-katex';
 
 // Every canonical link, the sitemap and the RSS feed are absolute URLs built
 // from this. It must match the origin the site is actually served from, so
-// update it if the Pages project is named something other than `badsignal`,
+// update it if the Pages project is named something other than `miguelc`,
 // and again when a custom domain is attached.
-export const SITE = 'https://badsignal.pages.dev';
+export const SITE = 'https://miguelc.pages.dev';
 
 export default defineConfig({
   site: SITE,

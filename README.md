@@ -90,8 +90,8 @@ else in the codebase should contain a literal hex value.
 
 1. Push to a Git remote.
 2. Cloudflare dashboard → Workers & Pages → create → Pages → connect the repo.
-3. Name the project **`badsignal`**. The name decides the URL, and `site` in
-   `astro.config.mjs` is already set to `https://badsignal.pages.dev` to match. If
+3. Name the project **`miguelc`**. The name decides the URL, and `site` in
+   `astro.config.mjs` is already set to `https://miguelc.pages.dev` to match. If
    the name is taken and Cloudflare assigns a different one, update `site` and
    redeploy, or the sitemap, RSS and canonical links all point somewhere wrong.
 4. Build command `npm run build`, output directory `dist`. Node comes from
