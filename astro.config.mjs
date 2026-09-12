@@ -6,9 +6,11 @@ import { unified } from '@astrojs/markdown-remark';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
-// Update this to the real domain before relying on RSS or the sitemap —
-// both emit absolute URLs derived from it.
-export const SITE = 'https://example.com';
+// Every canonical link, the sitemap and the RSS feed are absolute URLs built
+// from this. It must match the origin the site is actually served from, so
+// update it if the Pages project is named something other than `badsignal`,
+// and again when a custom domain is attached.
+export const SITE = 'https://badsignal.pages.dev';
 
 export default defineConfig({
   site: SITE,

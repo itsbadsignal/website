@@ -1,0 +1,17 @@
+# Cloudflare Pages reads this file. Paths are matched most-specific-first.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Astro fingerprints everything under /_astro/, so these URLs change whenever
+# their contents do and can be cached permanently.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Not fingerprinted, so cache for a month rather than forever — a replaced font
+# would otherwise stay stale in browsers that already have it.
+/fonts/*
+  Cache-Control: public, max-age=2592000
+/katex/*
+  Cache-Control: public, max-age=2592000

@@ -89,12 +89,25 @@ else in the codebase should contain a literal hex value.
 ## Deploying to Cloudflare Pages
 
 1. Push to a Git remote.
-2. Cloudflare dashboard → Workers & Pages → create → connect the repo.
-3. Build command `npm run build`, output directory `dist`, Node 26.
-4. Add the custom domain once you have one.
+2. Cloudflare dashboard → Workers & Pages → create → Pages → connect the repo.
+3. Name the project **`badsignal`**. The name decides the URL, and `site` in
+   `astro.config.mjs` is already set to `https://badsignal.pages.dev` to match. If
+   the name is taken and Cloudflare assigns a different one, update `site` and
+   redeploy, or the sitemap, RSS and canonical links all point somewhere wrong.
+4. Build command `npm run build`, output directory `dist`. Node comes from
+   `.nvmrc` (22) — Astro 7 refuses anything below 22.12, and the build image's
+   own default is older than that.
+5. Add a custom domain when you have one, then update `site` again.
 
-**Before going live, set `site` in `astro.config.mjs` to the real domain.** RSS and
-the sitemap emit absolute URLs from it, and both are wrong until you do.
+`site` is the one setting that cannot be wrong: canonical links, `sitemap-0.xml`
+and `rss.xml` are all absolute URLs derived from it, and nothing in the build
+warns you when it points at the wrong origin.
+
+`public/_headers` sets caching for the fingerprinted assets and two conservative
+security headers. It is Cloudflare-specific; on another host it is inert and the
+equivalent lives in that host's own config. There is deliberately no
+`Content-Security-Policy` — Astro emits inline scripts and styles, so a careless
+one would break the page rather than protect it.
 
 ## Accessibility notes
 
