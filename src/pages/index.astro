@@ -1,25 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroTrail from '../components/HeroTrail.astro';
+import InfoPanels from '../components/InfoPanels.astro';
 import PostCard from '../components/PostCard.astro';
-import ThemeToggle from '../components/ThemeToggle.astro';
 import { getPosts } from '../lib/posts';
-import { site } from '../lib/site';
 
 const posts = (await getPosts()).slice(0, 5);
 ---
 
 <BaseLayout bareHeader>
-  <div class="corner-toggle">
-    <ThemeToggle />
-  </div>
-
-  <HeroTrail />
+  <HeroTrail>
+    <InfoPanels />
+  </HeroTrail>
 
   <main id="content" class="content wrap">
     <section class="intro">
       <p class="intro__lede">
-        {site.description} I take things apart, work out why they broke, and write it down.
+        I take things apart, work out why they broke, and write it down.
       </p>
     </section>
 
@@ -41,13 +38,6 @@ const posts = (await getPosts()).slice(0, 5);
 </BaseLayout>
 
 <style>
-  .corner-toggle {
-    position: fixed;
-    top: 1.25rem;
-    right: 3.5rem;
-    z-index: 20;
-  }
-
   .intro {
     padding-block: 4rem 2rem;
   }
@@ -84,11 +74,5 @@ const posts = (await getPosts()).slice(0, 5);
 
   .empty {
     padding-block: 2rem;
-  }
-
-  @media (max-width: 640px) {
-    .corner-toggle {
-      right: 1.25rem;
-    }
   }
 </style>

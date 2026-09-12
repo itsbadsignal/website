@@ -34,16 +34,41 @@
   font-family: var(--font-mono);
 }
 
-/* ---- scattered imagery ----
-   These carry all of the page's colour; the type and chrome are monochrome. */
+/* ---- scattered imagery ---- */
 .chaos__img {
   filter: var(--scatter-img-filter);
+}
+
+/* The ground is always dark, so art whose subject is dark would vanish into it
+   and gets flipped. Art that is already light needs nothing beyond the base
+   rule above. Alpha survives filter: invert(), so the knockouts are unaffected. */
+.chaos__img[data-subject='dark'] {
+  filter: var(--scatter-img-filter) invert(1);
 }
 
 .chaos__img img {
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* ---- glitch bars and rules ---- */
+.chaos__bar {
+  position: absolute;
+  background: var(--fg);
+  opacity: 0.12;
+}
+
+.chaos__rule {
+  position: absolute;
+  height: 1px;
+  background: var(--line-strong);
+  transform-origin: left center;
+}
+
+.chaos__box {
+  position: absolute;
+  border: 1px solid var(--line-strong);
 }
 
 /* ---- faint grid ---- */
@@ -69,45 +94,6 @@
 .chaos__bracket[data-corner='tr'] { top: 1.25rem; right: 1.25rem; }
 .chaos__bracket[data-corner='bl'] { bottom: 1.25rem; left: 1.25rem; }
 .chaos__bracket[data-corner='br'] { bottom: 1.25rem; right: 1.25rem; }
-
-/* ---- coordinate labels ---- */
-.chaos__coord {
-  position: absolute;
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  color: var(--faint);
-  letter-spacing: 0.08em;
-}
-
-/* ---- glitch bars and rules ---- */
-.chaos__bar {
-  position: absolute;
-  background: var(--fg);
-  opacity: 0.12;
-}
-
-.chaos__rule {
-  position: absolute;
-  height: 1px;
-  background: var(--line-strong);
-  transform-origin: left center;
-}
-
-.chaos__box {
-  position: absolute;
-  border: 1px solid var(--line-strong);
-}
-
-/* ---- ghost word: oversized, nearly invisible ---- */
-.chaos__ghost {
-  position: absolute;
-  font-weight: 700;
-  color: var(--fg);
-  opacity: 0.06;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  text-transform: lowercase;
-}
 
 /* ---- scan line ---- */
 .chaos__scan {
@@ -212,10 +198,6 @@
   }
   .chaos__grid {
     background-size: 40px 40px;
-  }
-  /* the ghost words are sized for a wide canvas; unchecked they swallow a phone */
-  .chaos__ghost {
-    font-size: 3.5rem !important;
   }
   .chaos__text {
     font-size: 0.9375rem !important;

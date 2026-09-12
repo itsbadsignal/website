@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
 import ChaosLayer from '../components/ChaosLayer.astro';
-import ThemeToggle from '../components/ThemeToggle.astro';
 import { site, nav } from '../lib/site';
 
 interface Props {
@@ -53,19 +52,6 @@ const path = Astro.url.pathname;
     <link rel="preload" href="/fonts/jetbrains-mono-400.woff2" as="font" type="font/woff2" crossorigin />
 
     {math && <link rel="stylesheet" href="/katex/katex.min.css" />}
-
-    {/*
-      Blocking, and deliberately so: it must stamp data-theme before first paint
-      or every load flashes the wrong theme.
-    */}
-    <script is:inline>
-      (function () {
-        try {
-          var t = localStorage.getItem('theme');
-          if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
-        } catch (e) {}
-      })();
-    </script>
   </head>
 
   <body>
@@ -87,7 +73,6 @@ const path = Astro.url.pathname;
               </a>
             ))}
           </nav>
-          <ThemeToggle />
         </header>
       )
     }

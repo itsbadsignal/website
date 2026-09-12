@@ -51,15 +51,6 @@ html {
   scrollbar-gutter: stable;
 }
 
-:root[data-theme='light'] {
-  color-scheme: light;
-}
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme='dark']) {
-    color-scheme: light;
-  }
-}
-
 body {
   background: var(--bg);
   color: var(--fg);

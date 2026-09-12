@@ -1,10 +1,6 @@
 /*
- * Design tokens. Dark is the base; light is an override.
- *
- * Three-state theming, so an explicit toggle wins in both directions:
- *   1. :root                          -> dark (the default)
- *   2. prefers-color-scheme: light    -> light, unless the user forced dark
- *   3. [data-theme="light"]           -> light, always
+ * Design tokens. The site is dark only: there is no light theme, no toggle and
+ * no prefers-color-scheme branch, so this block is the entire palette.
  *
  * No literal colour may appear outside this file.
  */
@@ -26,6 +22,7 @@
      it gets knocked back slightly on dark so it sits in the ground */
   --scatter-img-filter: saturate(0.85) contrast(1.05);
 
+
   /* type */
   --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'IBM Plex Mono', Menlo, monospace;
@@ -36,34 +33,4 @@
 
   /* driven by the scroll handler in BaseLayout; the chaos layer consumes it */
   --chaos-opacity: 1;
-}
-
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme='dark']) {
-    --bg: #ffffff;
-    --bg-raised: #f6f6f7;
-    --fg: #0a0a0a;
-    --dim: rgb(10 10 10 / 0.6);
-    --faint: rgb(10 10 10 / 0.3);
-    --line: rgb(10 10 10 / 0.12);
-    --line-strong: rgb(10 10 10 / 0.25);
-    --accent: #1a7f37;
-    --accent-dim: rgb(26 127 55 / 0.6);
-    --selection: rgb(26 127 55 / 0.18);
-    --scatter-img-filter: saturate(1) contrast(1);
-  }
-}
-
-:root[data-theme='light'] {
-  --bg: #ffffff;
-  --bg-raised: #f6f6f7;
-  --fg: #0a0a0a;
-  --dim: rgb(10 10 10 / 0.6);
-  --faint: rgb(10 10 10 / 0.3);
-  --line: rgb(10 10 10 / 0.12);
-  --line-strong: rgb(10 10 10 / 0.25);
-  --accent: #1a7f37;
-  --accent-dim: rgb(26 127 55 / 0.6);
-  --selection: rgb(26 127 55 / 0.18);
-  --scatter-img-filter: saturate(1) contrast(1);
 }

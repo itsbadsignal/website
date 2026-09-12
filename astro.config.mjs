@@ -25,13 +25,10 @@ export default defineConfig({
       rehypePlugins: [rehypeKatex],
     }),
     shikiConfig: {
-      // Dual themes emit --shiki-dark-* custom properties alongside the light
-      // values, so code blocks follow the theme toggle with no JavaScript.
+      // The site is dark only, so a single theme is enough: Shiki writes the
+      // colours inline and no CSS swap is needed.
       // Astro renames Shiki's `.shiki` class to `.astro-code`; style that.
-      themes: {
-        light: 'github-light',
-        dark: 'github-dark',
-      },
+      theme: 'github-dark',
       wrap: false,
     },
   },
