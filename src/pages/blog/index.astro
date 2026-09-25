@@ -6,10 +6,10 @@ import { getPosts } from '../../lib/posts';
 const posts = await getPosts();
 ---
 
-<BaseLayout title="writeups" description="Writeups and research notes.">
+<BaseLayout title="blog" description="Writeups and research notes.">
   <main id="content" class="content wrap">
     <header class="page-head">
-      <h1>writeups</h1>
+      <h1>blog</h1>
       <p class="mono">{posts.length} {posts.length === 1 ? 'post' : 'posts'}</p>
     </header>
 

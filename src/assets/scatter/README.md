@@ -1,52 +1,35 @@
 # Scatter imagery
 
 The landing page is deliberately sparse: monochrome type, a faint grid, corner
-brackets, and **one** subject — a portrait in the top-right corner with an ASCII
-rendering of the same photo below it, both knocked back with `opacity` so they read
-as texture rather than as content.
+brackets, and **one** image — an ASCII rendering of a portrait in the top-right
+corner, knocked back with `opacity` so it reads as texture rather than as content.
 
-It was busier once (five scattered screenshots carrying all of the page's colour).
-That was dropped on purpose. Adding images back turns the background into collage
-and the page loses the quiet it has now, so add a second one only deliberately.
+It was busier once (five scattered screenshots, and later the photo with the ASCII
+version below it). That was dropped on purpose. Adding images back turns the
+background into collage and the page loses the quiet it has now, so add a second
+one only deliberately.
 
-## How the portrait was made
+## How the ASCII portrait is made
 
-`portrait.jpg` is the untouched source: a grayscale subject on a solid white ground.
-`portrait.png` is what the page actually imports — the same image with the white
-knocked out to transparency, so it composites over the page rather than sitting in
-a white box:
-
-```sh
-ffmpeg -i portrait.jpg -vf \
-  "format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255-(0.299*r(X,Y)+0.587*g(X,Y)+0.114*b(X,Y))'" \
-  portrait.png
-```
-
-Alpha is set from luminance rather than keyed on an exact colour, which is what keeps
-the edges soft — a hard `colorkey` leaves JPEG ringing around the silhouette.
-
-The site is dark only, and this subject is dark, so it would be black on near-black.
-Each entry declares a `subject` tone and `chaos.css` inverts the dark ones.
-`filter: invert()` leaves alpha alone, so the knockout survives.
-
-The source is only 400x400, which caps the useful display width at ~260px (Astro
-emits 260w and 400w and will not invent detail). Supply a larger source before
-scaling it up.
-
-## The ASCII echo
-
-`ascii.png`, below the portrait, is the same photo rendered as ASCII art by
+`portrait.jpg` is the source: a grayscale subject on a solid white ground. It is
+not shown on the page. `ascii.png` is rendered from it by
 `scripts/ascii-portrait.py` (run it from the repo root; the setup is in its
-docstring). The glyphs trace the photo's *light* parts inside the silhouette
-(cap brim, the glitch streaks, the lit ear), because on a dark page it is the
-light that reads. Re-run the script after swapping the portrait so the two
-stay the same person.
+docstring), in the site's mono face, light glyphs on a transparent ground.
+
+The glyphs trace the photo's *light* parts inside the silhouette (cap brim, the
+glitch streaks, the lit ear), because on a dark page it is the light that reads.
+The dark mass keeps a floor of sparse glyphs so the silhouette still holds.
 
 ## Swapping the portrait
 
-1. Drop the file in this folder (`.png`, `.jpg`, `.gif`, `.webp`).
-2. Open `src/components/ChaosLayer.astro` and point the `IMAGES` entry's `src`
-   at the new filename.
+Replace `portrait.jpg` with another subject on a plain white ground and re-run the
+script. A strong silhouette matters more than detail: at 80 columns only the big
+light and dark shapes survive.
+
+To put a plain image in the corner instead, drop it in this folder and point the
+`IMAGES` entry's `src` in `src/components/ChaosLayer.astro` at it. Art that is dark
+on transparency needs `subject: 'dark'`, which `chaos.css` inverts so it does not
+vanish into the ground.
 
 Astro optimizes and lazy-loads everything in `src/assets/`, including animated GIFs
 (left unprocessed so the animation survives). Files dropped in `public/` are **not**
@@ -68,5 +51,5 @@ there are no per-element CSS rules to hunt down.
 
 Aim for 250–450px wide on screen. Opacity is the lever that keeps it in the
 background. Watch the interaction with the art's own alpha: the glyphs in
-`ascii.png` cover only ~5% of the image, so it carries a much higher `opacity` than
-the portrait to land at a comparable weight.
+`ascii.png` cover only ~5% of the image, so it takes a high `opacity` (0.7) to
+register at all.

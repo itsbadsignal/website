@@ -52,6 +52,6 @@ export const panels: ReadonlyArray<{ title: string; items: readonly string[] }> 
 
 export const nav: ReadonlyArray<{ label: string; href: string }> = [
   { label: 'index', href: '/' },
-  { label: 'writeups', href: '/blog' },
+  { label: 'blog', href: '/blog' },
   { label: 'tags', href: '/tags' },
 ];

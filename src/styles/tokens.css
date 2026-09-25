@@ -29,6 +29,8 @@
 
   /* spacing / measure */
   --measure: 68ch;
+  /* posts run wider than the rest: long-form text at 68ch felt cramped */
+  --measure-prose: 80ch;
   --gutter: clamp(1rem, 4vw, 3rem);
 
   /* driven by the scroll handler in BaseLayout; the chaos layer consumes it */
