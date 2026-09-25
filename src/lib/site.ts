@@ -10,6 +10,8 @@ export const site = {
   title: 'miguel',
   description:
     'Systems, reverse engineering, vulnerability research and CTF writeups.',
+  /** Default social card (1200x627, LinkedIn's recommended size). */
+  ogImage: '/og.png',
   /** Shown in the chaos layer's status readout. */
   status: 'online',
 } as const;
