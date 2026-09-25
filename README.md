@@ -67,7 +67,7 @@ With `math: true`, `$inline$` and `$$display$$` render via KaTeX.
 items positioned by viewport percentage:
 
 ```ts
-{ kind: 'text', content: 'segfault is just feedback', x: 14, y: 22, priority: 1 }
+{ kind: 'text', content: 'wth am i doing?', x: 14, y: 22, priority: 1 }
 ```
 
 Moving or adding an element is a one-line data edit — there are no per-element CSS
@@ -93,16 +93,18 @@ else in the codebase should contain a literal hex value.
    button.** The create flow leads to a *Worker*, and a Worker is served from
    `<name>.<account-subdomain>.workers.dev`, never from `.pages.dev`. Pick the
    **Pages** tab, then "Connect to Git".
-3. Name the project **`miguelc`**. The name decides the URL, and `site` in
-   `astro.config.mjs` is already set to `https://miguelc.pages.dev` to match. If
-   the name is taken and Cloudflare assigns a different one, update `site` and
-   redeploy, or the sitemap, RSS and canonical links all point somewhere wrong.
+3. Name the project **`miguelc`**. The name decides the project's default
+   `.pages.dev` URL. `site` in `astro.config.mjs` points at the custom domain
+   instead (step 6), so the project name does not affect the build.
 4. Build command `npm run build`, output directory `dist`. Node comes from
    `.nvmrc` (22) — Astro 7 refuses anything below 22.12, and the build image's
    own default is older than that.
 5. If a Worker for this repo already exists, delete it. Two origins serving the
    same HTML is worth avoiding, and it is one less thing to redeploy by mistake.
-6. Add a custom domain when you have one, then update `site` again.
+6. The site is served from the custom domain `miguelc.space` (registered at
+   Spaceship, DNS on Cloudflare, attached under the Pages project's Custom
+   domains), and `site` is set to it. The project's default `.pages.dev` address
+   still serves the same build, but canonical links point at the custom domain.
 
 `site` is the one setting that cannot be wrong: canonical links, `sitemap-0.xml`
 and `rss.xml` are all absolute URLs derived from it, and nothing in the build

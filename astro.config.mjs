@@ -10,7 +10,7 @@ import rehypeKatex from 'rehype-katex';
 // from this. It must match the origin the site is actually served from, so
 // update it if the Pages project is named something other than `miguelc`,
 // and again when a custom domain is attached.
-export const SITE = 'https://miguelc.pages.dev';
+export const SITE = 'https://miguelc.space';
 
 export default defineConfig({
   site: SITE,
