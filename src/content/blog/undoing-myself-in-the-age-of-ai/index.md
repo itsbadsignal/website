@@ -1,5 +1,5 @@
 ---
-title: "if you cAn't beat them, joIn them."
+title: "Undoing Myself in the Age of AI"
 description: 'Or how I decided to embrace AI slop.'
 pubDate: 2026-09-25
 tags: ['workflow', 'AI']
