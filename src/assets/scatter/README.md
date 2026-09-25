@@ -1,8 +1,9 @@
 # Scatter imagery
 
 The landing page is deliberately sparse: monochrome type, a faint grid, corner
-brackets, and **one** image — a portrait in the top-right corner, knocked back with
-`opacity` so it reads as texture rather than as content.
+brackets, and **one** subject — a portrait in the top-right corner with an ASCII
+rendering of the same photo below it, both knocked back with `opacity` so they read
+as texture rather than as content.
 
 It was busier once (five scattered screenshots carrying all of the page's colour).
 That was dropped on purpose. Adding images back turns the background into collage
@@ -32,6 +33,15 @@ The source is only 400x400, which caps the useful display width at ~260px (Astro
 emits 260w and 400w and will not invent detail). Supply a larger source before
 scaling it up.
 
+## The ASCII echo
+
+`ascii.png`, below the portrait, is the same photo rendered as ASCII art by
+`scripts/ascii-portrait.py` (run it from the repo root; the setup is in its
+docstring). The glyphs trace the photo's *light* parts inside the silhouette
+(cap brim, the glitch streaks, the lit ear), because on a dark page it is the
+light that reads. Re-run the script after swapping the portrait so the two
+stay the same person.
+
 ## Swapping the portrait
 
 1. Drop the file in this folder (`.png`, `.jpg`, `.gif`, `.webp`).
@@ -57,6 +67,6 @@ there are no per-element CSS rules to hunt down.
 ## Sizing
 
 Aim for 250–450px wide on screen. Opacity is the lever that keeps it in the
-background. Watch the interaction with the art's own alpha: `ascii.png` is only
-~20% opaque to begin with, so it carries a much higher `opacity` than the portrait
-to land at a comparable weight.
+background. Watch the interaction with the art's own alpha: the glyphs in
+`ascii.png` cover only ~5% of the image, so it carries a much higher `opacity` than
+the portrait to land at a comparable weight.

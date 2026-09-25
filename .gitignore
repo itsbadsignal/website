@@ -21,3 +21,6 @@ pnpm-debug.log*
 
 # local, machine-specific tool settings
 .claude/settings.local.json
+
+# python venv for scripts/
+.venv/
