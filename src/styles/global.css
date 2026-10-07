@@ -337,6 +337,13 @@ html.is-glitching body > :not(#pwned) {
   margin-top: 1rem;
 }
 
+.pwned__art {
+  font-family: var(--font-mono);
+  font-size: clamp(0.55rem, 2.2vw, 0.8rem);
+  line-height: 1.15;
+  overflow-x: auto;
+}
+
 .pwned__kicker {
   color: var(--dim);
 }

@@ -3,8 +3,11 @@
 // Sit idle for a while and the page "gets defaced": it glitches, then a fake
 // terminal announces the site has been owned and starts a wipe countdown. Any
 // click or key reveals the joke. It fires at most once per browser session.
+// If the time runs out while the tab is in the background, it fires the
+// moment the visitor comes back to it.
 //
-// Debug: add ?prank to the URL to fire after 3s, ignoring the session guard.
+// Debug: add ?prank to the URL to fire after 3s. Debug runs don't count
+// towards the once-per-session guard.
 (function () {
   'use strict';
 
@@ -47,14 +50,19 @@
     '[!] wiping site in '
   ];
 
+  // The winking skull on the reveal: the logo, caught in the act.
+  var art = "          .------------------.\n          |  gotcha. ;)      |\n          '----.  .----------'\n                \\/\n          \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\n        \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\n      \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\n      \u2588\u2588\u2588\u2588    \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\n      \u2588\u2588\u2588\u2588    \u2588\u2588\u2584\u2584\u2584\u2584\u2588\u2588\u2588\u2588\n      \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\n        \u2588\u2588\u2588\u2588\u2588\u2588  \u2588\u2588\u2588\u2588\u2588\u2588\n          \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\n          \u2588\u2588  \u2588\u2588  \u2588\u2588\n              \u2593\u2593\u2593\u2593\n              \u2593\u2593\u2593\u2593";
+
   var timer = 0;
   var fired = false;
+  // the idle time ran out while the tab was hidden: fire on return
+  var pending = false;
   var revealed = false;
   var countdown = 0;
   var lastFocus = null;
 
   function arm() {
-    if (fired) return;
+    if (fired || pending) return;
     clearTimeout(timer);
     timer = setTimeout(fire, delay);
   }
@@ -63,10 +71,17 @@
     addEventListener(ev, arm, { passive: true });
   });
 
+  // A short pause after returning, so the glitch is seen rather than missed.
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden && pending) setTimeout(fire, 600);
+  });
+
   function fire() {
-    if (document.hidden) { arm(); return; }
+    if (fired) return;
+    if (document.hidden) { pending = true; return; }
+    pending = false;
     fired = true;
-    markSeen();
+    if (!debug) markSeen();
     lastFocus = document.activeElement;
 
     if (reduced) { open(); return; }
@@ -142,6 +157,7 @@
     root.setAttribute('aria-label', 'Just a prank');
     root.innerHTML =
       '<div class="pwned__card">' +
+      '<pre class="pwned__art" aria-hidden="true"></pre>' +
       '<p class="pwned__kicker">relax.</p>' +
       '<h2 class="pwned__title">nothing happened.</h2>' +
       '<p>No keys, no passwords, no history. This site has no server-side anything ' +
@@ -155,6 +171,7 @@
       'disable-javascript.org →</a></p>' +
       '<button type="button" class="pwned__close">[ close ]</button>' +
       '</div>';
+    root.querySelector('.pwned__art').textContent = art;
     root.querySelector('.pwned__close').focus();
   }
 
