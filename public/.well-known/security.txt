@@ -1,0 +1,9 @@
+# Found a vulnerability in this site? It's static HTML, so congratulations,
+# but please tell me anyway. Plain text is fine; no bounty, eternal gratitude.
+#
+# Replace the Contact line with your real address before relying on this file.
+
+Contact: https://github.com/badsignal
+Expires: 2027-10-07T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://miguelc.space/.well-known/security.txt

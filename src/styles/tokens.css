@@ -24,6 +24,6 @@
 
   /* structure */
   --rule: 1px solid var(--line);
-  --measure: 96ch;
+  --measure: 110ch;
   --gutter: 1rem;
 }

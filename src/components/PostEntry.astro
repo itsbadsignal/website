@@ -1,6 +1,6 @@
 ---
 import Cover from './Cover.astro';
-import { formatDate, type Post } from '../lib/posts';
+import { epoch, formatDate, type Post } from '../lib/posts';
 
 interface Props {
   post: Post;
@@ -19,7 +19,7 @@ const href = `/blog/${post.id}`;
       <a href={href}>{title}</a>
       {draft && <span class="dim entry__draft">[draft]</span>}
     </h3>
-    <time class="dim" datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+    <time class="dim" datetime={pubDate.toISOString()} title={epoch(pubDate)}>{formatDate(pubDate)}</time>
   </header>
   <a class="entry__cover" href={href} tabindex="-1" aria-hidden="true">
     <Cover post={post} width={720} />

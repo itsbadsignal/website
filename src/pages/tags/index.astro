@@ -6,9 +6,9 @@ import { getTags } from '../../lib/posts';
 const tags = await getTags();
 ---
 
-<BaseLayout title="tags" description="Browse posts by tag.">
+<BaseLayout title="Tags" description="Browse posts by tag.">
   <header class="page-head">
-    <h1>tags</h1>
+    <h1>Tags</h1>
     <p>{tags.length} {tags.length === 1 ? 'tag' : 'tags'}, most used first.</p>
   </header>
 

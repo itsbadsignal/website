@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/PageLayout.astro
-title: projects
+title: Projects
 description: 'Things I have built or am building.'
 ---
 

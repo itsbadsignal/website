@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/PageLayout.astro
-title: about
+title: About
 description: 'Who writes this.'
 ---
 

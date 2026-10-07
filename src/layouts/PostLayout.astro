@@ -2,7 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import Cover from '../components/Cover.astro';
 import TagChip from '../components/TagChip.astro';
-import { formatDate, type Post } from '../lib/posts';
+import { epoch, formatDate, type Post } from '../lib/posts';
 import '../styles/prose.css';
 
 interface Props {
@@ -19,13 +19,13 @@ const { title, description, pubDate, updatedDate, tags, math, draft, cover } = p
     <header class="post-head">
       <h1>{title}</h1>
       <p class="dim">
-        <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+        <time datetime={pubDate.toISOString()} title={epoch(pubDate)}>{formatDate(pubDate)}</time>
         {` · ${readingTime}`}
         {
           updatedDate && (
             <>
               {' · updated '}
-              <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate)}</time>
+              <time datetime={updatedDate.toISOString()} title={epoch(updatedDate)}>{formatDate(updatedDate)}</time>
             </>
           )
         }

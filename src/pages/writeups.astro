@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostLog from '../components/PostLog.astro';
+import { getPosts } from '../lib/posts';
+
+// A post appears here when it carries any of these tags (case-insensitive).
+const WRITEUP_TAGS = ['ctf', 'writeup'];
+
+const posts = (await getPosts()).filter((p) =>
+  p.data.tags.some((t) => WRITEUP_TAGS.includes(t.toLowerCase()))
+);
+---
+
+<BaseLayout title="Writeups" description="CTF writeups and solved challenges.">
+  <header class="page-head">
+    <h1>Writeups</h1>
+    <p>
+      CTF writeups and solved challenges. {posts.length}
+      {posts.length === 1 ? 'entry' : 'entries'}, from posts tagged {WRITEUP_TAGS.join(' or ')}.
+    </p>
+  </header>
+
+  {posts.length > 0 ? <PostLog posts={posts} /> : <p class="dim">no writeups yet.</p>}
+</BaseLayout>

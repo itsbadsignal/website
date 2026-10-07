@@ -16,8 +16,8 @@ export const site = {
 } as const;
 
 export const socials: ReadonlyArray<{ label: string; href: string }> = [
-  { label: 'github', href: 'https://github.com/badsignal' },
-  { label: 'rss', href: '/rss.xml' },
+  { label: 'GitHub', href: 'https://github.com/badsignal' },
+  { label: 'RSS', href: '/rss.xml' },
 ];
 
 /**
@@ -25,22 +25,24 @@ export const socials: ReadonlyArray<{ label: string; href: string }> = [
  */
 export const now: ReadonlyArray<{ label: string; value: string }> = [
   { label: 'job', value: 'security engineer @ layer8' },
-  { label: 'building', value: '@loki' },
   { label: 'reading', value: 'the elements of computing systems' },
-  { label: 'learning', value: 'to drive' },
+  { label: 'learning', value: 'basic maths and driving' },
   { label: 'stack', value: 'c, python, arch btw' },
 ];
 
-/** The header menu. It wraps, so order matters more than count. */
+/**
+ * The header menu, laid out as three rows of four with the socials last, so
+ * keep it at 10 entries. The logo is the link home.
+ */
 export const nav: ReadonlyArray<{ label: string; href: string }> = [
-  { label: 'index', href: '/' },
-  { label: 'blog', href: '/blog' },
-  { label: 'tags', href: '/tags' },
-  { label: 'now', href: '/now' },
-  { label: 'projects', href: '/projects' },
-  { label: 'uses', href: '/uses' },
-  { label: 'library', href: '/library' },
-  { label: 'bookmarks', href: '/bookmarks' },
-  { label: 'about', href: '/about' },
-  { label: 'contact', href: '/contact' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Writeups', href: '/writeups' },
+  { label: 'Tags', href: '/tags' },
+  { label: 'Now', href: '/now' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Dotfiles', href: '/dotfiles' },
+  { label: 'Library', href: '/library' },
+  { label: 'Hacking', href: '/hacking' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
 ];

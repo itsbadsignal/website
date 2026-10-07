@@ -6,9 +6,9 @@ import { getPosts } from '../../lib/posts';
 const posts = await getPosts();
 ---
 
-<BaseLayout title="blog" description="Writeups and research notes.">
+<BaseLayout title="Blog" description="Writeups and research notes.">
   <header class="page-head">
-    <h1>blog</h1>
+    <h1>Blog</h1>
     <p>{posts.length} {posts.length === 1 ? 'entry' : 'entries'}, newest first, grouped by year.</p>
   </header>
 

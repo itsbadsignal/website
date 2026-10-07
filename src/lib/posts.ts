@@ -60,3 +60,8 @@ export function coverPattern(slug: string): string {
   const gap = ink + 3 + ((h >>> 8) % 14);
   return `--p-angle:${angle}deg;--p-ink:${ink}px;--p-gap:${gap}px`;
 }
+
+/** Hover text for dates: the same moment as a Unix timestamp. */
+export function epoch(date: Date): string {
+  return `unix ${Math.floor(date.valueOf() / 1000)}`;
+}

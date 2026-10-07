@@ -29,6 +29,28 @@ const path = Astro.url.pathname;
 const year = new Date().getFullYear();
 
 const links = [...nav, ...socials];
+
+// For whoever reads view-source. Set as raw HTML so the comment survives the build.
+const sourceNote = `<!--
+
+          ██████████
+        ██████████████
+      ██████████████████
+        ████    ██    ████
+      ████    ██    ████
+      ██████████████████
+    ██████  ██████
+          ██████████
+          ██  ██  ██
+
+    you opened the source. good instinct.
+
+    no frameworks, no trackers, no cookies: html + css, built by astro.
+    the only script is /prank.js. read it before it reads you.
+
+    found a bug? /.well-known/security.txt
+
+-->`;
 const isCurrent = (href: string) =>
   href === '/' ? path === '/' : href.startsWith('/') && path.startsWith(href);
 ---
@@ -60,6 +82,7 @@ const isCurrent = (href: string) =>
   </head>
 
   <body>
+    <Fragment set:html={sourceNote} />
     <a href="#content" class="sr-only">Skip to content</a>
 
     <header class="site-head wrap">

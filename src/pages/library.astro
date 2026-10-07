@@ -1,0 +1,78 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { books, type Book } from '../lib/library';
+
+const groups: Array<[Book['status'], string]> = [
+  ['reading', 'Reading'],
+  ['read', 'Read'],
+  ['shelved', 'On the shelf'],
+];
+---
+
+<BaseLayout title="Library" description="Books I have read, am reading, or keep coming back to.">
+  <header class="page-head">
+    <h1>Library</h1>
+    <p>Books I have read, am reading, or keep coming back to. Not all of them are recommendations.</p>
+  </header>
+
+  {
+    groups.map(([status, label]) => {
+      const shelf = books.filter((b) => b.status === status);
+      return (
+        shelf.length > 0 && (
+          <section aria-label={label}>
+            <h2 class="log__year">{label}</h2>
+            <ul class="shelf">
+              {shelf.map((b) => (
+                <li class="book">
+                  <Image
+                    class="book__cover"
+                    src={b.cover}
+                    alt={`Cover of ${b.title}`}
+                    width={72}
+                    widths={[72, 144]}
+                    sizes="72px"
+                  />
+                  <div class="book__text">
+                    <h3>{b.href ? <a href={b.href}>{b.title}</a> : b.title}</h3>
+                    <p class="dim">{b.author}</p>
+                    {b.note && <p class="book__note">{b.note}</p>}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      );
+    })
+  }
+</BaseLayout>
+
+<style>
+  .shelf {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .book {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  /* covers come in every ratio; crop them all to a paperback's 2:3 */
+  .book :global(.book__cover) {
+    width: 72px;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border: var(--rule);
+  }
+
+  .book__note {
+    margin-top: 0.35rem;
+  }
+</style>

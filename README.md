@@ -49,6 +49,52 @@ to two lines. A post without a cover gets a striped pattern
 generated from its slug (`coverPattern` in `src/lib/posts.ts`), so it never
 looks broken and never changes between builds.
 
+### Generating a cover
+
+Covers are generated with ChatGPT using the prompt below, so they match the
+logo: 1-bit black on white, drawn as scanlines, with a slight glitch. Fill in
+the three bracketed lines for each post:
+
+```
+Create a cover image for a blog post. Follow the style rules exactly.
+
+POST
+Title: [POST TITLE]
+Summary: [ONE OR TWO SENTENCES ABOUT THE POST]
+Subject to depict: [ONE CONCRETE OBJECT OR IDEA, e.g. "a padlock", "a stack of memory blocks", "a broken chain", "a radio antenna"]
+
+STYLE RULES
+- Format: landscape 16:9 (1792x1024). The image will be cropped to 16:9, so keep the subject in the middle 80%.
+- Palette: pure white background (#FFFFFF) and solid black ink (#111111) only. No grey fills, no gradients, no shadows, no other colours.
+- Rendering: 1-bit pixel art drawn as horizontal scanlines. Build every shape from thin horizontal black bars with small white gaps between them, like an old CRT or a dot-matrix printout. Where shading is needed, use ordered dithering (a checkerboard of black and white pixels), never grey.
+- Glitch: one or two horizontal bands of the image slipped a few pixels sideways, and a few stray black pixels leaking off the edges of the subject. Keep it subtle; the subject must still read instantly.
+- Composition: one single subject, centred or slightly off-centre, taking up about 30-40% of the frame. Everything else is empty white space. No background scenery, no frame, no border, no vignette.
+- Mood: minimal, technical and quiet, like an icon from a 1980s terminal manual that has started to corrupt.
+- Strictly no text, letters, numbers, logos, watermarks or signatures anywhere in the image.
+- No 3D, no photorealism, no lens effects, no glow, no neon, no cyberpunk cityscapes, no hooded hackers, no green Matrix code.
+
+Output only the image.
+```
+
+Save the result beside the post as `cover.png` and add it to the frontmatter:
+
+```yaml
+cover: ./cover.png
+coverAlt: 'A pixel padlock drawn in scanlines, one band slipped sideways'
+```
+
+Tips:
+
+- Pick a physical subject, not an abstract idea. "A key with a missing tooth"
+  works better than "authentication bypass". For a CTF writeup, depict the
+  core trick: a ladder for privilege escalation, an overflowing cup for a
+  buffer overflow, a mask for spoofing.
+- If it comes back grey or soft, reply: *"Redo it as strict 1-bit: only
+  #FFFFFF and #111111, no anti-aliasing, more visible scanline gaps."*
+- If it adds text, reply: *"Same image, remove every letter and number."*
+- To keep a series consistent, attach a previous cover to a new chat and start
+  with *"Match the exact style of this image"* before the prompt.
+
 ### Images
 
 For a post with images, make it a folder and reference them relatively:

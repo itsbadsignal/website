@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/PageLayout.astro
-title: contact
+title: Contact
 description: 'How to reach me.'
 ---
 
