@@ -2,24 +2,6 @@
 
 /* ---- fonts: self-hosted, no third-party request ---- */
 @font-face {
-  font-family: 'Space Grotesk';
-  src: url('/fonts/space-grotesk-400.woff2') format('woff2');
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Grotesk';
-  src: url('/fonts/space-grotesk-500.woff2') format('woff2');
-  font-weight: 500;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Grotesk';
-  src: url('/fonts/space-grotesk-700.woff2') format('woff2');
-  font-weight: 700;
-  font-display: swap;
-}
-@font-face {
   font-family: 'JetBrains Mono';
   src: url('/fonts/jetbrains-mono-400.woff2') format('woff2');
   font-weight: 400;
@@ -46,27 +28,21 @@
 
 html {
   background: var(--bg);
-  color-scheme: dark;
+  color-scheme: light;
   -webkit-text-size-adjust: 100%;
-  scrollbar-gutter: stable;
 }
 
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.6;
-  min-height: 100svh;
-  /* the chaos layer is fixed and full-bleed; never let it open a sideways scroll */
-  overflow-x: hidden;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 ::selection {
   background: var(--selection);
+  color: var(--fg);
 }
 
 img,
@@ -77,20 +53,31 @@ video {
   display: block;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
 a {
   color: inherit;
-  text-decoration-color: var(--line-strong);
   text-underline-offset: 0.2em;
 }
 
 a:hover {
-  text-decoration-color: currentColor;
+  color: var(--accent);
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 2px;
+  outline: 1px dashed var(--fg);
+  outline-offset: 2px;
+}
+
+hr {
+  border: 0;
+  border-top: var(--rule);
 }
 
 /* screen-reader-only, for skip links and icon buttons */
@@ -105,97 +92,228 @@ a:hover {
   border: 0;
 }
 
-/* ---- shared layout primitives ---- */
+.dim {
+  color: var(--dim);
+}
+
+/* ---- the column ---- */
 .wrap {
-  width: 100%;
-  max-width: 72rem;
+  max-width: calc(var(--measure) + 2 * var(--gutter));
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
 
-.mono {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
-  color: var(--dim);
-}
-
-/* ---- site chrome ---- */
 .site-head {
-  position: relative;
-  z-index: 10;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-block: 1.25rem;
+  gap: 2rem;
+  padding-block: 2.5rem 1.5rem;
 }
 
+.site-head__logo {
+  display: block;
+  flex-shrink: 0;
+}
+
+.site-head__logo svg {
+  width: 96px;
+}
+
+/* three rows of four */
 .site-head nav {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
+  flex: 1;
 }
 
-.site-head a {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  letter-spacing: 0.05em;
+.site-head nav ul {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.15rem 1.5rem;
+  list-style: none;
+}
+
+.site-head nav a {
   text-decoration: none;
-  color: var(--dim);
-  transition: color 0.15s ease;
 }
 
-.site-head a:hover,
-.site-head a[aria-current='page'] {
-  color: var(--fg);
+.site-head nav a::before {
+  content: '> ';
+  color: transparent;
+}
+
+.site-head nav a:hover::before,
+.site-head nav a[aria-current='page']::before {
+  color: inherit;
+}
+
+@media (max-width: 600px) {
+  .site-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .site-head nav {
+    width: 100%;
+  }
+
+  .site-head nav ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.15rem 1rem;
+  }
+}
+
+main.wrap {
+  padding-block: 1.5rem 4rem;
 }
 
 .site-foot {
-  position: relative;
-  z-index: 10;
-  /* No margin here: a transparent gap between main and the footer lets the
-     chaos layer show through. main.content carries the spacing as padding so
-     the space stays opaque. */
-  padding-block: 2rem;
-  border-top: 1px solid var(--line);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 1.5rem;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.site-foot a {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+  padding-block: 1.5rem 3rem;
   color: var(--dim);
-  text-decoration: none;
 }
 
-.site-foot a:hover {
-  color: var(--fg);
+/* font-size on the text, not the footer: .wrap's width is in ch */
+.site-foot p {
+  margin-top: 1rem;
+  font-size: 0.85rem;
 }
 
-/* ---- content that sits above the fading chaos layer ----
-   The backdrop must span the full viewport, not just the centred .wrap column,
-   or the chaos layer shows through the side gutters and reads as a smudge behind
-   the text. box-shadow paints the gutters; clip-path keeps that spread from
-   bleeding above or below the element. */
-.content {
-  position: relative;
-  z-index: 5;
+/* ---- page heading used by every index page ---- */
+.page-head {
+  margin-bottom: 2rem;
+}
+
+.page-head p {
+  color: var(--dim);
+}
+
+/* ---- the post log: grouped by year, numbered newest first ---- */
+.log__year {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-block: 2.5rem 1.5rem;
+  color: var(--dim);
+}
+
+.log__year::after {
+  content: '';
+  flex: 1;
+  border-top: var(--rule);
+}
+
+.log ol {
+  list-style: none;
+}
+
+.log li + li {
+  margin-top: 2.75rem;
+}
+
+/* ---- covers: see Cover.astro (global, since <Image> is a child component) ---- */
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cover--pattern {
+  background: repeating-linear-gradient(
+    var(--p-angle),
+    var(--fg) 0 var(--p-ink),
+    var(--bg) var(--p-ink) var(--p-gap)
+  );
+}
+
+.back {
+  display: inline-block;
+  margin-top: 3rem;
+}
+
+/* ---- the prank: see public/prank.js ---- */
+@keyframes glitch {
+  0% { clip-path: inset(0 0 0 0); transform: none; filter: none; }
+  10% { clip-path: inset(12% 0 58% 0); transform: translate(-14px, 0); }
+  20% { clip-path: inset(64% 0 8% 0); transform: translate(18px, 0); filter: invert(1); }
+  30% { clip-path: inset(30% 0 41% 0); transform: translate(-6px, 3px); filter: none; }
+  40% { clip-path: inset(0 0 0 0); transform: skewX(8deg); filter: invert(1); }
+  50% { clip-path: inset(80% 0 2% 0); transform: translate(10px, -4px); filter: none; }
+  60% { clip-path: inset(5% 0 75% 0); transform: translate(-20px, 0); }
+  70% { clip-path: inset(0 0 0 0); transform: none; filter: invert(1); }
+  80% { clip-path: inset(44% 0 33% 0); transform: translate(8px, 0) skewX(-12deg); filter: none; }
+  100% { clip-path: inset(0 0 0 0); transform: none; filter: invert(1); }
+}
+
+html.is-glitching body > :not(#pwned) {
+  animation: glitch 0.15s steps(1) infinite;
+}
+
+/* the defacement overlay */
+.pwned {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 2rem;
+  background: var(--term-bg);
+  color: var(--term-fg);
+  cursor: pointer;
+}
+
+.pwned__term {
+  font-family: var(--font-mono);
+  font-size: clamp(0.8rem, 1.6vw, 1.05rem);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  outline: none;
+}
+
+.pwned__term::after {
+  content: '\2588';
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.pwned--joke {
+  display: grid;
+  place-items: center;
   background: var(--bg);
-  box-shadow: 0 0 0 100vmax var(--bg);
-  clip-path: inset(0 -100vmax);
+  color: var(--fg);
+  cursor: default;
 }
 
-/* Trailing space below the last content block, kept opaque (see .site-foot). */
-main.content {
-  padding-bottom: 6rem;
+.pwned__card {
+  max-width: var(--measure);
 }
 
-/* ---- reduced motion: the reference honours this nowhere ---- */
+.pwned__card > * + * {
+  margin-top: 1rem;
+}
+
+.pwned__kicker {
+  color: var(--dim);
+}
+
+.pwned__title {
+  font-size: 1.4rem;
+}
+
+.pwned__close {
+  font: inherit;
+  background: none;
+  color: inherit;
+  border: var(--rule);
+  padding: 0.2rem 0.8rem;
+  cursor: pointer;
+}
+
+.pwned__close:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

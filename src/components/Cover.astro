@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import { coverPattern, type Post } from '../lib/posts';
+
+interface Props {
+  post: Post;
+  /** Rendered width in px; Astro builds the srcset around it. */
+  width: number;
+  /** The post banner loads eagerly; grid thumbnails are lazy. */
+  eager?: boolean;
+}
+
+const { post, width, eager = false } = Astro.props;
+const { cover, coverAlt } = post.data;
+---
+
+{
+  cover ? (
+    <Image
+      class="cover"
+      src={cover}
+      alt={coverAlt}
+      width={width}
+      widths={[width / 2, width, width * 2].map(Math.round)}
+      sizes={`(max-width: 800px) 100vw, ${width}px`}
+      loading={eager ? 'eager' : 'lazy'}
+    />
+  ) : (
+    <div class="cover cover--pattern" style={coverPattern(post.id)} aria-hidden="true" />
+  )
+}
+

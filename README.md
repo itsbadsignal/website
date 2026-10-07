@@ -1,9 +1,10 @@
-# miguel / badsignal — personal site
+# miguelc — personal site
 
-A chaotic landing page over a real blog engine. Astro, static output, no runtime
-framework. The landing is a fixed "chaos layer" that fades out as you scroll into
-clean, readable content; writeups are Markdown with syntax highlighting, math,
-tags and RSS.
+A quiet, text-first journal: one monospace face, a narrow centred column on pure
+white, thin rules, and a numbered log of posts grouped by year, each with a cover
+and a short excerpt. Astro builds it to plain HTML and CSS. The only
+JavaScript shipped is `public/prank.js` (see "The prank" below). Posts are
+Markdown with syntax highlighting, math, tags and RSS.
 
 ## Running it
 
@@ -28,6 +29,8 @@ pubDate: 2026-08-14
 tags: ['ctf', 'pwn']
 draft: false   # true hides it from the built site, but not from `npm run dev`
 math: false    # true loads KaTeX CSS on this post only
+cover: ./cover.jpg          # optional thumbnail, kept beside the post
+coverAlt: 'What the image shows'
 ---
 ```
 
@@ -36,6 +39,15 @@ malformed frontmatter block rather than building something broken.
 
 Tag pages are generated from whatever tags you use. There is no list to maintain;
 inventing a tag creates `/tags/<tag>` on the next build.
+
+### Covers
+
+`cover` is the post's image in every list and its banner on the post page. It
+needs the post to be a folder (`src/content/blog/<slug>/index.md` + `cover.jpg`).
+Both are cropped to 16:9. The log shows `description` as the excerpt, clamped
+to two lines. A post without a cover gets a striped pattern
+generated from its slug (`coverPattern` in `src/lib/posts.ts`), so it never
+looks broken and never changes between builds.
 
 ### Images
 
@@ -56,35 +68,32 @@ Astro optimizes and lazy-loads these at build time. Images in `public/` are serv
 
 ### Code and math
 
-Fenced blocks are highlighted by Shiki with a light and a dark theme, and follow
-the theme toggle with no JavaScript. Every block gets a copy button.
+Fenced blocks are highlighted by Shiki's `github-light` theme, with the colours
+inlined at build time.
 
 With `math: true`, `$inline$` and `$$display$$` render via KaTeX.
 
-## The chaos layer
+## The prank
 
-`src/components/ChaosLayer.astro` holds a `SCATTER`-style array of text and image
-items positioned by viewport percentage:
+`public/prank.js` is loaded with `is:inline`, so Astro never bundles it. It is
+the only script on the site. If a visitor sits idle for 45s, the page glitches,
+then a fake terminal "defaces" the site and counts down to a wipe. Any click or
+key (or the end of the countdown) reveals that it's a joke and points them to
+disable-javascript.org. It runs once per browser session, never on the 404 page
+(`prank={false}` on `BaseLayout`), and skips the glitch under
+`prefers-reduced-motion`.
 
-```ts
-{ kind: 'text', content: 'wth am i doing?', x: 14, y: 22, priority: 1 }
-```
+Append `?prank` to any URL to fire it after 3s, ignoring the once-per-session
+guard.
 
-Moving or adding an element is a one-line data edit — there are no per-element CSS
-rules. `priority` drives responsive culling: `3` is hidden below 900px, `2` below
-640px, `1` always shows.
-
-**`src/assets/scatter/` is the only colour on the site.** Everything else is
-monochrome by design. The five files there are placeholders — swap them for real
-screenshots, ASCII art, or photos. See that folder's README.
-
-Identity and links live in `src/lib/site.ts`.
+Identity, menu links and the "now" box live in `src/lib/site.ts`.
 
 ## Theming
 
-`src/styles/tokens.css` is the single source of colour. Dark is the base; light is
-an override, selected by `prefers-color-scheme` or forced by the toggle. Nothing
-else in the codebase should contain a literal hex value.
+`src/styles/tokens.css` is the single source of colour: white, near-black, grey, one link blue.
+Light only, with no dark mode. Nothing else in the codebase should contain a
+literal hex value. Rules are `var(--rule)` (1px solid), and there are no
+shadows.
 
 ## Deploying to Cloudflare Pages
 
@@ -118,10 +127,7 @@ one would break the page rather than protect it.
 
 ## Accessibility notes
 
-Worth preserving if you edit the chaos layer:
-
-- `.chaos` is `aria-hidden` and `pointer-events: none`. Keep focusable elements
-  out of it — the social links are deliberately a sibling, not a child.
-- `prefers-reduced-motion` halts the scan line, the pulse, and the cursor trail.
-- The cursor trail also never starts on touch devices, and its rAF loop stops
-  when the hero scrolls out of view.
+- The prank overlay is a modal dialog: it takes focus when it opens, the reveal
+  focuses the close button, Esc closes it, and focus returns to where it was.
+- `prefers-reduced-motion` drops the glitch and the typing animation.
+- The layout is one column at every width; the menu wraps as plain links.

@@ -1,5 +1,6 @@
 /*
- * Design tokens. The site is dark only: there is no light theme, no toggle and
+ * Design tokens. The site is light only: pure white, black ink, grey for
+ * secondary text and one hyperlink blue. There is no dark theme, no toggle and
  * no prefers-color-scheme branch, so this block is the entire palette.
  *
  * No literal colour may appear outside this file.
@@ -7,32 +8,22 @@
 
 :root {
   /* surface */
-  --bg: #0b0b0c;
-  --bg-raised: #141416;
-  --fg: #ededef;
-  --dim: rgb(237 237 239 / 0.55);
-  --faint: rgb(237 237 239 / 0.28);
-  --line: rgb(237 237 239 / 0.1);
-  --line-strong: rgb(237 237 239 / 0.22);
-  --accent: #9be9a8;
-  --accent-dim: rgb(155 233 168 / 0.6);
-  --selection: rgb(155 233 168 / 0.25);
+  --bg: #fff;
+  --fg: #111;
+  --dim: #6b6b6b;
+  --line: #111;
+  --accent: #0000ee;
+  --selection: #ffff00;
 
-  /* the scatter layer's raster imagery is the only colour on the page;
-     it gets knocked back slightly on dark so it sits in the ground */
-  --scatter-img-filter: saturate(0.85) contrast(1.05);
+  /* the prank's terminal */
+  --term-bg: #000;
+  --term-fg: #fff;
 
+  /* type: one monospace face everywhere */
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
-  /* type */
-  --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'IBM Plex Mono', Menlo, monospace;
-
-  /* spacing / measure */
-  --measure: 68ch;
-  /* posts run wider than the rest: long-form text at 68ch felt cramped */
-  --measure-prose: 80ch;
-  --gutter: clamp(1rem, 4vw, 3rem);
-
-  /* driven by the scroll handler in BaseLayout; the chaos layer consumes it */
-  --chaos-opacity: 1;
+  /* structure */
+  --rule: 1px solid var(--line);
+  --measure: 96ch;
+  --gutter: 1rem;
 }

@@ -1,56 +1,36 @@
 /*
- * Long-form post typography.
- *
- * Writeups are code-heavy and long, so this is the calm half of the site: a
- * constrained measure, generous leading, and only quiet chaos accents.
+ * Long-form post typography: the same mono face and size as the rest of the
+ * site, headings marked by weight and a thin rule rather than size.
  */
 
-.prose {
-  max-width: var(--measure-prose);
-  font-size: 1.0625rem;
-  line-height: 1.75;
-}
-
 .prose > * + * {
-  margin-top: 1.25em;
+  margin-top: 1.2em;
 }
 
 .prose h2,
 .prose h3,
 .prose h4 {
-  line-height: 1.25;
-  letter-spacing: -0.015em;
   margin-top: 2.5em;
-  margin-bottom: 0.6em;
   scroll-margin-top: 2rem;
 }
 
 .prose h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
+  padding-bottom: 0.2rem;
+  border-bottom: var(--rule);
 }
-.prose h3 {
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-.prose h4 {
-  font-size: 1rem;
-  font-weight: 500;
+
+.prose h2::before {
+  content: '## ';
   color: var(--dim);
 }
 
-/* anchor affordance on hover, without cluttering the heading */
+.prose h3::before {
+  content: '### ';
+  color: var(--dim);
+}
+
 .prose :is(h2, h3, h4) > a {
   text-decoration: none;
-}
-.prose :is(h2, h3, h4) > a::after {
-  content: ' #';
-  color: var(--faint);
-  opacity: 0;
-  transition: opacity 0.15s ease;
-}
-.prose :is(h2, h3, h4):hover > a::after {
-  opacity: 1;
 }
 
 .prose p {
@@ -59,75 +39,90 @@
 
 .prose a {
   color: var(--accent);
-  text-decoration: underline;
-  text-decoration-color: var(--accent-dim);
-  text-underline-offset: 0.2em;
 }
 
 .prose strong {
-  font-weight: 700;
+  font-weight: 500;
 }
 
-.prose ul,
+.prose ul {
+  padding-left: 2ch;
+}
+
+/* room for "10. " so numbers stay inside the column */
 .prose ol {
-  padding-left: 1.4em;
+  padding-left: 4ch;
+}
+
+.prose ul {
+  list-style: '- ';
 }
 
 .prose li + li {
-  margin-top: 0.4em;
+  margin-top: 0.3em;
 }
 
-.prose li::marker {
-  color: var(--faint);
+/* GFM task lists: the checkbox is the marker */
+.prose .contains-task-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.prose .task-list-item input {
+  margin-right: 0.6ch;
+  vertical-align: -0.1em;
+  accent-color: var(--fg);
+}
+
+/* GFM footnotes: set apart under a rule, smaller and grey */
+.prose .footnotes {
+  margin-top: 3em;
+  padding-top: 1em;
+  border-top: var(--rule);
+  font-size: 0.85rem;
+  color: var(--dim);
+}
+
+.prose .footnotes a {
+  color: inherit;
+}
+
+.prose sup a {
+  text-decoration: none;
 }
 
 .prose blockquote {
-  border-left: 2px solid var(--line-strong);
-  padding-left: 1.1em;
+  border-left: var(--rule);
+  padding-left: 1.5ch;
   color: var(--dim);
-  font-style: italic;
 }
 
 .prose hr {
-  border: 0;
-  border-top: 1px solid var(--line);
-  margin-block: 3em;
-}
-
-.prose img {
-  border-radius: 4px;
-  border: 1px solid var(--line);
+  margin-block: 2.5em;
 }
 
 .prose figure figcaption {
-  margin-top: 0.6em;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+  margin-top: 0.5em;
   color: var(--dim);
-  text-align: center;
+  font-size: 0.85rem;
 }
 
 /* ---- inline code ---- */
 .prose :not(pre) > code {
-  font-family: var(--font-mono);
-  font-size: 0.875em;
-  background: var(--bg-raised);
-  border: 1px solid var(--line);
-  border-radius: 3px;
-  padding: 0.12em 0.34em;
+  font-family: inherit;
+  background: var(--selection);
+  padding: 0 0.25em;
   word-break: break-word;
 }
 
 /* ---- code blocks ----
-   Astro renames Shiki's `.shiki` class to `.astro-code`. The site is dark only,
-   so astro.config.mjs pins a single Shiki theme and the colours arrive inline —
-   there is nothing here to swap. */
+   Astro renames Shiki's `.shiki` class to `.astro-code`. astro.config.mjs pins a
+   single light theme and the colours arrive inline. */
 .prose pre.astro-code {
-  font-size: 0.85rem;
+  font-size: 0.9em;
   line-height: 1.6;
-  padding: 1rem 1.1rem;
-  border-radius: 5px;
-  border: 1px solid var(--line);
+  padding: 0.9rem 1rem;
+  border: var(--rule);
   overflow-x: auto;
   tab-size: 4;
 }
@@ -139,65 +134,19 @@
   min-width: 100%;
 }
 
-/* ---- copy button ---- */
-.code-block {
-  position: relative;
-}
-
-.code-block__copy {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  z-index: 2;
-  padding: 0.28rem 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.05em;
-  color: var(--dim);
-  background: var(--bg-raised);
-  border: 1px solid var(--line-strong);
-  border-radius: 3px;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.15s ease, color 0.15s ease;
-}
-
-.code-block:hover .code-block__copy,
-.code-block__copy:focus-visible {
-  opacity: 1;
-}
-
-.code-block__copy:hover {
-  color: var(--fg);
-}
-
-.code-block__copy[data-copied='true'] {
-  color: var(--accent);
-  opacity: 1;
-}
-
-/* touch devices have no hover to reveal the button */
-@media (hover: none) {
-  .code-block__copy {
-    opacity: 1;
-  }
-}
-
 /* ---- tables ---- */
 .prose table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.9375rem;
 }
 
 .prose :is(th, td) {
-  border: 1px solid var(--line);
-  padding: 0.5em 0.7em;
+  border: var(--rule);
+  padding: 0.3em 0.6em;
   text-align: left;
 }
 
 .prose th {
-  background: var(--bg-raised);
   font-weight: 500;
 }
 

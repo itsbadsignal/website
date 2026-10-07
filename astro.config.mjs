@@ -15,6 +15,8 @@ export const SITE = 'https://miguelc.space';
 export default defineConfig({
   site: SITE,
   integrations: [mdx(), sitemap()],
+  // The dev toolbar injects its own script and UI into every page in `astro dev`.
+  devToolbar: { enabled: false },
   markdown: {
     /*
      * Astro 7 defaults to the Sätteri processor, which parses math but does not
@@ -27,10 +29,10 @@ export default defineConfig({
       rehypePlugins: [rehypeKatex],
     }),
     shikiConfig: {
-      // The site is dark only, so a single theme is enough: Shiki writes the
+      // The site is light only, so a single theme is enough: Shiki writes the
       // colours inline and no CSS swap is needed.
       // Astro renames Shiki's `.shiki` class to `.astro-code`; style that.
-      theme: 'github-dark',
+      theme: 'github-light',
       wrap: false,
     },
   },

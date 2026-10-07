@@ -1,0 +1,37 @@
+---
+import PostEntry from './PostEntry.astro';
+import { getPosts, type Post } from '../lib/posts';
+
+interface Props {
+  /** Newest first, as getPosts() returns them. */
+  posts: Post[];
+}
+const { posts } = Astro.props;
+
+// Numbers come from the full archive so a post keeps its number on every page.
+const all = (await getPosts()).map((p) => p.id);
+const number = (p: Post) => all.length - all.indexOf(p.id);
+
+const years = new Map<number, Post[]>();
+for (const p of posts) {
+  const y = p.data.pubDate.getUTCFullYear();
+  years.set(y, [...(years.get(y) ?? []), p]);
+}
+---
+
+<div class="log">
+  {
+    [...years].map(([year, group]) => (
+      <section aria-label={String(year)}>
+        <h2 class="log__year">{year}</h2>
+        <ol>
+          {group.map((p) => (
+            <li>
+              <PostEntry post={p} n={number(p)} />
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))
+  }
+</div>

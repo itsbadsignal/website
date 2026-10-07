@@ -4,16 +4,15 @@
  */
 
 export const site = {
-  /** The oversized cursor-trailing hero word. */
-  name: 'miguel',
+  name: 'miguelc',
   handle: 'badsignal',
-  title: 'miguel',
+  title: 'miguelc',
   description:
     'Systems, reverse engineering, vulnerability research and CTF writeups.',
+  /** The one-line statement across the top of the index. */
+  lede: 'I take things apart, work out why they broke, and write it down.',
   /** Default social card (1200x627, LinkedIn's recommended size). */
   ogImage: '/og.png',
-  /** Shown in the chaos layer's status readout. */
-  status: 'online',
 } as const;
 
 export const socials: ReadonlyArray<{ label: string; href: string }> = [
@@ -22,36 +21,26 @@ export const socials: ReadonlyArray<{ label: string; href: string }> = [
 ];
 
 /**
- * The three panels across the top of the landing page.
- *
- * Placeholder content — edit freely. Keep items short: they are set on one line
- * each and wrap badly once they pass roughly forty characters.
+ * The "now" box on the index. Keep items short: they are set one per line.
  */
-export const panels: ReadonlyArray<{ title: string; items: readonly string[] }> = [
-  {
-    title: 'reading',
-    items: [
-      'the elements of computing systems',
-      'code: the hidden language of computer hardware and software',
-      'the bible',
-    ],
-  },
-  {
-    title: 'now',
-    items: [
-      'drivers license',
-      'building from first principles',
-      "clearing life's backlog",
-    ],
-  },
-  {
-    title: 'stats',
-    items: ['security engineer @ layer8', 'building @loki', 'c, python, arch btw'],
-  },
+export const now: ReadonlyArray<{ label: string; value: string }> = [
+  { label: 'job', value: 'security engineer @ layer8' },
+  { label: 'building', value: '@loki' },
+  { label: 'reading', value: 'the elements of computing systems' },
+  { label: 'learning', value: 'to drive' },
+  { label: 'stack', value: 'c, python, arch btw' },
 ];
 
+/** The header menu. It wraps, so order matters more than count. */
 export const nav: ReadonlyArray<{ label: string; href: string }> = [
   { label: 'index', href: '/' },
   { label: 'blog', href: '/blog' },
   { label: 'tags', href: '/tags' },
+  { label: 'now', href: '/now' },
+  { label: 'projects', href: '/projects' },
+  { label: 'uses', href: '/uses' },
+  { label: 'library', href: '/library' },
+  { label: 'bookmarks', href: '/bookmarks' },
+  { label: 'about', href: '/about' },
+  { label: 'contact', href: '/contact' },
 ];

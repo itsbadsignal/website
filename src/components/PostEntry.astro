@@ -1,0 +1,60 @@
+---
+import Cover from './Cover.astro';
+import { formatDate, type Post } from '../lib/posts';
+
+interface Props {
+  post: Post;
+  /** Log number, counted from the oldest post so it never changes. */
+  n: number;
+}
+const { post, n } = Astro.props;
+const { title, description, pubDate, draft } = post.data;
+const href = `/blog/${post.id}`;
+---
+
+<article class="entry">
+  <header class="entry__head">
+    <h3>
+      <span class="dim">{String(n).padStart(3, '0')}</span>
+      <a href={href}>{title}</a>
+      {draft && <span class="dim entry__draft">[draft]</span>}
+    </h3>
+    <time class="dim" datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+  </header>
+  <a class="entry__cover" href={href} tabindex="-1" aria-hidden="true">
+    <Cover post={post} width={720} />
+  </a>
+  <p class="entry__excerpt">{description}</p>
+</article>
+
+<style>
+  .entry__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .entry__head h3 span:first-child {
+    margin-right: 0.6rem;
+  }
+
+  .entry__draft {
+    margin-left: 1ch;
+  }
+
+  .entry__cover {
+    display: block;
+    aspect-ratio: 16 / 9;
+    margin-block: 0.75rem;
+    overflow: hidden;
+  }
+
+  .entry__excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

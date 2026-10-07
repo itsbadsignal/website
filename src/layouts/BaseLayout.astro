@@ -1,31 +1,36 @@
 ---
 import '../styles/global.css';
-import ChaosLayer from '../components/ChaosLayer.astro';
-import { site, nav } from '../lib/site';
+import Logo from '../components/Logo.astro';
+import { site, nav, socials } from '../lib/site';
 
 interface Props {
   title?: string;
   description?: string;
-  /** The landing page owns the hero, so it suppresses the standard header. */
-  bareHeader?: boolean;
   /** KaTeX CSS is ~23KB + fonts — only load it on pages with math. */
   math?: boolean;
   /** Absolute or root-relative OG image URL. LinkedIn won't render a preview without one. */
   image?: string;
+  /** The 404 page opts out of the prank: a lost visitor has suffered enough. */
+  prank?: boolean;
 }
 
 const {
   title,
   description = site.description,
-  bareHeader = false,
   math = false,
   image = site.ogImage,
+  prank = true,
 } = Astro.props;
 
 const pageTitle = title ? `${title} — ${site.name}` : site.title;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
 const path = Astro.url.pathname;
+const year = new Date().getFullYear();
+
+const links = [...nav, ...socials];
+const isCurrent = (href: string) =>
+  href === '/' ? path === '/' : href.startsWith('/') && path.startsWith(href);
 ---
 
 <!doctype html>
@@ -49,97 +54,52 @@ const path = Astro.url.pathname;
     <meta property="og:image:height" content="627" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    {/* Preload the two faces used above the fold; the rest load on demand. */}
-    <link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/jetbrains-mono-400.woff2" as="font" type="font/woff2" crossorigin />
 
     {math && <link rel="stylesheet" href="/katex/katex.min.css" />}
   </head>
 
   <body>
-    <a href="#content" class="skip-link">Skip to content</a>
+    <a href="#content" class="sr-only">Skip to content</a>
 
-    <ChaosLayer />
+    <header class="site-head wrap">
+      <a class="site-head__logo" href="/" aria-label="index">
+        <Logo />
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          {
+            links.map((l) => (
+              <li>
+                <a href={l.href} aria-current={isCurrent(l.href) ? 'page' : undefined}>
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </header>
 
-    {
-      !bareHeader && (
-        <header class="site-head wrap">
-          <nav aria-label="Primary">
-            {nav.map((n) => (
-              <a
-                href={n.href}
-                aria-current={
-                  n.href === '/' ? (path === '/' ? 'page' : undefined) : path.startsWith(n.href) ? 'page' : undefined
-                }>
-                {n.label}
-              </a>
-            ))}
-          </nav>
-        </header>
-      )
-    }
+    <div class="wrap"><hr /></div>
 
-    <slot />
+    <main id="content" class="wrap">
+      <slot />
+    </main>
 
-    <footer class="site-foot wrap content">
-      <span class="mono">{site.name} · {site.handle}</span>
-      <span class="mono"><a href="/rss.xml">rss</a></span>
+    <footer class="site-foot wrap">
+      <hr />
+      <p>&copy; {year} {site.name}</p>
     </footer>
 
-    <style>
-      .skip-link {
-        position: absolute;
-        left: -9999px;
-        top: 0;
-        z-index: 100;
-        padding: 0.6rem 1rem;
-        background: var(--bg-raised);
-        color: var(--fg);
-        font-family: var(--font-mono);
-        font-size: 0.8125rem;
-      }
-      .skip-link:focus {
-        left: 0.5rem;
-        top: 0.5rem;
-      }
-    </style>
-
-    <script>
-      /*
-       * Drives --chaos-opacity.
-       *
-       * The reference calls getBoundingClientRect() on every scroll event, which
-       * thrashes layout. This throttles to one rAF per frame and writes a single
-       * custom property that CSS consumes.
-       */
-      const root = document.documentElement;
-      const anchor = document.getElementById('content');
-
-      if (anchor) {
-        let queued = false;
-
-        const update = () => {
-          queued = false;
-          const top = anchor.getBoundingClientRect().top;
-          const span = window.innerHeight * 1.5;
-          // 1 while content is far below, easing to 0 as it reaches the top
-          const progress = Math.min(Math.max(1 - top / span, 0), 1);
-          const opacity = 1 - progress;
-          root.style.setProperty('--chaos-opacity', opacity.toFixed(3));
-          // once invisible, drop the social links out of the tab order
-          root.dataset.chaos = opacity < 0.05 ? 'hidden' : 'visible';
-        };
-
-        const onScroll = () => {
-          if (queued) return;
-          queued = true;
-          requestAnimationFrame(update);
-        };
-
-        addEventListener('scroll', onScroll, { passive: true });
-        addEventListener('resize', onScroll, { passive: true });
-        update();
-      }
-    </script>
+    {
+      prank && (
+        <>
+          <div id="pwned" role="dialog" aria-modal="true" aria-label="Site defaced" hidden />
+          {/* is:inline keeps Astro from bundling it: this is the only JS on the site. */}
+          <script is:inline src="/prank.js" defer />
+        </>
+      )
+    }
   </body>
 </html>

@@ -44,3 +44,19 @@ export function readingTime(body: string | undefined): string {
   const words = (body ?? '').trim().split(/\s+/).length;
   return `${Math.max(1, Math.round(words / 200))} min`;
 }
+
+/**
+ * Stand-in for a post without a cover: stripes whose angle and density come from
+ * a hash of the slug, so every post gets its own pattern and it never changes
+ * between builds. Consumed as custom properties by Cover.astro.
+ */
+export function coverPattern(slug: string): string {
+  let h = 2166136261;
+  for (const ch of slug) {
+    h = Math.imul(h ^ ch.charCodeAt(0), 16777619) >>> 0;
+  }
+  const angle = (h % 12) * 15;
+  const ink = 2 + ((h >>> 4) % 9);
+  const gap = ink + 3 + ((h >>> 8) % 14);
+  return `--p-angle:${angle}deg;--p-ink:${ink}px;--p-gap:${gap}px`;
+}
