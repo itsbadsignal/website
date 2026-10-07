@@ -150,6 +150,14 @@
   font-weight: 500;
 }
 
+/* on a phone, a wide table scrolls inside itself instead of widening the page */
+@media (max-width: 700px) {
+  .prose table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
 /* tables and code may exceed the measure; nothing else may */
 .prose .table-scroll {
   overflow-x: auto;

@@ -1,0 +1,11 @@
+A black-and-white documentary photograph for a blog post titled "[POST TITLE]". Follow these rules exactly.
+
+Subject: [ONE PHYSICAL OBJECT OR SCENE, e.g. "an old mechanical keyboard on a wooden desk", "a padlock hanging on a chain-link fence", "a chessboard mid-game, seen from above"]
+
+- Landscape 16:9. Keep the subject in the middle 80%; it will be cropped.
+- One clear subject with strong, simple shapes. Plenty of empty space around it.
+- Hard, directional natural light: a window or low sun, with deep shadows and bright highlights. High contrast, a full range of tones from black to white.
+- Real materials and real textures: metal, wood, paper, concrete, fabric.
+- Shot on 35mm film, slightly grainy, sharp focus on the subject.
+- No people's faces, no text, letters, numbers, screens with readable content, logos or watermarks.
+- No illustration, no 3D render, no neon, no glow, no cyberpunk, no hooded hackers.

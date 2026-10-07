@@ -14,86 +14,107 @@ npm run dev        # http://localhost:4321 (drafts visible)
 npm run build      # -> dist/
 npm run preview    # serve the built output
 npm run check      # type + frontmatter schema errors
+npm run new -- "Title"   # start a draft post, print the cover prompt
+npm run cover      # newest image in ~/Downloads -> cover of the newest post
 ```
 
 ## Writing a post
 
-Create `src/content/blog/<slug>.md` — the filename becomes the URL
-(`/blog/<slug>`).
+Three steps, two of them commands:
+
+```sh
+npm run new -- "Classic stack overflow to ret2libc" --tags ctf,pwn
+```
+
+This creates `src/content/blog/classic-stack-overflow-to-ret2libc/index.md`
+as a draft dated today, prints the cover prompt with the title filled in, and
+copies it to the clipboard (via `wl-copy`, `xclip` or `pbcopy`, whichever is
+installed; `--no-copy` skips it). The folder name is the slug and the URL:
+`/blog/classic-stack-overflow-to-ret2libc`.
+
+Then:
+
+1. **Make the cover image.** In ChatGPT, paste the prompt, fill in the
+   `Subject:` line with one physical object, and download the image. Or use a
+   photo of your own.
+2. **Turn it into the cover:**
+
+   ```sh
+   npm run cover -- --alt "A padlock hanging on a chain-link fence"
+   ```
+
+   With no file or slug, this takes the **newest image in `~/Downloads`** and
+   the **most recently edited post**, dithers the image into
+   `cover.png` beside the post, and adds `cover` and `coverAlt` to its
+   frontmatter. It prints which photo and post it used.
+3. **Write the post**, fill in `description`, and set `draft: false` when it's
+   ready.
+
+The frontmatter it starts you with:
 
 ```markdown
 ---
 title: 'Classic stack overflow to ret2libc'
-description: 'One sentence, shown on cards, in <meta> and in the feed.'
+description: 'One sentence, shown in lists, in <meta> and in the feed.'
 pubDate: 2026-08-14
 tags: ['ctf', 'pwn']
-draft: false   # true hides it from the built site, but not from `npm run dev`
-math: false    # true loads KaTeX CSS on this post only
-cover: ./cover.jpg          # optional thumbnail, kept beside the post
+draft: true    # hides it from the built site, but not from `npm run dev`
+cover: ./cover.png        # added by `npm run cover`
 coverAlt: 'What the image shows'
+# math: true   # loads KaTeX CSS on this post only
 ---
 ```
 
-`title`, `description` and `pubDate` are required — `npm run check` fails on a
+`title`, `description` and `pubDate` are required: `npm run check` fails on a
 malformed frontmatter block rather than building something broken.
 
-Tag pages are generated from whatever tags you use. There is no list to maintain;
-inventing a tag creates `/tags/<tag>` on the next build.
+Tag pages are generated from whatever tags you use. There is no list to
+maintain; inventing a tag creates `/tags/<tag>` on the next build. Posts tagged
+`ctf` or `writeup` also appear on `/writeups`.
 
 ### Covers
 
-`cover` is the post's image in every list and its banner on the post page. It
-needs the post to be a folder (`src/content/blog/<slug>/index.md` + `cover.jpg`).
-Both are cropped to 16:9. The log shows `description` as the excerpt, clamped
-to two lines. A post without a cover gets a striped pattern
-generated from its slug (`coverPattern` in `src/lib/posts.ts`), so it never
-looks broken and never changes between builds.
+`cover` is the post's image in every list and its banner on the post page.
+Every cover is a **1-bit dithered photo**: pure black-and-white dots, like an
+early Mac screen or a newspaper halftone. Whatever the subject, they share one
+texture and match the site.
 
-### Generating a cover
+`npm run cover` crops to 16:9 (finding the subject), converts to greyscale and
+dithers to 640x360. Re-running replaces the cover, so adjust and run again
+until it looks right:
 
-Covers are generated with ChatGPT using the prompt below, so they match the
-logo: 1-bit black on white, drawn as scanlines, with a slight glitch. Fill in
-the three bracketed lines for each post:
+| Option | Does |
+| --- | --- |
+| `--alt "..."` | Sets `coverAlt`. Without it an existing one is kept, or a TODO is written |
+| `--white 0.6` | Brighter. Lower is brighter; dark photos usually want 0.5–0.7. Default 0.85 |
+| `--black 0.15` | Deeper shadows. Default 0.05 |
+| `--focus centre` | Crop position: `attention` (default), `entropy`, `centre`, `north`, `south`, `east`, `west` |
 
-```
-Create a cover image for a blog post. Follow the style rules exactly.
+It also reports how much of the cover is black and suggests `--white` or
+`--black` when it's too dark or too pale. To use a specific photo or post
+instead of the newest ones, pass either or both:
+`npm run cover -- ~/Pictures/desk.jpg my-post-slug`.
 
-POST
-Title: [POST TITLE]
-Summary: [ONE OR TWO SENTENCES ABOUT THE POST]
-Subject to depict: [ONE CONCRETE OBJECT OR IDEA, e.g. "a padlock", "a stack of memory blocks", "a broken chain", "a radio antenna"]
+Covers are served at their own size with crisp pixel scaling, never resized
+or converted, since resampling turns the dots into grey mush. A post without
+a cover gets a striped pattern generated from its slug (`coverPattern` in
+`src/lib/posts.ts`).
 
-STYLE RULES
-- Format: landscape 16:9 (1792x1024). The image will be cropped to 16:9, so keep the subject in the middle 80%.
-- Palette: pure white background (#FFFFFF) and solid black ink (#111111) only. No grey fills, no gradients, no shadows, no other colours.
-- Rendering: 1-bit pixel art drawn as horizontal scanlines. Build every shape from thin horizontal black bars with small white gaps between them, like an old CRT or a dot-matrix printout. Where shading is needed, use ordered dithering (a checkerboard of black and white pixels), never grey.
-- Glitch: one or two horizontal bands of the image slipped a few pixels sideways, and a few stray black pixels leaking off the edges of the subject. Keep it subtle; the subject must still read instantly.
-- Composition: one single subject, centred or slightly off-centre, taking up about 30-40% of the frame. Everything else is empty white space. No background scenery, no frame, no border, no vignette.
-- Mood: minimal, technical and quiet, like an icon from a 1980s terminal manual that has started to corrupt.
-- Strictly no text, letters, numbers, logos, watermarks or signatures anywhere in the image.
-- No 3D, no photorealism, no lens effects, no glow, no neon, no cyberpunk cityscapes, no hooded hackers, no green Matrix code.
+### The cover prompt
 
-Output only the image.
-```
-
-Save the result beside the post as `cover.png` and add it to the frontmatter:
-
-```yaml
-cover: ./cover.png
-coverAlt: 'A pixel padlock drawn in scanlines, one band slipped sideways'
-```
+The prompt lives in `scripts/cover-prompt.txt`, which `npm run new` prints;
+edit it there. It asks for a black-and-white documentary photo of one object
+in hard side light. Dithering hides most of what makes generated images look
+generated, and contrast plus a clear silhouette are what survive it.
 
 Tips:
 
-- Pick a physical subject, not an abstract idea. "A key with a missing tooth"
-  works better than "authentication bypass". For a CTF writeup, depict the
-  core trick: a ladder for privilege escalation, an overflowing cup for a
-  buffer overflow, a mask for spoofing.
-- If it comes back grey or soft, reply: *"Redo it as strict 1-bit: only
-  #FFFFFF and #111111, no anti-aliasing, more visible scanline gaps."*
-- If it adds text, reply: *"Same image, remove every letter and number."*
-- To keep a series consistent, attach a previous cover to a new chat and start
-  with *"Match the exact style of this image"* before the prompt.
+- Pick an object you could actually photograph. "A key on a table, lit from
+  the side" beats "authentication bypass". Better still, photograph your own
+  desk, board or book: covers from your own camera fit best of all.
+- If the dithered result is a dark blob, ask ChatGPT for "brighter, more white
+  space around the subject", or re-run with `--white 0.6`.
+- If it adds text, reply: *"Same photo, remove every letter and number."*
 
 ### Images
 

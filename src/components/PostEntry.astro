@@ -22,7 +22,7 @@ const href = `/blog/${post.id}`;
     <time class="dim" datetime={pubDate.toISOString()} title={epoch(pubDate)}>{formatDate(pubDate)}</time>
   </header>
   <a class="entry__cover" href={href} tabindex="-1" aria-hidden="true">
-    <Cover post={post} width={720} />
+    <Cover post={post} />
   </a>
   <p class="entry__excerpt">{description}</p>
 </article>

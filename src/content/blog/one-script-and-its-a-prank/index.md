@@ -2,7 +2,7 @@
 title: 'One script, and it is a prank'
 description: 'Why this site is plain HTML on a white page, why the only JavaScript on it exists to scare you, and what will be posted here.'
 cover: ./cover.png
-coverAlt: 'A pixel jack-in-the-box with a skull springing out on its coil, drawn in scanlines.'
+coverAlt: 'Dark ocean waves seen from above, dithered to black and white.'
 pubDate: 2026-10-07
 tags: ['meta', 'web']
 draft: false

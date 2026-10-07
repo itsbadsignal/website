@@ -25,5 +25,7 @@
   /* structure */
   --rule: 1px solid var(--line);
   --measure: 110ch;
+  /* the post list on index, blog, tags and writeups */
+  --measure-log: 76ch;
   --gutter: 1rem;
 }
