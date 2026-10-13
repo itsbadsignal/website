@@ -24,10 +24,10 @@ export const socials: ReadonlyArray<{ label: string; href: string }> = [
  * The "now" box on the index. Keep items short: they are set one per line.
  */
 export const now: ReadonlyArray<{ label: string; value: string }> = [
-  { label: 'job', value: 'security engineer @ layer8' },
-  { label: 'reading', value: 'the elements of computing systems' },
-  { label: 'learning', value: 'basic maths and driving' },
-  { label: 'stack', value: 'c, python, arch btw' },
+  { label: 'job', value: 'Security Engineer @LAYER8' },
+  { label: 'reading', value: 'The Elements of Computing Systems' },
+  { label: 'learning', value: 'Algebra, C, Driving' },
+  { label: 'stack', value: 'Python, Arch btw' },
 ];
 
 /**

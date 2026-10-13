@@ -74,14 +74,13 @@ The hard edges:
 
 Use the Linux CLI daily, write a small program from scratch, prove a statement by induction. No calculus.
 
-| Resource | What for | Hours |
-| --- | --- | --- |
-| [OverTheWire Bandit](https://overthewire.org/wargames/bandit/) | The shell through a wargame, all levels | 40–80 |
-| [The Linux Command Line](https://linuxcommand.org/tlcl.php) | Reference | — |
-| [Harvard CS50x](https://cs50.harvard.edu/x/) | Programming literacy, through the C and memory weeks | 60–120 |
-| [Khan Academy Algebra 1](https://www.khanacademy.org/math/algebra) → [2](https://www.khanacademy.org/math/algebra2) | The floor: weak algebra sinks induction | 30–60 |
-| [Book of Proof](https://richardhammack.github.io/BookOfProof/) | Logic, proof methods, induction | 40–70 |
-| [MIT 6.042J](https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/) | Graph theory and number theory only | 20–30 |
+| Resource | What for | Hours | Status |
+| --- | --- | --- | --- |
+| [OverTheWire Bandit](https://overthewire.org/wargames/bandit/) | The shell through a wargame, all levels | 40–80 | *In Progress* |
+| [The Linux Command Line](https://linuxcommand.org/tlcl.php) | Reference | — | — |
+| [Khan Academy Algebra 1](https://www.khanacademy.org/math/algebra) → [2](https://www.khanacademy.org/math/algebra2) | The floor: weak algebra sinks induction | 30–60 | *In Progress* |
+| [Book of Proof](https://richardhammack.github.io/BookOfProof/) | Logic, proof methods, induction | 40–70 | — |
+| [MIT 6.042J](https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/) | Graph theory and number theory only | 20–30 | — |
 
 **Gate:** the three tasks above, cold, no reference.
 
