@@ -74,7 +74,7 @@ The hard edges:
 
 Use the Linux CLI daily, write a small program from scratch, prove a statement by induction. No calculus.
 
-| Resource | What for | Hours | Status |
+| Resource | What for | Hours | Status / Proof |
 | --- | --- | --- | --- |
 | [OverTheWire Bandit](https://overthewire.org/wargames/bandit/) | The shell through a wargame, all levels | 40–80 | *In Progress* |
 | [The Linux Command Line](https://linuxcommand.org/tlcl.php) | Reference | — | — |

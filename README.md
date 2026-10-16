@@ -177,7 +177,7 @@ shadows.
    own default is older than that.
 5. If a Worker for this repo already exists, delete it. Two origins serving the
    same HTML is worth avoiding, and it is one less thing to redeploy by mistake.
-6. The site is served from the custom domain `miguelc.space` (registered at
+6. The site is served from the custom domain `miguelc.pages.dev` (registered at
    Spaceship, DNS on Cloudflare, attached under the Pages project's Custom
    domains), and `site` is set to it. The project's default `.pages.dev` address
    still serves the same build, but canonical links point at the custom domain.
