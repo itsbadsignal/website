@@ -12,7 +12,7 @@ export const site = {
   /** The one-line statement across the top of the index. */
   lede: 'I take things apart, work out why they broke, and write it down.',
   /** Default social card (1200x627, LinkedIn's recommended size). */
-  ogImage: '/og.png',
+  ogImage: '/og-v2.png',
 } as const;
 
 export const socials: ReadonlyArray<{ label: string; href: string }> = [
