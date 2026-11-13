@@ -33,7 +33,8 @@ Then open http://localhost:8000.
 
 In the Pages project settings: **Framework preset: None**, **Build command:
 empty**, **Build output directory: `/`**. `_headers` and `404.html` are picked
-up automatically.
+up automatically. `_redirects` sends the old `/hacking/` address to
+`/roadmap/`.
 
 ## Layout
 
@@ -41,8 +42,8 @@ up automatically.
 index.html                 home: lede, now, latest posts
 blog/index.html            every post
 blog/<slug>/index.html     a post (+ its cover.png)
-writeups/ roadmap/ tags/ now/ projects/ dotfiles/ library/ hacking/ about/ contact/
-404.html  rss.xml  sitemap.xml
+writeups/ roadmap/ tags/ now/ projects/ dotfiles/ library/ about/ contact/
+404.html  rss.xml  sitemap.xml  _redirects
 style.css  prank.js  mark.svg  favicon.svg  fonts/  og.png  .well-known/
 ```
 
