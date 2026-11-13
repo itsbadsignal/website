@@ -9,8 +9,8 @@ deep `#8a7a5a`). Poppins for reading, JetBrains Mono for labels.
 
 - **Front page** (`index.html`): a full-screen framed hero after joeyz.space:
   grid background, corner brackets, the four "now" columns, "miguel" set large
-  with blurred echoes, a faded ASCII portrait top right (`.portrait`), an
-  ASCII fetch block and signal wave, two quotes (Feynman, Fischer), a ▶ button
+  with blurred echoes, a faded ASCII portrait top right (`.portrait`), a
+  corrupted block of ▓▒░ characters and a signal wave, two quotes (Feynman, Fischer), a ▶ button
   that runs the prank (`/?prank`) and faint shapes, then a dated feed of posts
   beside an index of every page.
 - **Blog, writeups, tags** after zerodayengineering.com/research: logo and

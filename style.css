@@ -112,7 +112,7 @@ th { font-weight: 600; color: var(--gold); }
 .g1 { top: 64%; left: 66%; } .g2 { top: 76%; left: 72%; } .g3 { top: 30%; left: 24%; }
 .quote { bottom: 15%; left: 2.5%; font: 700 110px/1 Poppins, sans-serif; color: #fff; opacity: .06; }
 .wave { bottom: 24%; left: 30%; margin: 0; font: 11px/1.2 var(--mono); color: #4f4c48; background: none; border: 0; padding: 0; }
-.fetch { top: 36%; left: 5%; margin: 0; font: 11px/1.35 var(--mono); color: #5d5a56; background: none; border: 0; padding: 0; }
+.corrupt { top: 37%; left: 4%; margin: 0; padding: 0; background: none; border: 0; font: 11px/1.15 var(--mono); color: #4a4743; }
 .vert { top: 52%; right: 3.5%; font-size: 13px; letter-spacing: .5em; color: #3f3c39; writing-mode: vertical-rl; }
 .xy { font-size: 10px; color: #4a4743; }
 .x1 { top: 20%; left: 3%; } .x2 { top: 50%; right: 7%; } .x3 { bottom: 13%; left: 46%; } .x4 { top: 78%; left: 27%; }
