@@ -43,7 +43,7 @@ blog/index.html            every post
 blog/<slug>/index.html     a post (+ its cover.png)
 writeups/ tags/ now/ projects/ dotfiles/ library/ hacking/ about/ contact/
 404.html  rss.xml  sitemap.xml
-style.css  prank.js  mark.svg  favicon.svg  fonts/  og-v2.png  .well-known/
+style.css  prank.js  mark.svg  favicon.svg  fonts/  og.png  .well-known/
 ```
 
 Every page uses the same `<head>`, `<header>` and `<footer>`. Copy them from
