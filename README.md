@@ -8,8 +8,9 @@ Design: black page, warm white text (`#edeae6`), muted gold (`#c8b99a`,
 deep `#8a7a5a`). Poppins for reading, JetBrains Mono for labels.
 
 - **Front page** (`index.html`): a full-screen framed hero after joeyz.space
-  (grid background, corner brackets, the four "now" columns, a huge name with
-  blurred echoes, scattered notes and a tilted `whoami` terminal card), then a
+  (grid background, corner brackets, the four "now" columns, the tagline set
+  large with blurred echoes, an ASCII television showing NO SIGNAL top right,
+  and scattered ASCII: a box, a noise line, a hexdump, signal bars), then a
   dated feed of posts beside an index of every page.
 - **Blog, writeups, tags** after zerodayengineering.com/research: logo and
   uppercase `BLOG / WRITEUPS / …` nav, a big gold centred title, uppercase
