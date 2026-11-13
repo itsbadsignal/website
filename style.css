@@ -1,0 +1,38 @@
+/* badsignal brutal: black, white, one gold. The whole stylesheet. */
+@font-face { font-family: "JetBrains Mono"; src: url(/fonts/jetbrains-mono-400.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url(/fonts/jetbrains-mono-500.woff2) format("woff2"); font-weight: 500; font-display: swap; }
+
+html { background: #000; color: #fff; color-scheme: dark; }
+body { max-width: 72ch; margin: 0 auto; padding: 2rem 1rem 4rem; font: 15px/1.7 "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace; }
+::selection { background: #e6b422; color: #000; }
+:focus-visible { outline: 2px solid #e6b422; outline-offset: 2px; }
+
+a { color: inherit; text-underline-offset: .2em; }
+a:hover { background: #fff; color: #000; text-decoration: none; }
+main p a, main li a { color: #e6b422; }
+main p a:hover, main li a:hover { background: #e6b422; color: #000; }
+[aria-current] { color: #e6b422; }
+
+header { border-bottom: 2px solid #fff; padding-bottom: 1rem; margin-bottom: 2rem; }
+header .logo img { image-rendering: pixelated; }
+header .logo:hover { background: none; }
+nav a { display: inline-block; margin-right: 1.5ch; text-decoration: none; }
+nav a[aria-current]::before { content: "> "; }
+
+h1, h2, h3 { font-size: inherit; font-weight: 500; line-height: 1.4; margin: 2.4em 0 .8em; }
+h1 { font-size: 28px; line-height: 1.15; margin-top: 0; }
+h2 { border-bottom: 1px solid #fff; }
+main h2::before { content: "## "; color: #8a8a8a; }
+main h3::before { content: "### "; color: #8a8a8a; }
+
+small, blockquote { color: #8a8a8a; }
+strong { font-weight: 500; }
+pre { border: 1px solid #fff; padding: 1rem; overflow-x: auto; font-size: 13px; }
+code { font-family: inherit; }
+table { border-collapse: collapse; width: 100%; }
+td, th { padding: .3rem 1.5ch .3rem 0; border-bottom: 1px solid #2a2a2a; text-align: left; vertical-align: top; }
+th { font-weight: 500; }
+img { max-width: 100%; height: auto; }
+.cover { image-rendering: pixelated; width: 100%; border: 1px solid #fff; }
+td:first-child { white-space: nowrap; }
+footer { border-top: 1px solid #fff; margin-top: 4rem; padding-top: 1rem; }

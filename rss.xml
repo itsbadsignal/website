@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+<title>miguelc</title>
+<link>https://miguelc.pages.dev/</link>
+<description>Systems, reverse engineering, vulnerability research and CTF writeups.</description>
+<language>en</language>
+<item>
+  <title>One script, and it is a prank</title>
+  <link>https://miguelc.pages.dev/blog/one-script-and-its-a-prank/</link>
+  <guid>https://miguelc.pages.dev/blog/one-script-and-its-a-prank/</guid>
+  <description>Why this site is plain HTML on a black page, why the only JavaScript on it exists to scare you, and what will be posted here.</description>
+  <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
+  <category>meta</category>
+  <category>web</category>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,13 @@
+# Cloudflare Pages reads this file. Paths are matched most-specific-first.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Not fingerprinted, so cache for a month rather than forever.
+/fonts/*
+  Cache-Control: public, max-age=2592000
+
+# Repo files that happen to sit in the served folder.
+/README.md
+  X-Robots-Tag: noindex

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One script, and it is a prank — miguelc</title>
+<meta name="description" content="Why this site is plain HTML on a black page, why the only JavaScript on it exists to scare you, and what will be posted here.">
+<link rel="canonical" href="https://miguelc.pages.dev/blog/one-script-and-its-a-prank/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="miguelc" href="/rss.xml">
+<link rel="stylesheet" href="/style.css">
+<meta property="og:type" content="website">
+<meta property="og:title" content="One script, and it is a prank — miguelc">
+<meta property="og:description" content="Why this site is plain HTML on a black page, why the only JavaScript on it exists to scare you, and what will be posted here.">
+<meta property="og:url" content="https://miguelc.pages.dev/blog/one-script-and-its-a-prank/">
+<meta property="og:image" content="https://miguelc.pages.dev/blog/one-script-and-its-a-prank/cover.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<!--
+
+          ██████████
+        ██████████████
+      ██████████████████
+        ████    ██    ████
+      ████    ██    ████
+      ██████████████████
+    ██████  ██████
+          ██████████
+          ██  ██  ██
+
+    you opened the source. good instinct.
+
+    no frameworks, no build step, no trackers, no cookies.
+    every page is a hand-written html file. the only script is /prank.js.
+    read it before it reads you.
+
+    found a bug? /.well-known/security.txt
+
+-->
+<body>
+<header>
+  <a href="/" class="logo"><img src="/logo.svg" width="80" height="80" alt="miguelc, home"></a>
+  <nav>
+      <a href="/blog/" aria-current="page">blog</a>
+      <a href="/writeups/">writeups</a>
+      <a href="/tags/">tags</a>
+      <a href="/now/">now</a>
+      <a href="/projects/">projects</a>
+      <a href="/dotfiles/">dotfiles</a>
+      <a href="/library/">library</a>
+      <a href="/hacking/">hacking</a>
+      <a href="/about/">about</a>
+      <a href="/contact/">contact</a>
+      <a href="https://github.com/badsignal">github</a>
+      <a href="/rss.xml">rss</a>
+  </nav>
+</header>
+<main>
+<article>
+<h1>One script, and it is a prank</h1>
+<p><small><time datetime="2026-10-07">2026-10-07</time> · 2 min · <a href="/tags/meta/">#meta</a> <a href="/tags/web/">#web</a></small></p>
+<img class="cover" src="cover.png" width="640" height="360" alt="Dark ocean waves seen from above, dithered to black and white.">
+<p>This is the first post on the site, so it is about the site.</p>
+<p>I&#39;m Miguel. I work as a security engineer, and in my own time, when I&#39;m not couch-potatoing over a game of chess, I get curious and like to take things apart, break them, try to fix them, and get mad in the process. This is where I write that down: CTF writeups, notes from teaching myself how computers work from the bottom up, and the occasional post about how I live and what I think and do.</p>
+<p>In an age where everyone is regurgitating AI slop, I found it important to bring some decency to it all, while sharing my silly thoughts. That&#39;s why this space was built. It&#39;s also a way for me to <a href="/hacking">track my progress</a> and <a href="/dotfiles">take inventory of a few things</a>.</p>
+<h2>Plain on purpose</h2>
+<p>The page you&#39;re reading is hand-written HTML with one small stylesheet. There is no framework and no build step: what reaches your browser is the file I typed. One monospace font, a black background, thin white rules, one gold accent, no cookies, no analytics, no tracking pixels and no framework running in your tab.</p>
+<p>The focus is on the information itself, not on fancy flashes and useless motions.</p>
+<h2>The one script</h2>
+<p>There is exactly one script on this site, <code>/prank.js</code>, and it does nothing useful.</p>
+<h2>Things to find</h2>
+<p>There are a few small details scattered through the website for those who like to find things.</p>
+<p>Or maybe there aren&#39;t.</p>
+<h2>What comes next</h2>
+<ul>
+<li><strong><a href="/writeups">Writeups</a>:</strong> CTF challenges, solved step by step, including the parts that didn&#39;t work. The scoreboard lives on <a href="https://www.wechall.net/profile/badsignal">WeChall</a>.</li>
+<li><strong><a href="/hacking">Hacking</a>:</strong> NANDTo0Day, my own curriculum in place of a degree: from NAND gates all the way to vulnerability research, until I know a computer inside out. Progress gets logged as I go.</li>
+<li><strong><a href="/dotfiles">Dotfiles</a>:</strong> the life configuration that sustains everything.</li>
+</ul>
+<p>That&#39;s it for now. On your way out, try leaving this tab open for a minute.</p>
+
+</article>
+<p><a href="/blog/">← all posts</a></p>
+</main>
+<footer>
+  <small>© 2026 miguelc · <a href="/rss.xml">rss</a> · <a href="https://github.com/badsignal">github</a> · <a href="/.well-known/security.txt">security.txt</a></small>
+</footer>
+<div id="pwned" role="dialog" aria-modal="true" aria-label="Site defaced" hidden></div>
+<script src="/prank.js" defer></script>
+</body>
+</html>

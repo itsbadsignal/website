@@ -1,9 +1,0 @@
----
-interface Props {
-  tag: string;
-  count?: number;
-}
-const { tag, count } = Astro.props;
----
-
-<a href={`/tags/${encodeURIComponent(tag)}`}>#{tag}</a>{count !== undefined && <span class="dim"> ({count})</span>}
