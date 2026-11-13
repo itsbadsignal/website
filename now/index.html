@@ -38,39 +38,26 @@
 
 -->
 <body>
-<p class="warn"><a href="https://disable-javascript.org">please disable javascript by default</a> and only enable it on websites you trust. you have been warned.</p>
-<header>
-  <a href="/" class="name">miguelc</a>
-  <nav><a href="/blog/">blog</a> <a href="/writeups/">writeups</a> <a href="/now/" aria-current="page">now</a> <a href="/about/">about</a></nav>
+<header class="top">
+  <a href="/" class="mark"><img src="/logo.svg" width="64" height="64" alt="miguelc, home"></a>
+  <nav><a href="/blog/">blog</a><span>/</span><a href="/writeups/">writeups</a><span>/</span><a href="/hacking/">hacking</a><span>/</span><a href="/now/" aria-current="page">now</a><span>/</span><a href="/about/">about</a></nav>
 </header>
 <main>
+<div class="hero">
 <h1>Now</h1>
-<p class="lede">What I'm doing at the moment.</p>
-<div class="cols">
-<div>
-<h3>work</h3>
-<p>security engineer @layer8</p>
+<p>What I'm doing at the moment.</p>
 </div>
-<div>
-<h3>reading</h3>
-<p>the elements of computing systems<br>
-code, petzold</p>
-</div>
-<div>
-<h3>learning</h3>
-<p>algebra<br>
-c<br>
-driving</p>
-</div>
-<div>
-<h3>stack</h3>
-<p>python<br>
-arch btw</p>
-</div>
-</div>
+<article class="post">
+<table>
+<tr><th>work</th><td>security engineer @layer8</td></tr>
+<tr><th>reading</th><td>the elements of computing systems<br>code, petzold</td></tr>
+<tr><th>learning</th><td>algebra<br>c<br>driving</td></tr>
+<tr><th>stack</th><td>python<br>arch btw</td></tr>
+</table>
+</article>
 </main>
-<footer>
-  <a href="/" class="logo"><img src="/logo.svg" width="40" height="40" alt="miguelc, home"></a>
+<footer class="foot">
+  <a href="/"><img src="/logo.svg" width="48" height="48" alt="miguelc, home"></a>
   <p>© 2026 miguelc · <a href="/rss.xml">rss</a> · <a href="https://github.com/badsignal">github</a> · <a href="/.well-known/security.txt">security.txt</a></p>
 </footer>
 <div id="pwned" role="dialog" aria-modal="true" aria-label="Site defaced" hidden></div>

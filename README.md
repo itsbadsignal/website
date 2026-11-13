@@ -4,11 +4,18 @@ Hand-written HTML. One small stylesheet (`style.css`), one font, one script
 (`prank.js`). No framework, no build step, no package.json: the files in this
 repository are the files the browser gets.
 
-Design: black page, warm white text (`#edeae6`), one muted gold (`#c8b99a`,
-deep `#8a7a5a`), JetBrains Mono. Structure borrowed from minimal personal
-blogs: name left and four links right, a "latest" post, a dense
-`year · month  title` archive, an index of every page, a JS warning bar on top
-and a centred footer.
+Design: black page, warm white text (`#edeae6`), muted gold (`#c8b99a`,
+deep `#8a7a5a`). Poppins for reading, JetBrains Mono for labels.
+
+- **Front page** (`index.html`): a full-screen framed hero after joeyz.space
+  (grid background, corner brackets, the four "now" columns, a huge name with
+  blurred echoes, scattered notes, the latest cover as a tilted photo), then a
+  dated feed of posts beside an index of every page.
+- **Blog, writeups, tags** after zerodayengineering.com/research: logo and
+  uppercase `BLOG / WRITEUPS / …` nav, a big gold centred title, uppercase
+  topic links, and entries with `author | date | tags |`, gold title,
+  summary, `—— Read more` and the cover on the right.
+- **Posts** end with a Metadata block and a `‹ Newer / Older ›` pager.
 
 ## Running it locally
 
@@ -44,24 +51,19 @@ any existing page.
 
 1. Copy `blog/one-script-and-its-a-prank/` to `blog/<new-slug>/`.
 2. In the new `index.html` change: `<title>`, the `description` / `og:*`
-   meta tags, the `canonical` link, the `<h1>`, the date line, the italic
-   `<p class="lede">` summary, the body and the metadata block. Body is plain
-   HTML: `<p>`, `<h2>`, `<h3>`, `<ul>`, `<pre><code>`, `<table>`,
-   `<blockquote>`, `<mark>` for an inverted highlight. No classes needed.
+   meta tags, the `canonical` link, the `.meta` line, the `<h1>`, the italic
+   `.lede`, the body, the Metadata block and the pager. Body is plain HTML:
+   `<p>`, `<h2>`, `<h3>`, `<ul>`, `<pre><code>`, `<table>`, `<blockquote>`.
 3. Replace `cover.png` (640×360, black-and-white dithered) or delete the
    `<img class="cover">`.
-4. On the home page, point the **latest** section at the new post and add it
-   to the top of the **posts** list. Add the same line to `blog/index.html`
-   (and `writeups/index.html` if tagged ctf or writeup):
-
-   ```html
-   <li><span>2026 · 11</span> <a href="/blog/new-slug/">title in lowercase</a></li>
-   ```
-
-5. For each tag, add the line to `tags/<tag>/index.html` (copy an existing
-   tag folder for a new tag) and update the count in `tags/index.html`.
-6. Update the previous post's `.pager` to link forward to the new one.
-7. Add an `<item>` to the top of `rss.xml` and a `<url>` to `sitemap.xml`.
+4. Copy an `<article class="entry">` block to the top of `blog/index.html`
+   (and `writeups/index.html` if tagged ctf or writeup, and each
+   `tags/<tag>/index.html`) and edit it. A new tag needs a new `tags/<tag>/`
+   folder and a link in every page's `.filters` and in `tags/index.html`.
+5. On the front page, add an `<article>` to the top of the `.log` feed, and
+   point the tilted `.photo` at the new post.
+6. Update the previous post's pager, then add an `<item>` to the top of
+   `rss.xml` and a `<url>` to `sitemap.xml`.
 
 ## The prank
 
@@ -74,10 +76,6 @@ fires it after 3 seconds for testing. Its styles live inside the script. The
 
 ## Style rules
 
-- Colours: `#000` page, `#edeae6` text, `#8f8c88` for `.dim` and the italic
-  `.lede`, `#c8b99a` gold for section labels and hovers, `#8a7a5a` for link
-  underlines, the warning bar and the title cursor. Nothing else.
-- `<h2>` on its own is a small gold section label (`latest`, `posts`);
-  inside `<article>` it is a 26px heading.
-- Lists of posts use `<ul class="posts">`; column blocks use
-  `<div class="cols">` with an `<h3>` and a `<p>` per column.
+- Colours: `#000` page, `#edeae6` text, `#8f8c88` dim, `#c8b99a` gold for
+  links, labels and hovers, `#8a7a5a` deep gold for big titles. Nothing else.
+- No motion. The front page's scattered pieces hide below 800px wide.

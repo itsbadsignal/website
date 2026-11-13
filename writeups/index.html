@@ -38,18 +38,24 @@
 
 -->
 <body>
-<p class="warn"><a href="https://disable-javascript.org">please disable javascript by default</a> and only enable it on websites you trust. you have been warned.</p>
-<header>
-  <a href="/" class="name">miguelc</a>
-  <nav><a href="/blog/">blog</a> <a href="/writeups/" aria-current="page">writeups</a> <a href="/now/">now</a> <a href="/about/">about</a></nav>
+<header class="top">
+  <a href="/" class="mark"><img src="/logo.svg" width="64" height="64" alt="miguelc, home"></a>
+  <nav><a href="/blog/">blog</a><span>/</span><a href="/writeups/" aria-current="page">writeups</a><span>/</span><a href="/hacking/">hacking</a><span>/</span><a href="/now/">now</a><span>/</span><a href="/about/">about</a></nav>
 </header>
 <main>
+<div class="hero">
 <h1>Writeups</h1>
-<p class="lede">CTF writeups and solved challenges: posts tagged ctf or writeup.</p>
-<p class="dim">nothing here yet.</p>
+<p>CTF challenges, solved step by step</p>
+</div>
+<nav class="filters" aria-label="Topics">
+<p><a href="/blog/">all</a></p>
+<p><a href="/writeups/" aria-current="page">writeups</a></p>
+<p><a href="/tags/meta/">meta</a><span>·</span><a href="/tags/web/">web</a></p>
+</nav>
+<p class="empty">Nothing here yet.</p>
 </main>
-<footer>
-  <a href="/" class="logo"><img src="/logo.svg" width="40" height="40" alt="miguelc, home"></a>
+<footer class="foot">
+  <a href="/"><img src="/logo.svg" width="48" height="48" alt="miguelc, home"></a>
   <p>© 2026 miguelc · <a href="/rss.xml">rss</a> · <a href="https://github.com/badsignal">github</a> · <a href="/.well-known/security.txt">security.txt</a></p>
 </footer>
 <div id="pwned" role="dialog" aria-modal="true" aria-label="Site defaced" hidden></div>

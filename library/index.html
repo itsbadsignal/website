@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Library — miguelc</title>
-<meta name="description" content="Books I have read, am reading, or keep coming back to.">
+<meta name="description" content="Books I have read, am reading, or keep coming back to. Not all of them are recommendations.">
 <link rel="canonical" href="https://miguelc.pages.dev/library/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="alternate" type="application/rss+xml" title="miguelc" href="/rss.xml">
 <link rel="stylesheet" href="/style.css">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Library — miguelc">
-<meta property="og:description" content="Books I have read, am reading, or keep coming back to.">
+<meta property="og:description" content="Books I have read, am reading, or keep coming back to. Not all of them are recommendations.">
 <meta property="og:url" content="https://miguelc.pages.dev/library/">
 <meta property="og:image" content="https://miguelc.pages.dev/og-v2.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -38,26 +38,30 @@
 
 -->
 <body>
-<p class="warn"><a href="https://disable-javascript.org">please disable javascript by default</a> and only enable it on websites you trust. you have been warned.</p>
-<header>
-  <a href="/" class="name">miguelc</a>
-  <nav><a href="/blog/">blog</a> <a href="/writeups/">writeups</a> <a href="/now/">now</a> <a href="/about/">about</a></nav>
+<header class="top">
+  <a href="/" class="mark"><img src="/logo.svg" width="64" height="64" alt="miguelc, home"></a>
+  <nav><a href="/blog/">blog</a><span>/</span><a href="/writeups/">writeups</a><span>/</span><a href="/hacking/">hacking</a><span>/</span><a href="/now/">now</a><span>/</span><a href="/about/">about</a></nav>
 </header>
 <main>
+<div class="hero">
 <h1>Library</h1>
-<p class="lede">Books I have read, am reading, or keep coming back to. Not all of them are recommendations.</p>
+<p>Books I have read, am reading, or keep coming back to. Not all of them are recommendations.</p>
+</div>
+<article class="post">
 <h2>Reading</h2>
 <table>
-<tr><td><img src="elements-of-computing-systems.jpg" width="72" alt="Cover of The Elements of Computing Systems"></td><td><a href="https://www.nand2tetris.org/book">The Elements of Computing Systems</a><br><span class="dim">Noam Nisan, Shimon Schocken</span><br>Building a computer from NAND gates up to an operating system. The book behind nand2tetris.</td></tr>
-<tr><td><img src="code.jpg" width="72" alt="Cover of Code: The Hidden Language of Computer Hardware and Software"></td><td><a href="https://www.charlespetzold.com/code/">Code: The Hidden Language of Computer Hardware and Software</a><br><span class="dim">Charles Petzold</span><br>How computers work, from flashlights and telegraph relays to a working CPU.</td></tr>
+<tr><td class="book"><img src="elements-of-computing-systems.jpg" width="72" alt="Cover of The Elements of Computing Systems"></td><td><a href="https://www.nand2tetris.org/book">The Elements of Computing Systems</a><br><span class="dim">Noam Nisan, Shimon Schocken</span><br>Building a computer from NAND gates up to an operating system. The book behind nand2tetris.</td></tr>
+<tr><td class="book"><img src="code.jpg" width="72" alt="Cover of Code: The Hidden Language of Computer Hardware and Software"></td><td><a href="https://www.charlespetzold.com/code/">Code: The Hidden Language of Computer Hardware and Software</a><br><span class="dim">Charles Petzold</span><br>How computers work, from flashlights and telegraph relays to a working CPU.</td></tr>
 </table>
 <h2>Read</h2>
 <table>
-<tr><td><img src="kybalion.jpg" width="72" alt="Cover of The Kybalion"></td><td>The Kybalion<br><span class="dim">Three Initiates</span><br>A 1908 summary of Hermetic philosophy as seven principles, starting with &quot;the All is Mind&quot;.</td></tr>
+<tr><td class="book"><img src="kybalion.jpg" width="72" alt="Cover of The Kybalion"></td><td>The Kybalion<br><span class="dim">Three Initiates</span><br>A 1908 summary of Hermetic philosophy as seven principles, starting with &quot;the All is Mind&quot;.</td></tr>
 </table>
+
+</article>
 </main>
-<footer>
-  <a href="/" class="logo"><img src="/logo.svg" width="40" height="40" alt="miguelc, home"></a>
+<footer class="foot">
+  <a href="/"><img src="/logo.svg" width="48" height="48" alt="miguelc, home"></a>
   <p>© 2026 miguelc · <a href="/rss.xml">rss</a> · <a href="https://github.com/badsignal">github</a> · <a href="/.well-known/security.txt">security.txt</a></p>
 </footer>
 <div id="pwned" role="dialog" aria-modal="true" aria-label="Site defaced" hidden></div>

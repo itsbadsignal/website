@@ -38,15 +38,16 @@
 
 -->
 <body>
-<p class="warn"><a href="https://disable-javascript.org">please disable javascript by default</a> and only enable it on websites you trust. you have been warned.</p>
-<header>
-  <a href="/" class="name">miguelc</a>
-  <nav><a href="/blog/">blog</a> <a href="/writeups/">writeups</a> <a href="/now/">now</a> <a href="/about/">about</a></nav>
+<header class="top">
+  <a href="/" class="mark"><img src="/logo.svg" width="64" height="64" alt="miguelc, home"></a>
+  <nav><a href="/blog/">blog</a><span>/</span><a href="/writeups/">writeups</a><span>/</span><a href="/hacking/" aria-current="page">hacking</a><span>/</span><a href="/now/">now</a><span>/</span><a href="/about/">about</a></nav>
 </header>
 <main>
-<article>
+<div class="hero">
 <h1>Hacking</h1>
-<p class="lede">OSVR, from NAND to 0-day: my curriculum for vulnerability research, and how far through it I am.</p>
+<p>OSVR, from NAND to 0-day: my curriculum for vulnerability research, and how far through it I am.</p>
+</div>
+<article class="post">
 <h2>OSVR: from NAND to 0-day</h2>
 <p>A dependency-first curriculum for offensive vulnerability research and exploit development, from zero to published original research. The order comes from what each skill needs before it, not from what is popular.</p>
 <p>The spine is <strong>binary / systems vulnerability research</strong>. A <strong>web / cloud fork</strong> runs in parallel with an earlier path to paid work. Phases 0–4 are a common foundation either way; the choice between them is made at Phase 5, once the foundation shows which one I&#39;m drawn to, and not before.</p>
@@ -763,8 +764,8 @@ LAYER 10 one or two branches: kernel / browser+JIT / windows / hypervisor / firm
 
 </article>
 </main>
-<footer>
-  <a href="/" class="logo"><img src="/logo.svg" width="40" height="40" alt="miguelc, home"></a>
+<footer class="foot">
+  <a href="/"><img src="/logo.svg" width="48" height="48" alt="miguelc, home"></a>
   <p>© 2026 miguelc · <a href="/rss.xml">rss</a> · <a href="https://github.com/badsignal">github</a> · <a href="/.well-known/security.txt">security.txt</a></p>
 </footer>
 <div id="pwned" role="dialog" aria-modal="true" aria-label="Site defaced" hidden></div>

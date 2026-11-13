@@ -38,20 +38,32 @@
 
 -->
 <body>
-<p class="warn"><a href="https://disable-javascript.org">please disable javascript by default</a> and only enable it on websites you trust. you have been warned.</p>
-<header>
-  <a href="/" class="name">miguelc</a>
-  <nav><a href="/blog/" aria-current="page">blog</a> <a href="/writeups/">writeups</a> <a href="/now/">now</a> <a href="/about/">about</a></nav>
+<header class="top">
+  <a href="/" class="mark"><img src="/logo.svg" width="64" height="64" alt="miguelc, home"></a>
+  <nav><a href="/blog/" aria-current="page">blog</a><span>/</span><a href="/writeups/">writeups</a><span>/</span><a href="/hacking/">hacking</a><span>/</span><a href="/now/">now</a><span>/</span><a href="/about/">about</a></nav>
 </header>
 <main>
+<div class="hero">
 <h1>Blog</h1>
-<p class="lede">Every post, newest first.</p>
-<ul class="posts">
-<li><span>2026 · 10</span> <a href="/blog/one-script-and-its-a-prank/">one script, and it is a prank</a></li>
-</ul>
+<p>miguelc · notes, research and writeups</p>
+</div>
+<nav class="filters" aria-label="Topics">
+<p><a href="/blog/" aria-current="page">all</a></p>
+<p><a href="/writeups/">writeups</a></p>
+<p><a href="/tags/meta/">meta</a><span>·</span><a href="/tags/web/">web</a></p>
+</nav>
+<article class="entry">
+<div>
+<p class="meta"><span>miguel</span><span><time datetime="2026-10-07">October 7th, 2026</time></span><span><a href="/tags/meta/">meta</a>, <a href="/tags/web/">web</a></span></p>
+<h2><a href="/blog/one-script-and-its-a-prank/">One script, and it is a prank</a></h2>
+<p>Why this site is plain HTML on a black page, why the only JavaScript on it exists to scare you, and what will be posted here.</p>
+<a class="more" href="/blog/one-script-and-its-a-prank/">Read more</a>
+</div>
+<a class="pic" href="/blog/one-script-and-its-a-prank/" tabindex="-1"><img src="/blog/one-script-and-its-a-prank/cover.png" width="640" height="360" alt="Dark ocean waves seen from above, dithered to black and white."></a>
+</article>
 </main>
-<footer>
-  <a href="/" class="logo"><img src="/logo.svg" width="40" height="40" alt="miguelc, home"></a>
+<footer class="foot">
+  <a href="/"><img src="/logo.svg" width="48" height="48" alt="miguelc, home"></a>
   <p>© 2026 miguelc · <a href="/rss.xml">rss</a> · <a href="https://github.com/badsignal">github</a> · <a href="/.well-known/security.txt">security.txt</a></p>
 </footer>
 <div id="pwned" role="dialog" aria-modal="true" aria-label="Site defaced" hidden></div>

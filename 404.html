@@ -38,22 +38,25 @@
 
 -->
 <body>
-<p class="warn"><a href="https://disable-javascript.org">please disable javascript by default</a> and only enable it on websites you trust. you have been warned.</p>
-<header>
-  <a href="/" class="name">miguelc</a>
-  <nav><a href="/blog/">blog</a> <a href="/writeups/">writeups</a> <a href="/now/">now</a> <a href="/about/">about</a></nav>
+<header class="top">
+  <a href="/" class="mark"><img src="/logo.svg" width="64" height="64" alt="miguelc, home"></a>
+  <nav><a href="/blog/">blog</a><span>/</span><a href="/writeups/">writeups</a><span>/</span><a href="/hacking/">hacking</a><span>/</span><a href="/now/">now</a><span>/</span><a href="/about/">about</a></nav>
 </header>
 <main>
+<div class="hero">
 <h1>404</h1>
 <p>segmentation fault: that page isn't mapped.</p>
+</div>
+<article class="post">
 <pre>$ ./site --route ????
 [*] resolving ...
 [!] no such symbol
 [*] core dumped</pre>
-<nav class="pager"><a href="/">← back to index</a></nav>
+<p><a href="/">← back to the front page</a></p>
+</article>
 </main>
-<footer>
-  <a href="/" class="logo"><img src="/logo.svg" width="40" height="40" alt="miguelc, home"></a>
+<footer class="foot">
+  <a href="/"><img src="/logo.svg" width="48" height="48" alt="miguelc, home"></a>
   <p>© 2026 miguelc · <a href="/rss.xml">rss</a> · <a href="https://github.com/badsignal">github</a> · <a href="/.well-known/security.txt">security.txt</a></p>
 </footer>
 </body>
