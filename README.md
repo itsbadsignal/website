@@ -7,10 +7,12 @@ repository are the files the browser gets.
 Design: black page, warm white text (`#edeae6`), muted gold (`#c8b99a`,
 deep `#8a7a5a`). Poppins for reading, JetBrains Mono for labels.
 
-- **Front page** (`index.html`): a full-screen framed hero after joeyz.space
-  (grid background, corner brackets, the four "now" columns, the mark large in
-  the centre, a few faint tilted squares and hairlines), then a dated feed of
-  posts beside an index of every page.
+- **Front page** (`index.html`): a full-screen framed hero after joeyz.space:
+  grid background, corner brackets, the four "now" columns, "miguel" set large
+  with blurred echoes and the mark at the end, the book you are reading as a
+  tilted photo (edit `.book`), a ▶ button that runs the prank (`/?prank`), a
+  big faint 2026 and faint shapes, then a dated feed of posts beside an index
+  of every page.
 - **Blog, writeups, tags** after zerodayengineering.com/research: logo and
   uppercase `BLOG / WRITEUPS / …` nav, a big gold centred title, uppercase
   topic links, and entries with `author | date | tags |`, gold title,
@@ -77,6 +79,6 @@ fires it after 3 seconds for testing. Its styles live inside the script. The
 
 - Colours: `#000` page, `#edeae6` text, `#8f8c88` dim, `#c8b99a` gold for
   links, labels and hovers, `#8a7a5a` deep gold for big titles. Nothing else.
-- The mark (`mark.svg`) is a square whose top-right corner has cracked off
-  and drifted out. `favicon.svg` is the same drawing on black.
+- The mark (`mark.svg`) is an open eye inside a square frame. `favicon.svg`
+  is the same drawing on black.
 - No motion. The front page's scattered pieces hide below 800px wide.

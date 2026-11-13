@@ -85,17 +85,34 @@ th { font-weight: 600; color: var(--gold); }
 .facts { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(4, minmax(0, 170px)); gap: 32px; padding: 64px 0 0 80px; font: 14px/1.6 Poppins, sans-serif; }
 .facts h2 { margin: 0 0 8px; font-size: 12px; font-weight: 400; color: var(--gold); }
 .facts p { margin: 0; color: #cfcbc6; }
-.hero-mark { position: absolute; z-index: 2; top: 50%; left: 50%; width: clamp(140px, 18vw, 240px); height: auto; transform: translate(-50%, -50%); }
+.status { position: absolute; top: 28px; right: 52px; margin: 0; font-size: 11px; color: var(--dim); }
+.status::before { content: "● "; color: var(--gold); }
+.name { position: absolute; z-index: 2; top: 50%; left: 50%; margin: 0; transform: translate(-50%, -50%); display: flex; align-items: center; gap: .12em;
+  font: 300 clamp(72px, 12vw, 168px)/1 Poppins, sans-serif; letter-spacing: -.04em; white-space: nowrap;
+  text-shadow: 12px 22px 5px rgba(237, 234, 230, .22), 24px 44px 10px rgba(237, 234, 230, .12), 36px 66px 16px rgba(237, 234, 230, .06); }
+.name img { width: .72em; height: .72em; margin-top: .08em; filter: drop-shadow(12px 22px 5px rgba(237, 234, 230, .18)); }
+.book { position: absolute; z-index: 2; top: 9%; right: 7%; width: 150px; transform: rotate(5deg); text-decoration: none; }
+.book img { display: block; border: 5px solid var(--ink); filter: grayscale(1) contrast(1.05); }
+.book span { display: block; margin-top: 8px; font-size: 10px; color: var(--dim); text-align: right; }
+.run { position: absolute; z-index: 2; top: 66%; left: 18%; width: 28px; height: 28px; display: grid; place-items: center; border: 1px solid var(--ink); background: #000; font-size: 11px; text-decoration: none; box-shadow: 0 0 24px rgba(237, 234, 230, .25); }
+.run:hover { border-color: var(--gold); color: var(--gold); }
 .scatter > * { position: absolute; }
+.numeral { bottom: 9%; left: 52%; font: 700 200px/1 Poppins, sans-serif; color: #fff; opacity: .05; letter-spacing: -.04em; }
 .sq { border: 1px solid #3a3734; }
 .s1 { top: 22%; left: 8%; width: 90px; height: 90px; transform: rotate(12deg); }
-.s2 { bottom: 18%; right: 10%; width: 140px; height: 140px; transform: rotate(-7deg); }
-.s3 { top: 16%; right: 24%; width: 34px; height: 34px; border-color: var(--deep); transform: rotate(24deg); }
+.s2 { bottom: 20%; right: 9%; width: 130px; height: 130px; transform: rotate(-7deg); }
+.s3 { top: 15%; left: 62%; width: 30px; height: 30px; border-color: var(--deep); transform: rotate(24deg); }
+.tri { top: 50%; left: 4%; width: 0; height: 0; border: 22px solid transparent; border-bottom: 38px solid #2a2826; transform: rotate(-20deg); }
 .rule { height: 0; border-top: 1px solid #2e2c29; }
-.r1 { top: 66%; left: 4%; width: 300px; transform: rotate(-9deg); }
-.r2 { top: 30%; right: 3%; width: 220px; transform: rotate(14deg); }
+.r1 { top: 70%; left: 3%; width: 300px; transform: rotate(-9deg); }
+.r2 { top: 33%; right: 2%; width: 240px; transform: rotate(14deg); }
+.r3 { top: 41%; left: 0; right: 0; border-color: #1c1b19; }
+.glyph { font-size: 14px; color: #55524e; }
+.g1 { top: 64%; left: 66%; } .g2 { top: 76%; left: 72%; } .g3 { top: 30%; left: 24%; }
+.quote { bottom: 6%; left: 18%; font: 700 140px/1 Poppins, sans-serif; color: #fff; opacity: .06; }
+.vert { top: 52%; right: 3.5%; font-size: 13px; letter-spacing: .5em; color: #3f3c39; writing-mode: vertical-rl; }
 .xy { font-size: 10px; color: #4a4743; }
-.x1 { top: 20%; left: 3%; } .x2 { top: 58%; right: 4%; } .x3 { bottom: 13%; left: 52%; }
+.x1 { top: 20%; left: 3%; } .x2 { top: 50%; right: 7%; } .x3 { bottom: 13%; left: 46%; } .x4 { top: 78%; left: 27%; }
 .corner-l, .corner-r { position: absolute; bottom: 26px; margin: 0; font-size: 11px; color: var(--dim); }
 .corner-l { left: 48px; } .corner-r { right: 48px; }
 .corner-l a { margin-right: 12px; text-decoration: none; }
@@ -115,7 +132,8 @@ th { font-weight: 600; color: var(--gold); }
 @media (max-width: 800px) {
   .entry, .log { grid-template-columns: 1fr; gap: 24px; }
   .facts { grid-template-columns: 1fr 1fr; padding: 64px 32px 0; }
-  .scatter { display: none; }
+  .scatter, .book, .run { display: none; }
+  .name { font-size: 15vw; }
   .corner-r, .down { display: none; }
   .corner-l { left: 32px; right: 32px; }
   .log aside { order: 2; }
