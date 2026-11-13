@@ -9,10 +9,10 @@ deep `#8a7a5a`). Poppins for reading, JetBrains Mono for labels.
 
 - **Front page** (`index.html`): a full-screen framed hero after joeyz.space:
   grid background, corner brackets, the four "now" columns, "miguel" set large
-  with blurred echoes and the mark at the end, the book you are reading as a
-  tilted photo (edit `.book`), a ▶ button that runs the prank (`/?prank`), a
-  big faint 2026 and faint shapes, then a dated feed of posts beside an index
-  of every page.
+  with blurred echoes, a faded ASCII portrait top right (`.portrait`), an
+  ASCII fetch block and signal wave, two quotes (Feynman, Fischer), a ▶ button
+  that runs the prank (`/?prank`) and faint shapes, then a dated feed of posts
+  beside an index of every page.
 - **Blog, writeups, tags** after zerodayengineering.com/research: logo and
   uppercase `BLOG / WRITEUPS / …` nav, a big gold centred title, uppercase
   topic links, and entries with `author | date | tags |`, gold title,
