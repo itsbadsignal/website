@@ -77,7 +77,7 @@ th { font-weight: 600; color: var(--gold); }
 .foot { text-align: center; margin: 96px auto 0; padding: 48px 24px; max-width: 1100px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--dim); }
 
 /* ---- front page: the frame ---- */
-.frame { position: relative; min-height: calc(100vh - 24px); margin: 12px; overflow: hidden; background-color: #050505;
+.frame { position: relative; min-height: max(620px, calc(100vh - 168px)); margin: 0 12px 12px; overflow: hidden; background-color: #050505;
   background-image: linear-gradient(#121110 1px, transparent 1px), linear-gradient(90deg, #121110 1px, transparent 1px); background-size: 40px 40px; }
 .frame, .frame h2, .home .log { font-family: var(--mono); }
 .c { position: absolute; width: 22px; height: 22px; border: 0 solid #4a4743; }
@@ -117,16 +117,11 @@ th { font-weight: 600; color: var(--gold); }
 .vert { top: 52%; right: 3.5%; font-size: 14px; letter-spacing: .5em; color: #3f3c39; writing-mode: vertical-rl; }
 .xy { font-size: 10px; color: #4a4743; }
 .x1 { top: 20%; left: 3%; } .x2 { top: 50%; right: 7%; } .x3 { bottom: 13%; left: 46%; } .x4 { top: 78%; left: 27%; }
-.corner-l { position: absolute; bottom: 26px; margin: 0; font-size: 13px; color: var(--dim); }
-.corner-l { left: 48px; }
-.corner-l a { margin-right: 12px; text-decoration: none; }
 .down { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); font-size: 13px; color: var(--dim); text-decoration: none; }
 
 /* ---- front page: the log ---- */
-.log { display: grid; grid-template-columns: 180px minmax(0, 600px); justify-content: center; gap: 56px; padding: 96px 24px 0; }
+.log { max-width: 680px; margin: 0 auto; padding: 96px 24px 0; }
 .log h2 { margin: 0 0 16px; font-size: 13px; font-weight: 400; color: var(--dim); }
-.log aside p { margin: 0 0 20px; font-size: 14px; line-height: 1.9; }
-.log aside a { text-decoration: none; }
 .log article { margin-bottom: 56px; }
 .log time { font-size: 13px; color: var(--dim); }
 .log h3 { margin: 6px 0 6px; font: 600 22px/1.4 Poppins, sans-serif; color: var(--deep); }
@@ -134,15 +129,13 @@ th { font-weight: 600; color: var(--gold); }
 .log article p { margin: 0; font: 400 17px/1.8 Poppins, sans-serif; }
 
 @media (max-width: 800px) {
-  .entry, .log { grid-template-columns: 1fr; gap: 24px; }
+  .entry { grid-template-columns: 1fr; gap: 24px; }
   .facts { grid-template-columns: 1fr 1fr; padding: 64px 32px 0; }
   .scatter, .run { display: none; }
   .portrait, .q { display: none; }
   .name { font-size: 15vw; }
   .down { display: none; }
-  .corner-l { left: 32px; right: 32px; }
-  .log aside { order: 2; }
-}
+  }
 
 /* ---- roadmap: a vertical rail of badges; progress is edited in the HTML ---- */
 .road { display: flex; flex-direction: column; max-width: 720px; margin: 0 auto; padding: 0 24px; counter-reset: earned ticks; }
@@ -189,3 +182,14 @@ th { font-weight: 600; color: var(--gold); }
   .badge.side::before { display: none; }
   .phase { margin-left: -64px; }
 }
+
+/* ---- footer links: everything not in the header ---- */
+.more-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 20px; margin: 16px 0 10px; font: 13px var(--mono); }
+.more-links a { color: var(--ink); text-decoration: none; }
+.more-links a:hover { color: var(--gold); }
+
+/* ---- roadmap resources ---- */
+.steps h3 { margin: 16px 0 0; font: 13px var(--mono); color: var(--gold); letter-spacing: .1em; }
+.steps ol.res a { color: var(--ink); text-decoration-color: var(--deep); }
+.steps ol.res a:hover { color: var(--gold); }
+.kind { margin-left: 6px; font-size: 12px; color: #7d7a76; }

@@ -47,8 +47,9 @@ writeups/ roadmap/ tags/ now/ projects/ dotfiles/ library/ about/ contact/
 style.css  prank.js  mark.svg  favicon.svg  fonts/  og.png  .well-known/
 ```
 
-Every page uses the same `<head>`, `<header>` and `<footer>`. Copy them from
-any existing page.
+Every page, the front page included, uses the same `<head>`, `<header>`
+(logo + the five main links) and `<footer>` (the other pages and links in one
+line). Copy them from any existing page.
 
 ## Writing a post
 
@@ -73,7 +74,9 @@ any existing page.
 bottom, and each one opens to show its steps. Progress lives in the HTML, so
 visitors see what you have pushed. Edit it by hand:
 
-- **Tick a step:** change `<li>` to `<li class="done">`.
+- **Tick a step or a resource:** change `<li>` to `<li class="done">`. Each
+  badge opens to a **resources** list (the links from the study plan) and a
+  **sessions** or **checklist** list; both tick the same way.
 - **Earn a badge:** change `<details class="badge">` to
   `<details class="badge done">` (side badges keep `side`:
   `class="badge side done"`).
