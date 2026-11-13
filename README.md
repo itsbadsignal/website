@@ -41,7 +41,7 @@ up automatically.
 index.html                 home: lede, now, latest posts
 blog/index.html            every post
 blog/<slug>/index.html     a post (+ its cover.png)
-writeups/ tags/ now/ projects/ dotfiles/ library/ hacking/ about/ contact/
+writeups/ roadmap/ tags/ now/ projects/ dotfiles/ library/ hacking/ about/ contact/
 404.html  rss.xml  sitemap.xml
 style.css  prank.js  mark.svg  favicon.svg  fonts/  og.png  .well-known/
 ```
@@ -65,6 +65,22 @@ any existing page.
 5. On the front page, add an `<article>` to the top of the `.log` feed.
 6. Update the previous post's pager, then add an `<item>` to the top of
    `rss.xml` and a `<url>` to `sitemap.xml`.
+
+## Tracking the roadmap
+
+`roadmap/index.html` is the OSVR roadmap: one badge per milestone, top to
+bottom, and each one opens to show its steps. Progress lives in the HTML, so
+visitors see what you have pushed. Edit it by hand:
+
+- **Tick a step:** change `<li>` to `<li class="done">`.
+- **Earn a badge:** change `<details class="badge">` to
+  `<details class="badge done">` (side badges keep `side`:
+  `class="badge side done"`).
+- **Move the current badge:** the one you are working on has `now`. Take it
+  off the old one and add it to the next.
+
+The "x / 18 badges · y steps done" line at the top counts the `done` marks by
+itself (CSS counters), so there is no number to update.
 
 ## The prank
 
