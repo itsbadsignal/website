@@ -8,10 +8,9 @@ Design: black page, warm white text (`#edeae6`), muted gold (`#c8b99a`,
 deep `#8a7a5a`). Poppins for reading, JetBrains Mono for labels.
 
 - **Front page** (`index.html`): a full-screen framed hero after joeyz.space
-  (grid background, corner brackets, the four "now" columns, the tagline set
-  large with blurred echoes, an ASCII television showing NO SIGNAL top right,
-  and scattered ASCII: a box, a noise line, a hexdump, signal bars), then a
-  dated feed of posts beside an index of every page.
+  (grid background, corner brackets, the four "now" columns, the mark large in
+  the centre, a few faint tilted squares and hairlines), then a dated feed of
+  posts beside an index of every page.
 - **Blog, writeups, tags** after zerodayengineering.com/research: logo and
   uppercase `BLOG / WRITEUPS / …` nav, a big gold centred title, uppercase
   topic links, and entries with `author | date | tags |`, gold title,
@@ -42,7 +41,7 @@ blog/index.html            every post
 blog/<slug>/index.html     a post (+ its cover.png)
 writeups/ tags/ now/ projects/ dotfiles/ library/ hacking/ about/ contact/
 404.html  rss.xml  sitemap.xml
-style.css  prank.js  favicon.svg  fonts/  og-v2.png  .well-known/
+style.css  prank.js  mark.svg  favicon.svg  fonts/  og-v2.png  .well-known/
 ```
 
 Every page uses the same `<head>`, `<header>` and `<footer>`. Copy them from
@@ -78,6 +77,6 @@ fires it after 3 seconds for testing. Its styles live inside the script. The
 
 - Colours: `#000` page, `#edeae6` text, `#8f8c88` dim, `#c8b99a` gold for
   links, labels and hovers, `#8a7a5a` deep gold for big titles. Nothing else.
-- The mark is the boxed `mc` (`.mc`, plain HTML text); `favicon.svg` draws
-  the same box.
+- The mark (`mark.svg`) is a square whose top-right corner has cracked off
+  and drifted out. `favicon.svg` is the same drawing on black.
 - No motion. The front page's scattered pieces hide below 800px wide.
