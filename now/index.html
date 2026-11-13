@@ -38,35 +38,40 @@
 
 -->
 <body>
+<p class="warn"><a href="https://disable-javascript.org">please disable javascript by default</a> and only enable it on websites you trust. you have been warned.</p>
 <header>
-  <a href="/" class="logo"><img src="/logo.svg" width="80" height="80" alt="miguelc, home"></a>
-  <nav>
-      <a href="/blog/">blog</a>
-      <a href="/writeups/">writeups</a>
-      <a href="/tags/">tags</a>
-      <a href="/now/" aria-current="page">now</a>
-      <a href="/projects/">projects</a>
-      <a href="/dotfiles/">dotfiles</a>
-      <a href="/library/">library</a>
-      <a href="/hacking/">hacking</a>
-      <a href="/about/">about</a>
-      <a href="/contact/">contact</a>
-      <a href="https://github.com/badsignal">github</a>
-      <a href="/rss.xml">rss</a>
-  </nav>
+  <a href="/" class="name">miguelc</a>
+  <nav><a href="/blog/">blog</a> <a href="/writeups/">writeups</a> <a href="/now/" aria-current="page">now</a> <a href="/about/">about</a></nav>
 </header>
 <main>
 <h1>Now</h1>
-<p><small>What I'm doing at the moment.</small></p>
-<table>
-<tr><td><small>job</small></td><td>Security Engineer @LAYER8</td></tr>
-<tr><td><small>reading</small></td><td>The Elements of Computing Systems</td></tr>
-<tr><td><small>learning</small></td><td>Algebra, C, Driving</td></tr>
-<tr><td><small>stack</small></td><td>Python, Arch btw</td></tr>
-</table>
+<p class="lede">What I'm doing at the moment.</p>
+<div class="cols">
+<div>
+<h3>work</h3>
+<p>security engineer @layer8</p>
+</div>
+<div>
+<h3>reading</h3>
+<p>the elements of computing systems<br>
+code, petzold</p>
+</div>
+<div>
+<h3>learning</h3>
+<p>algebra<br>
+c<br>
+driving</p>
+</div>
+<div>
+<h3>stack</h3>
+<p>python<br>
+arch btw</p>
+</div>
+</div>
 </main>
 <footer>
-  <small>© 2026 miguelc · <a href="/rss.xml">rss</a> · <a href="https://github.com/badsignal">github</a> · <a href="/.well-known/security.txt">security.txt</a></small>
+  <a href="/" class="logo"><img src="/logo.svg" width="40" height="40" alt="miguelc, home"></a>
+  <p>© 2026 miguelc · <a href="/rss.xml">rss</a> · <a href="https://github.com/badsignal">github</a> · <a href="/.well-known/security.txt">security.txt</a></p>
 </footer>
 <div id="pwned" role="dialog" aria-modal="true" aria-label="Site defaced" hidden></div>
 <script src="/prank.js" defer></script>

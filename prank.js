@@ -48,12 +48,12 @@
     '.pwned__term::after{content:"\\2588";animation:pw-blink 1s steps(1) infinite}' +
     '.pwned--joke{display:grid;place-items:center;cursor:default}' +
     '.pwned__card{max-width:72ch}' +
-    '.pwned__art{border:0;padding:0;font-size:clamp(.55rem,2.2vw,.8rem);line-height:1.15;color:#e6b422}' +
+    '.pwned__art{border:0;padding:0;font-size:clamp(.55rem,2.2vw,.8rem);line-height:1.15;color:#c8b99a}' +
     '.pwned__kicker{color:#8a8a8a}' +
     '.pwned__title{font-size:1.4rem;margin:0}' +
     '.pwned__title::before{content:none}' +
     '.pwned__close{font:inherit;background:#000;color:#fff;border:1px solid #fff;padding:.2rem .8rem;cursor:pointer}' +
-    '.pwned__close:hover{background:#e6b422;color:#000;border-color:#e6b422}';
+    '.pwned__close:hover{background:#c8b99a;color:#000;border-color:#c8b99a}';
   document.head.appendChild(css);
 
   var hex = function (n) {

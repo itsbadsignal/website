@@ -38,38 +38,83 @@
 
 -->
 <body>
+<p class="warn"><a href="https://disable-javascript.org">please disable javascript by default</a> and only enable it on websites you trust. you have been warned.</p>
 <header>
-  <a href="/" class="logo"><img src="/logo.svg" width="80" height="80" alt="miguelc, home"></a>
-  <nav>
-      <a href="/blog/">blog</a>
-      <a href="/writeups/">writeups</a>
-      <a href="/tags/">tags</a>
-      <a href="/now/">now</a>
-      <a href="/projects/">projects</a>
-      <a href="/dotfiles/">dotfiles</a>
-      <a href="/library/">library</a>
-      <a href="/hacking/">hacking</a>
-      <a href="/about/">about</a>
-      <a href="/contact/">contact</a>
-      <a href="https://github.com/badsignal">github</a>
-      <a href="/rss.xml">rss</a>
-  </nav>
+  <a href="/" class="name">miguelc</a>
+  <nav><a href="/blog/">blog</a> <a href="/writeups/">writeups</a> <a href="/now/">now</a> <a href="/about/">about</a></nav>
 </header>
 <main>
-<p>I take things apart, work out why they broke, and write it down.</p>
-<table>
-<tr><td><small>job</small></td><td>Security Engineer @LAYER8</td></tr>
-<tr><td><small>reading</small></td><td>The Elements of Computing Systems</td></tr>
-<tr><td><small>learning</small></td><td>Algebra, C, Driving</td></tr>
-<tr><td><small>stack</small></td><td>Python, Arch btw</td></tr>
-</table>
-<h2>2026</h2>
-<table>
-<tr><td><small>2026-10-07</small></td><td><small>001</small></td><td><a href="/blog/one-script-and-its-a-prank/">One script, and it is a prank</a></td><td><small><a href="/tags/meta/">#meta</a> <a href="/tags/web/">#web</a></small></td></tr>
-</table>
+<section>
+<h2>latest</h2>
+<h1><a href="/blog/one-script-and-its-a-prank/">one script, and it is a prank</a></h1>
+<p class="dim">2026 · 10 · 2 minutes read</p>
+<p><span class="dim">Why this site is plain HTML on a black page, why the only JavaScript on it exists to scare you, and what will be posted here.</span> <a href="/blog/one-script-and-its-a-prank/" class="more">keep reading →</a></p>
+</section>
+<section>
+<h2>now</h2>
+<div class="cols">
+<div>
+<h3>work</h3>
+<p>security engineer @layer8</p>
+</div>
+<div>
+<h3>reading</h3>
+<p>the elements of computing systems<br>
+code, petzold</p>
+</div>
+<div>
+<h3>learning</h3>
+<p>algebra<br>
+c<br>
+driving</p>
+</div>
+<div>
+<h3>stack</h3>
+<p>python<br>
+arch btw</p>
+</div>
+</div>
+</section>
+<section>
+<h2>posts</h2>
+<ul class="posts">
+<li><span>2026 · 10</span> <a href="/blog/one-script-and-its-a-prank/">one script, and it is a prank</a></li>
+</ul>
+</section>
+<section>
+<h2>index</h2>
+<div class="cols">
+<div>
+<h3>writing</h3>
+<p><a href="/blog/">blog</a><br>
+<a href="/writeups/">writeups</a><br>
+<a href="/tags/">tags</a></p>
+</div>
+<div>
+<h3>me</h3>
+<p><a href="/now/">now</a><br>
+<a href="/about/">about</a><br>
+<a href="/contact/">contact</a></p>
+</div>
+<div>
+<h3>things</h3>
+<p><a href="/projects/">projects</a><br>
+<a href="/dotfiles/">dotfiles</a><br>
+<a href="/library/">library</a><br>
+<a href="/hacking/">hacking</a></p>
+</div>
+<div>
+<h3>elsewhere</h3>
+<p><a href="https://github.com/badsignal">github</a><br>
+<a href="https://www.wechall.net/profile/badsignal">wechall</a><br>
+<a href="/rss.xml">rss</a></p>
+</div>
+</div>
+</section>
 </main>
 <footer>
-  <small>© 2026 miguelc · <a href="/rss.xml">rss</a> · <a href="https://github.com/badsignal">github</a> · <a href="/.well-known/security.txt">security.txt</a></small>
+  <a href="/" class="logo"><img src="/logo.svg" width="40" height="40" alt="miguelc, home"></a>
+  <p>© 2026 miguelc · <a href="/rss.xml">rss</a> · <a href="https://github.com/badsignal">github</a> · <a href="/.well-known/security.txt">security.txt</a></p>
 </footer>
 <div id="pwned" role="dialog" aria-modal="true" aria-label="Site defaced" hidden></div>
 <script src="/prank.js" defer></script>

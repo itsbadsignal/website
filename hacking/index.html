@@ -38,26 +38,15 @@
 
 -->
 <body>
+<p class="warn"><a href="https://disable-javascript.org">please disable javascript by default</a> and only enable it on websites you trust. you have been warned.</p>
 <header>
-  <a href="/" class="logo"><img src="/logo.svg" width="80" height="80" alt="miguelc, home"></a>
-  <nav>
-      <a href="/blog/">blog</a>
-      <a href="/writeups/">writeups</a>
-      <a href="/tags/">tags</a>
-      <a href="/now/">now</a>
-      <a href="/projects/">projects</a>
-      <a href="/dotfiles/">dotfiles</a>
-      <a href="/library/">library</a>
-      <a href="/hacking/" aria-current="page">hacking</a>
-      <a href="/about/">about</a>
-      <a href="/contact/">contact</a>
-      <a href="https://github.com/badsignal">github</a>
-      <a href="/rss.xml">rss</a>
-  </nav>
+  <a href="/" class="name">miguelc</a>
+  <nav><a href="/blog/">blog</a> <a href="/writeups/">writeups</a> <a href="/now/">now</a> <a href="/about/">about</a></nav>
 </header>
 <main>
+<article>
 <h1>Hacking</h1>
-<p><small>OSVR, from NAND to 0-day: my curriculum for vulnerability research, and how far through it I am.</small></p>
+<p class="lede">OSVR, from NAND to 0-day: my curriculum for vulnerability research, and how far through it I am.</p>
 <h2>OSVR: from NAND to 0-day</h2>
 <p>A dependency-first curriculum for offensive vulnerability research and exploit development, from zero to published original research. The order comes from what each skill needs before it, not from what is popular.</p>
 <p>The spine is <strong>binary / systems vulnerability research</strong>. A <strong>web / cloud fork</strong> runs in parallel with an earlier path to paid work. Phases 0–4 are a common foundation either way; the choice between them is made at Phase 5, once the foundation shows which one I&#39;m drawn to, and not before.</p>
@@ -771,9 +760,12 @@ LAYER 10 one or two branches: kernel / browser+JIT / windows / hypervisor / firm
 </tr>
 </tbody></table>
 <p><strong>Gate:</strong> original research in the branch that a stranger cites, adopts or builds on.</p>
+
+</article>
 </main>
 <footer>
-  <small>© 2026 miguelc · <a href="/rss.xml">rss</a> · <a href="https://github.com/badsignal">github</a> · <a href="/.well-known/security.txt">security.txt</a></small>
+  <a href="/" class="logo"><img src="/logo.svg" width="40" height="40" alt="miguelc, home"></a>
+  <p>© 2026 miguelc · <a href="/rss.xml">rss</a> · <a href="https://github.com/badsignal">github</a> · <a href="/.well-known/security.txt">security.txt</a></p>
 </footer>
 <div id="pwned" role="dialog" aria-modal="true" aria-label="Site defaced" hidden></div>
 <script src="/prank.js" defer></script>
