@@ -3,7 +3,7 @@
 #
 # Replace the Contact line with your real address before relying on this file.
 
-Contact: https://github.com/badsignal
+Contact: https://github.com/itsbadsignal
 Expires: 2027-10-07T00:00:00.000Z
 Preferred-Languages: en
 Canonical: https://miguelc.space/.well-known/security.txt
