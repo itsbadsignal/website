@@ -9,7 +9,7 @@ deep `#8a7a5a`). Poppins for reading, JetBrains Mono for labels.
 
 - **Front page** (`index.html`): a full-screen framed hero after joeyz.space
   (grid background, corner brackets, the four "now" columns, a huge name with
-  blurred echoes, scattered notes, the latest cover as a tilted photo), then a
+  blurred echoes, scattered notes and a tilted `whoami` terminal card), then a
   dated feed of posts beside an index of every page.
 - **Blog, writeups, tags** after zerodayengineering.com/research: logo and
   uppercase `BLOG / WRITEUPS / …` nav, a big gold centred title, uppercase
@@ -41,7 +41,7 @@ blog/index.html            every post
 blog/<slug>/index.html     a post (+ its cover.png)
 writeups/ tags/ now/ projects/ dotfiles/ library/ hacking/ about/ contact/
 404.html  rss.xml  sitemap.xml
-style.css  prank.js  logo.svg  favicon.svg  fonts/  og-v2.png  .well-known/
+style.css  prank.js  favicon.svg  fonts/  og-v2.png  .well-known/
 ```
 
 Every page uses the same `<head>`, `<header>` and `<footer>`. Copy them from
@@ -60,8 +60,7 @@ any existing page.
    (and `writeups/index.html` if tagged ctf or writeup, and each
    `tags/<tag>/index.html`) and edit it. A new tag needs a new `tags/<tag>/`
    folder and a link in every page's `.filters` and in `tags/index.html`.
-5. On the front page, add an `<article>` to the top of the `.log` feed, and
-   point the tilted `.photo` at the new post.
+5. On the front page, add an `<article>` to the top of the `.log` feed.
 6. Update the previous post's pager, then add an `<item>` to the top of
    `rss.xml` and a `<url>` to `sitemap.xml`.
 
@@ -78,4 +77,6 @@ fires it after 3 seconds for testing. Its styles live inside the script. The
 
 - Colours: `#000` page, `#edeae6` text, `#8f8c88` dim, `#c8b99a` gold for
   links, labels and hovers, `#8a7a5a` deep gold for big titles. Nothing else.
+- The mark is the boxed `mc` (`.mc`, plain HTML text); `favicon.svg` draws
+  the same box.
 - No motion. The front page's scattered pieces hide below 800px wide.
