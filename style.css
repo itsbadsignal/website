@@ -51,7 +51,7 @@ img { max-width: 100%; height: auto; }
 .meta a { text-decoration: none; }
 .more { display: inline-block; margin-top: 16px; font-weight: 600; text-decoration: none; }
 .more::before { content: ""; display: inline-block; width: 40px; margin-right: 20px; vertical-align: middle; border-top: 1px solid var(--ink); }
-.pic img { display: block; width: 100%; image-rendering: pixelated; }
+.pic img { display: block; width: 100%; height: auto; }
 
 /* ---- a post or page ---- */
 .post { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
@@ -61,7 +61,7 @@ img { max-width: 100%; height: auto; }
 .post a { color: var(--gold); }
 .post strong { font-weight: 600; }
 .lede { color: var(--dim); font-style: italic; }
-.cover { display: block; width: 100%; image-rendering: pixelated; margin: 32px 0; }
+.cover { display: block; width: 100%; height: auto; margin: 32px 0; }
 .metadata { margin-top: 64px; }
 .metadata p { margin: 0 0 6px; }
 pre { font: 14px/1.6 var(--mono); background: #0d0c0b; border: 1px solid var(--rule); padding: 16px; overflow-x: auto; }
