@@ -11,3 +11,9 @@
 # Repo files that happen to sit in the served folder.
 /README.md
   X-Robots-Tag: noindex
+
+# Source files for build.mjs: served, but not for search engines.
+/content/*
+  X-Robots-Tag: noindex
+/build.mjs
+  X-Robots-Tag: noindex
