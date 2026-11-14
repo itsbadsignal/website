@@ -42,13 +42,13 @@ up automatically. `_redirects` sends the old `/hacking/` address to
 index.html                 home: lede, now, latest posts
 blog/index.html            every post
 blog/<slug>/index.html     a post (+ its cover.png)
-writeups/ roadmap/ library/ dotfiles/ now/ about/ projects/ tags/
+writeups/ roadmap/ projects/ library/ dotfiles/ wetware/ now/ about/ tags/
 404.html  rss.xml  sitemap.xml  _redirects
 style.css  prank.js  mark.svg  favicon.svg  fonts/  og.png  .well-known/
 ```
 
 Every page, the front page included, uses the same `<head>`, `<header>`
-(logo + the eight main links) and `<footer>` (tags, rss). Contact
+(logo + the nine main links) and `<footer>` (tags, rss). Contact
 details and outside profiles live on the About page. Copy them from any existing page.
 
 ## Writing a post
