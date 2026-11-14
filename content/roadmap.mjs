@@ -14,8 +14,10 @@ export const ROADMAP = [
         ['Linux Luminarium (pwn.college)', 'https://pwn.college/linux-luminarium/', 'free'],
         ['Computing 101 (pwn.college)', 'https://pwn.college/computing-101/', 'free'],
       ]],
-      ['c', [
+      ['c · in this order', [
+        ["Beej's Guide to C Programming", 'https://beej.us/guide/bgc/', 'free · book · the introduction'],
         ['Modern C (Jens Gustedt)', 'https://gustedt.gitlabpages.inria.fr/modern-c/', 'free · book'],
+        ['Effective C, 2nd ed. (Robert Seacord)', '', 'paid · book · secure, modern C, after Modern C'],
       ]],
       ['systems, assembly, debugging', [
         ['Arch1001: x86-64 Assembly (OST2)', OST2('Arch1001_x86-64_Asm+2021_v1'), 'free'],
