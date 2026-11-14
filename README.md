@@ -70,21 +70,21 @@ details and outside profiles live on the About page. Copy them from any existing
 
 ## Tracking the roadmap
 
-`roadmap/index.html` is the OSVR roadmap: one badge per milestone, top to
-bottom, and each one opens to show its steps. Progress lives in the HTML, so
-visitors see what you have pushed. Edit it by hand:
+`roadmap/index.html` is OSVR (open security vulnerability research): seven
+badges, top to bottom (foundations, reverse engineering, binary exploitation,
+vulnerability discovery, disclosure, one specialisation, final project). Each
+opens to its Core resources and its milestone. It replaces the
+itsbadsignal/osvr repository and keeps only what is needed to follow it.
 
-- **Tick a step or a resource:** change `<li>` to `<li class="done">`. Each
-  badge opens to a **resources** list (the links from the study plan) and a
-  **sessions** or **checklist** list; both tick the same way.
+Progress lives in the HTML. Edit it by hand:
+
+- **Tick a resource or step:** change `<li>` to `<li class="done">`.
 - **Earn a badge:** change `<details class="badge">` to
-  `<details class="badge done">` (side badges keep `side`:
-  `class="badge side done"`).
+  `<details class="badge done">`.
 - **Move the current badge:** the one you are working on has `now`. Take it
   off the old one and add it to the next.
 
-The "x / 18 badges · y steps done" line at the top counts the `done` marks by
-itself (CSS counters), so there is no number to update.
+The "x / 7 badges · y done" line counts the `done` marks by itself.
 
 ## The prank
 

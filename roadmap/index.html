@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Roadmap — miguelc</title>
-<meta name="description" content="OSVR: from the terminal to Pwn2Own. Progress, badge by badge.">
+<meta name="description" content="OSVR: from a terminal to a disclosed 0-day, using existing, mostly free resources.">
 <link rel="canonical" href="https://miguelc.space/roadmap/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="alternate" type="application/rss+xml" title="miguelc" href="/rss.xml">
 <link rel="stylesheet" href="/style.css">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Roadmap — miguelc">
-<meta property="og:description" content="OSVR: from the terminal to Pwn2Own. Progress, badge by badge.">
+<meta property="og:description" content="OSVR: from a terminal to a disclosed 0-day, using existing, mostly free resources.">
 <meta property="og:url" content="https://miguelc.space/roadmap/">
 <meta property="og:image" content="https://miguelc.space/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -49,371 +49,153 @@
 <main>
 <div class="hero">
 <h1>Roadmap</h1>
-<p>osvr · vulnerability research, from the terminal to pwn2own</p>
+<p>osvr · open security vulnerability research</p>
 </div>
 <div class="road">
+<p class="how">Top to bottom. Each milestone is the check that you are ready for the next. Hands-on work only in your own lab, on CTF infrastructure, or inside a published bounty scope.</p>
 <div class="rail">
 <details class="badge now">
-  <summary><span class="sq">GATE</span><span class="nm">Terminal Velocity</span><span class="mt">before week 1 · prerequisites · common</span></summary>
+  <summary><span class="sq">FND</span><span class="nm">Segfault Survivor</span><span class="mt">foundations · programming, linux, c, assembly, debugging</span></summary>
   <div class="steps">
-    <p class="flv">The real starting line, cleared.</p>
-    <h3>resources</h3>
+    <h3>programming · skip if you can write 100 lines without a tutorial</h3>
     <ol class="res">
-      <li><a href="https://linuxcommand.org/tlcl.php">The Linux Command Line (Shotts), parts 1–2</a> <span class="kind">text · free</span></li>
-      <li><a href="https://automatetheboringstuff.com/">Automate the Boring Stuff with Python, ch. 1–9</a> <span class="kind">text · free</span></li>
-      <li><a href="https://wizardzines.com/">Julia Evans: networking zines</a> <span class="kind">text</span></li>
-      <li><a href="https://gaia.cs.umass.edu/kurose_ross/">Kurose &amp; Ross, Computer Networking: first chapters</a> <span class="kind">text</span></li>
+      <li><a href="https://cs50.harvard.edu/x/">CS50x (Harvard)</a> <span class="kind">free · 11 weeks</span></li>
     </ol>
-    <h3>checklist</h3>
-    <ol>
-      <li>Linux command line: The Linux Command Line (Shotts), parts 1–2</li>
-      <li>Compile and run a C file from the terminal, no tutorial open</li>
-      <li>Python: Automate the Boring Stuff, ch. 1–9</li>
-      <li>Write a script that reads a file, transforms bytes, prints the result</li>
-      <li>Networking: explain how an HTTP request reaches a program on a port</li>
+    <h3>linux</h3>
+    <ol class="res">
+      <li><a href="https://pwn.college/linux-luminarium/">Linux Luminarium (pwn.college)</a> <span class="kind">free</span></li>
+      <li><a href="https://pwn.college/computing-101/">Computing 101 (pwn.college)</a> <span class="kind">free</span></li>
     </ol>
-    <p class="dlv"><span>unlock</span>Go/no-go: compile a C file and script bytes from a terminal.</p>
+    <h3>c</h3>
+    <ol class="res">
+      <li><a href="https://gustedt.gitlabpages.inria.fr/modern-c/">Modern C (Jens Gustedt)</a> <span class="kind">free · book</span></li>
+    </ol>
+    <h3>systems, assembly, debugging</h3>
+    <ol class="res">
+      <li><a href="https://p.ost2.fyi/courses/course-v1:OpenSecurityTraining2+Arch1001_x86-64_Asm+2021_v1/about">Arch1001: x86-64 Assembly (OST2)</a> <span class="kind">free</span></li>
+      <li><a href="https://p.ost2.fyi/courses/course-v1:OpenSecurityTraining2+Dbg1012_IntroGDB+2024_v1/about">Dbg1012: Introductory GDB (OST2)</a> <span class="kind">free</span></li>
+      <li><a href="https://csapp.cs.cmu.edu/3e/labs.html">CS:APP3e labs: Data, Bomb, Attack</a> <span class="kind">labs free · book paid</span></li>
+      <li><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a> <span class="kind">free · book</span></li>
+    </ol>
+    <p class="dlv"><span>milestone</span><a href="https://pwn.college/intro-to-cybersecurity/">Intro to Cybersecurity (pwn.college) + CS:APP Bomb and Attack labs</a></p>
   </div>
 </details>
 <details class="badge">
-  <summary><span class="sq">LAB</span><span class="nm">Snapshot Saver</span><span class="mt">before week 1 · lab setup · common</span></summary>
+  <summary><span class="sq">RE</span><span class="nm">Stripped Bare</span><span class="mt">reverse engineering · read code you did not write</span></summary>
   <div class="steps">
-    <p class="flv">A home worth hacking in.</p>
     <h3>resources</h3>
     <ol class="res">
-      <li><a href="https://github.com/pwndbg/pwndbg">GDB + pwndbg</a> <span class="kind">tool · free</span></li>
-      <li><a href="https://ghidra-sre.org/">Ghidra</a> <span class="kind">tool · free</span></li>
-      <li><a href="https://aflplus.plus/">AFL++</a> <span class="kind">tool · free</span></li>
-      <li><a href="https://www.qemu.org/">QEMU (qemu-user)</a> <span class="kind">tool · free</span></li>
+      <li><a href="https://p.ost2.fyi/courses/course-v1:OpenSecurityTraining2+Dbg1102_IntroGhidra+2024_v2/about">Dbg1102: Introductory Ghidra (OST2)</a> <span class="kind">free</span></li>
+      <li><a href="https://pwn.college/program-security/reverse-engineering/">pwn.college Reverse Engineering</a> <span class="kind">free · 36 challenges</span></li>
+      <li><a href="https://beginners.re/">Reverse Engineering for Beginners (Yurichev)</a> <span class="kind">free · book</span></li>
     </ol>
-    <h3>checklist</h3>
-    <ol>
-      <li>Disposable Linux VM, snapshotted</li>
-      <li>GDB + pwndbg, Ghidra, AFL++ installed</li>
-      <li>qemu-user + ARM/MIPS cross-compilers working</li>
-      <li>Methodology notebook started</li>
-    </ol>
-    <p class="dlv"><span>unlock</span>VM, toolchain and ARM/MIPS cross-compilers live.</p>
-  </div>
-</details>
-<details class="badge side">
-  <summary><span class="sq">x8</span><span class="nm">Mon/Wed</span><span class="mt">runs alongside · any 8 weeks · rare</span></summary>
-  <div class="steps">
-    <p class="flv">Consistency beats intensity.</p>
-    <h3>checklist</h3>
-    <ol>
-      <li>week 1: Monday + Wednesday</li>
-      <li>week 2: Monday + Wednesday</li>
-      <li>week 3: Monday + Wednesday</li>
-      <li>week 4: Monday + Wednesday</li>
-      <li>week 5: Monday + Wednesday</li>
-      <li>week 6: Monday + Wednesday</li>
-      <li>week 7: Monday + Wednesday</li>
-      <li>week 8: Monday + Wednesday</li>
-    </ol>
-    <p class="dlv"><span>unlock</span>8 straight weeks, no misses.</p>
+    <p class="dlv"><span>milestone</span><a href="https://crackmes.one/">10 crackmes of rising difficulty, unaided; one written up in full</a></p>
   </div>
 </details>
 <details class="badge">
-  <summary><span class="sq">M0</span><span class="nm">Segfault Survivor</span><span class="mt">weeks 1–4 · C fluency + number representation · common</span></summary>
+  <summary><span class="sq">BX</span><span class="nm">RIP Control</span><span class="mt">binary exploitation · memory bug to control, against current mitigations</span></summary>
   <div class="steps">
-    <p class="flv">You speak C now.</p>
     <h3>resources</h3>
     <ol class="res">
-      <li><a href="https://beej.us/guide/bgc/">Beej's Guide to C Programming</a> <span class="kind">text · free · primary</span></li>
-      <li><a href="https://p.ost2.fyi/">OST2 Arch1001: x86-64 assembly</a> <span class="kind">video · free</span></li>
-      <li>Effective C, 2nd ed. (Seacord): come back around M3 <span class="kind">text · paid</span></li>
-      <li><a href="https://clang.llvm.org/docs/AddressSanitizer.html">AddressSanitizer docs</a> <span class="kind">text · free</span></li>
-      <li><a href="https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html">UndefinedBehaviorSanitizer docs</a> <span class="kind">text · free</span></li>
+      <li><a href="https://pwn.college/program-security/">pwn.college Program Security</a> <span class="kind">free · 162 challenges</span></li>
+      <li><a href="https://ropemporium.com/">ROP Emporium</a> <span class="kind">free · 8 challenges</span></li>
+      <li><a href="https://pwn.college/software-exploitation/">pwn.college Software Exploitation</a> <span class="kind">free · 90 challenges</span></li>
+      <li><a href="https://github.com/shellphish/how2heap">how2heap (shellphish)</a> <span class="kind">free · check the glibc version</span></li>
     </ol>
-    <h3>sessions</h3>
-    <ol>
-      <li>w1 mon · Beej's Guide: types, operators, functions, intro to pointers</li>
-      <li>w1 wed · Number-representation worksheet, all 6 problems</li>
-      <li>w2 mon · Beej's Guide: pointers, arrays and strings</li>
-      <li>w2 wed · Linked list + buffer copy; break them on purpose</li>
-      <li>w3 mon · Beej's Guide: structs, unions, file I/O, fread</li>
-      <li>w3 wed · OST2 Arch1001 opening modules; start the parser</li>
-      <li>w4 mon · Build the parser under ASan/UBSan; read their reports</li>
-      <li>w4 wed · Finish, test malformed input, write the reflection</li>
-    </ol>
-    <p class="dlv"><span>unlock</span>binparse: worksheet, ASan-clean parser, reflection.</p>
+    <p class="dlv"><span>milestone</span>Program Security + Software Exploitation through Dynamic Allocator Exploitation; one how2heap technique on its newest glibc with ASLR, PIE, NX and full RELRO on</p>
   </div>
 </details>
 <details class="badge">
-  <summary><span class="sq">M1</span><span class="nm">mov Fluent</span><span class="mt">weeks 5–9 · x86-64 assembly + debugging · rare</span></summary>
+  <summary><span class="sq">VD</span><span class="nm">Déjà Vuln</span><span class="mt">vulnerability discovery · audit, fuzzing, variants, patch diffing</span></summary>
   <div class="steps">
-    <p class="flv">No source? No problem.</p>
-    <h3>resources</h3>
+    <h3>bug classes + audit</h3>
     <ol class="res">
-      <li><a href="https://p.ost2.fyi/">OST2 Arch1001: x86-64 assembly</a> <span class="kind">video · free</span></li>
-      <li><a href="https://p.ost2.fyi/">OST2 Dbg1012: GDB</a> <span class="kind">video · free</span></li>
-      <li><a href="https://pwn.college/">pwn.college: Assembly Crash Course, Debugging</a> <span class="kind">lab + video · free</span></li>
-      <li><a href="https://github.com/pwndbg/pwndbg">pwndbg</a> <span class="kind">tool · free</span></li>
-      <li><a href="https://savannah.nongnu.org/projects/pgubook/">Programming from the Ground Up (Bartlett), optional</a> <span class="kind">text · free</span></li>
+      <li><a href="https://p.ost2.fyi/courses/course-v1:OpenSecurityTraining2+Vulns1001_C-family+2023_v1/about">Vulns1001: C-Family Implementation Vulns (OST2)</a> <span class="kind">free</span></li>
+      <li><a href="https://portswigger.net/web-security">Web Security Academy (PortSwigger)</a> <span class="kind">free</span></li>
     </ol>
-    <h3>sessions</h3>
-    <ol>
-      <li>w5 mon · OST2 Arch1001: registers, the stack, control flow</li>
-      <li>w5 wed · Replicate each concept in GDB on a toy binary</li>
-      <li>w6 mon · System V calling convention, prologue/epilogue</li>
-      <li>w6 wed · pwn.college Assembly Crash Course</li>
-      <li>w7 mon · OST2 Dbg1012 + pwndbg</li>
-      <li>w7 wed · pwn.college debugging challenges</li>
-      <li>w8 mon · The stack in depth: saved RBP/RIP next to a buffer</li>
-      <li>w8 wed · Solve a crackme; map the stack frame by hand</li>
-      <li>w9 · Deliverable crackme, start to finish</li>
+    <h3>fuzzing</h3>
+    <ol class="res">
+      <li><a href="https://p.ost2.fyi/courses/course-v1:OpenSecurityTraining2+Fuzz1001_Intro_AFL+2025_v1/about">Fuzz1001: Intro to AFL++ (OST2)</a> <span class="kind">free</span></li>
+      <li><a href="https://github.com/antonio-morales/Fuzzing101">Fuzzing101 (GitHub Security Lab)</a> <span class="kind">free · 10 exercises</span></li>
+      <li><a href="https://appsec.guide/docs/fuzzing/">Testing Handbook: Fuzzing (Trail of Bits)</a> <span class="kind">free</span></li>
     </ol>
-    <p class="dlv"><span>unlock</span>Annotated GDB crackme walkthrough.</p>
+    <h3>variants + patch diffing</h3>
+    <ol class="res">
+      <li><a href="https://codeql.github.com/docs/codeql-language-guides/codeql-for-cpp">CodeQL for C and C++</a> <span class="kind">free</span></li>
+      <li><a href="https://ihack4falafel.github.io/Patch-Diffing-with-Ghidra">Patch Diffing with Ghidra</a> <span class="kind">free · article</span></li>
+    </ol>
+    <p class="dlv"><span>milestone</span>Rediscover a known CVE with your own fuzzer setup, root-cause it to the line, then find it again from the patch alone</p>
   </div>
 </details>
 <details class="badge">
-  <summary><span class="sq">M2</span><span class="nm">Stripped Bare</span><span class="mt">weeks 10–13 · reversing with Ghidra · rare</span></summary>
+  <summary><span class="sq">PRO</span><span class="nm">On the Record</span><span class="mt">disclosure · bug to fix, CVE and public write-up</span></summary>
   <div class="steps">
-    <p class="flv">Stripped means nothing to you.</p>
     <h3>resources</h3>
     <ol class="res">
-      <li><a href="https://p.ost2.fyi/">OST2 Dbg1102: Ghidra</a> <span class="kind">video · free</span></li>
-      <li><a href="https://guyinatuxedo.github.io/">Nightmare (guyinatuxedo)</a> <span class="kind">text · free</span></li>
-      <li><a href="https://crackmes.one/">crackmes.one</a> <span class="kind">lab · free</span></li>
-      <li><a href="https://ghidra-sre.org/">Ghidra docs</a> <span class="kind">text · free</span></li>
-      <li><a href="https://azeria-labs.com/">Azeria Labs: ARM assembly</a> <span class="kind">text · free</span></li>
-      <li><a href="https://github.com/praetorian-inc/DVRF">DVRF: Damn Vulnerable Router Firmware</a> <span class="kind">lab · free</span></li>
+      <li><a href="https://certcc.github.io/CERT-Guide-to-CVD/">CERT Guide to Coordinated Vulnerability Disclosure</a> <span class="kind">free</span></li>
+      <li><a href="https://cwe.mitre.org/documents/cwe_usage/guidance.html">CWE root cause mapping guidance</a> <span class="kind">free</span></li>
+      <li><a href="https://www.first.org/cvss/v4.0/specification-document">CVSS v4.0 specification</a> <span class="kind">free</span></li>
+      <li><a href="https://mitre.github.io/mitre-cve-roles/CNA-LR/">MITRE CNA of Last Resort</a> <span class="kind">free</span></li>
     </ol>
-    <h3>sessions</h3>
-    <ol>
-      <li>w10 mon · OST2 Dbg1102: setup, decompiler, navigation</li>
-      <li>w10 wed · Reverse an easy crackme, renaming as you go</li>
-      <li>w11 mon · Data types, struct recovery, cross-references</li>
-      <li>w11 wed · Nightmare early challenges in Ghidra</li>
-      <li>w12 mon · Static + dynamic: Ghidra, then confirm in GDB</li>
-      <li>w12 wed · First ARM binary: an embedded HTTP/CGI handler</li>
-      <li>w13 · Deliverable target, start to finish</li>
-    </ol>
-    <p class="dlv"><span>unlock</span>Stripped-crackme reverse write-up.</p>
+    <p class="dlv"><span>milestone</span>A full advisory (summary, versions, root cause, CWE, CVSS, PoC, fix) for the CVE from VD</p>
   </div>
 </details>
 <details class="badge">
-  <summary><span class="sq">M3</span><span class="nm">Sink Hunter</span><span class="mt">weeks 14–19 · bug classes + source auditing · epic</span></summary>
+  <summary><span class="sq">SPC</span><span class="nm">Pick a Lane</span><span class="mt">specialisation · pick one, after disclosure</span></summary>
   <div class="steps">
-    <p class="flv">You see the bug before it bites.</p>
-    <h3>resources</h3>
+    <h3>linux kernel</h3>
     <ol class="res">
-      <li><a href="https://p.ost2.fyi/">OST2 Vulns1001 + Vulns1002</a> <span class="kind">video · free · spine</span></li>
-      <li>The Art of Software Security Assessment <span class="kind">text · paid</span></li>
-      <li><a href="https://github.com/weggli-rs/weggli">weggli</a> <span class="kind">tool · free</span></li>
-      <li><a href="https://semgrep.dev/">Semgrep</a> <span class="kind">tool · free</span></li>
-      <li>&quot;Vulnerabilities 101&quot; (Drake &amp; Christey Coley, DEF CON 24) <span class="kind">video · free</span></li>
+      <li><a href="https://p.ost2.fyi/courses/course-v1:OpenSecurityTraining2+Arch2001_x86-64_OS_Internals+2024_v1/about">Arch2001: x86-64 OS Internals (OST2)</a> <span class="kind">free</span></li>
+      <li><a href="https://pwn.college/system-security/">pwn.college System Security</a> <span class="kind">free</span></li>
+      <li><a href="https://lkmidas.github.io/posts/20210123-linux-kernel-pwn-part-1/">Learning Linux Kernel Exploitation, part 1 (Midas)</a> <span class="kind">free</span></li>
+      <li><a href="https://pwn.college/software-exploitation/kernel-exploitation/">pwn.college Kernel Exploitation</a> <span class="kind">free</span></li>
     </ol>
-    <h3>sessions</h3>
-    <ol>
-      <li>w14 · OST2 Vulns1001: stack overflows, OOB; spot-the-bug quizzes</li>
-      <li>w15 · Integer bugs, signedness, truncation; AOSS integer chapter</li>
-      <li>w16 · OST2 Vulns1002: UAF, double free, type confusion; labs</li>
-      <li>w17 · Auditing method; AOSS ch. 1–4; choose the audit target</li>
-      <li>w18 · Enumerate entry points + dangerous APIs; trace two paths</li>
-      <li>w19 · Variant pass with weggli/grep; write the report</li>
+    <h3>windows</h3>
+    <ol class="res">
+      <li><a href="https://learn.microsoft.com/en-us/sysinternals/resources/windows-internals">Windows Internals, 7th ed.</a> <span class="kind">paid · book</span></li>
+      <li><a href="https://github.com/hacksysteam/HackSysExtremeVulnerableDriver">HackSys Extreme Vulnerable Driver</a> <span class="kind">free</span></li>
+      <li><a href="https://p.ost2.fyi/courses/course-v1:OpenSecurityTraining2+Exp4011_Windows_Kernel_UAF_KTM+2023_v1/about">Exp4011: Windows Kernel Race + UAF in KTM (OST2)</a> <span class="kind">free</span></li>
     </ol>
-    <p class="dlv"><span>unlock</span>Source audit report: attack surface + 2 or more findings.</p>
+    <h3>browsers</h3>
+    <ol class="res">
+      <li><a href="https://jhalon.github.io/chrome-browser-exploitation-1/">Chrome Browser Exploitation series (Jack Halon)</a> <span class="kind">free</span></li>
+    </ol>
+    <h3>embedded + firmware</h3>
+    <ol class="res">
+      <li><a href="https://azeria-labs.com/writing-arm-assembly-part-1/">Azeria Labs: ARM assembly</a> <span class="kind">free</span></li>
+      <li><a href="https://ost2.fyi/Arch4001">Arch4001 (OST2)</a> <span class="kind">free</span></li>
+      <li><a href="https://github.com/ReFirmLabs/binwalk">binwalk</a> <span class="kind">tool</span></li>
+      <li><a href="https://github.com/pr0v3rbs/FirmAE">FirmAE</a> <span class="kind">tool</span></li>
+    </ol>
+    <h3>mobile</h3>
+    <ol class="res">
+      <li><a href="https://source.android.com/docs/security/overview">Android security overview</a> <span class="kind">free</span></li>
+      <li><a href="https://mas.owasp.org/MASTG/">OWASP MASTG</a> <span class="kind">free</span></li>
+    </ol>
+    <h3>hypervisors</h3>
+    <ol class="res">
+      <li><a href="https://www.qemu.org/docs/master/devel/index.html">QEMU developer docs</a> <span class="kind">free</span></li>
+    </ol>
+    <p class="dlv"><span>milestone</span>The Core list of one lane, done</p>
   </div>
 </details>
 <details class="badge">
-  <summary><span class="sq">M4</span><span class="nm">RIP Control</span><span class="mt">weeks 20–23 · exploitation primitives · epic</span></summary>
+  <summary><span class="sq">0DAY</span><span class="nm">Zero Day</span><span class="mt">final project · find, root-cause and disclose a new bug</span></summary>
   <div class="steps">
-    <p class="flv">Crash in, primitive out.</p>
-    <h3>resources</h3>
-    <ol class="res">
-      <li><a href="https://pwn.college/">pwn.college: Program Security</a> <span class="kind">lab + video · free</span></li>
-      <li><a href="https://ropemporium.com/">ROP Emporium</a> <span class="kind">text + lab · free</span></li>
-      <li><a href="https://github.com/shellphish/how2heap">how2heap (shellphish)</a> <span class="kind">text · free</span></li>
-      <li><a href="https://guyinatuxedo.github.io/">Nightmare (guyinatuxedo)</a> <span class="kind">text · free</span></li>
-    </ol>
-    <h3>sessions</h3>
+    <h3>steps</h3>
     <ol>
-      <li>w20 · pwn.college Program Security: overflow to control flow; mitigations</li>
-      <li>w21 · ROP Emporium 1–4, through callme</li>
-      <li>w22 · glibc heap basics, how2heap, pwn.college heap intro</li>
-      <li>w23 · Exploitability analysis: crash to primitive</li>
+      <li>Pick a target you are allowed to test</li>
+      <li>Map its attack surface: top three entry points, and why</li>
+      <li>Find a bug by audit, fuzzing or variant analysis; check it is new</li>
+      <li>Root-cause it to the line, name the CWE and the primitive</li>
+      <li>Prove impact: a reliable PoC in your own lab (70% over 20 runs)</li>
+      <li>Disclose through the vendor, their CNA or MITRE, then publish</li>
     </ol>
-    <p class="dlv"><span>unlock</span>Primitive write-up + CVE severity judgment.</p>
-  </div>
-</details>
-<details class="badge side">
-  <summary><span class="sq">BELT</span><span class="nm">Yellow Belt</span><span class="mt">by the end of M4 · pwn.college · rare</span></summary>
-  <div class="steps">
-    <p class="flv">The community knows this one.</p>
-    <h3>resources</h3>
-    <ol class="res">
-      <li><a href="https://pwn.college/">pwn.college belts</a> <span class="kind">lab · free</span></li>
-    </ol>
-    <h3>checklist</h3>
-    <ol>
-      <li>Orange belt</li>
-      <li>Yellow belt</li>
-    </ol>
-    <p class="dlv"><span>unlock</span>Earn the pwn.college yellow belt.</p>
-  </div>
-</details>
-<details class="badge">
-  <summary><span class="sq">M5</span><span class="nm">Crash Collector</span><span class="mt">weeks 24–28 · fuzzing · epic</span></summary>
-  <div class="steps">
-    <p class="flv">You let the machine find them.</p>
-    <h3>resources</h3>
-    <ol class="res">
-      <li><a href="https://github.com/antonio-morales/Fuzzing101">Fuzzing101 (Antonio Morales)</a> <span class="kind">text + lab · free</span></li>
-      <li><a href="https://aflplus.plus/docs/">AFL++ documentation</a> <span class="kind">text · free</span></li>
-      <li><a href="https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md">libFuzzer tutorial (Google)</a> <span class="kind">text · free</span></li>
-      <li><a href="https://epi052.gitlab.io/notes-to-self/">epi052: Fuzzing101 with LibAFL, optional</a> <span class="kind">text · free</span></li>
-    </ol>
-    <h3>sessions</h3>
-    <ol>
-      <li>w24 · Fuzzing101 Ex.1 (Xpdf); reproduce the CVE in GDB</li>
-      <li>w25 · Ex.2 (libexif) + Ex.3 (tcpdump, ASan); minimize + dedupe</li>
-      <li>w26 · Ex.4 (LibTIFF) + Ex.5 (libxml2); AFL++ dictionaries, persistent mode</li>
-      <li>w27 · Harness a long-tail parser; run it; triage</li>
-      <li>w28 · Root-cause the best crash</li>
-    </ol>
-    <p class="dlv"><span>unlock</span>Fuzzing harness + crash triage report.</p>
-  </div>
-</details>
-<details class="badge side">
-  <summary><span class="sq">F101</span><span class="nm">Déjà Vuln</span><span class="mt">alongside M5 · Fuzzing101 · rare</span></summary>
-  <div class="steps">
-    <p class="flv">Old bugs, found again by hand.</p>
-    <h3>resources</h3>
-    <ol class="res">
-      <li><a href="https://github.com/antonio-morales/Fuzzing101">Fuzzing101 exercises</a> <span class="kind">text + lab · free</span></li>
-    </ol>
-    <h3>checklist</h3>
-    <ol>
-      <li>Ex.1 Xpdf</li>
-      <li>Ex.2 libexif</li>
-      <li>Ex.3 tcpdump</li>
-      <li>Ex.4 LibTIFF</li>
-      <li>Ex.5 libxml2</li>
-      <li>Ex.6–10, the rest of the targets</li>
-    </ol>
-    <p class="dlv"><span>unlock</span>Reproduce every Fuzzing101 target CVE.</p>
-  </div>
-</details>
-<details class="badge">
-  <summary><span class="sq">M6</span><span class="nm">Diff Detective</span><span class="mt">weeks 29–32 · n-day + patch diffing on appliances · legendary</span></summary>
-  <div class="steps">
-    <p class="flv">A patch is a confession.</p>
-    <h3>resources</h3>
-    <ol class="res">
-      <li><a href="https://www.zerodayinitiative.com/advisories/ZDI-20-709/">ZDI-20-709: NETGEAR R6700 heap overflow</a> <span class="kind">text · free</span></li>
-      <li><a href="https://www.zerodayinitiative.com/blog">ZDI blog: router write-ups</a> <span class="kind">text · free</span></li>
-      <li><a href="https://clearbluejar.github.io/">Patch Diffing in the Dark (clearbluejar)</a> <span class="kind">text · free</span></li>
-      <li><a href="https://github.com/clearbluejar/ghidriff">Ghidriff</a> <span class="kind">tool · free</span></li>
-      <li><a href="https://github.com/ReFirmLabs/binwalk">binwalk</a> <span class="kind">tool · free</span></li>
-      <li><a href="https://github.com/pr0v3rbs/FirmAE">FirmAE</a> <span class="kind">tool · free</span></li>
-      <li><a href="https://github.com/e-m-b-a/emba">EMBA</a> <span class="kind">tool · free</span></li>
-      <li><a href="https://github.com/scriptingxss/owasp-fstm">OWASP Firmware Security Testing Methodology</a> <span class="kind">text · free</span></li>
-      <li><a href="https://azeria-labs.com/">Azeria Labs: ARM</a> <span class="kind">text · free</span></li>
-    </ol>
-    <h3>sessions</h3>
-    <ol>
-      <li>w29 · binwalk, FirmAE/QEMU; pick the CVE</li>
-      <li>w30 · Before/after firmware; diff the target binary</li>
-      <li>w31 · Reconstruct the bug from the patch; variant hunt</li>
-      <li>w32 · Write and polish the dossier</li>
-    </ol>
-    <p class="dlv"><span>unlock</span>N-day root-cause dossier.</p>
-  </div>
-</details>
-<details class="badge">
-  <summary><span class="sq">DOX</span><span class="nm">Paper Trail</span><span class="mt">week 32 · publish · epic</span></summary>
-  <div class="steps">
-    <p class="flv">Portfolio piece number one.</p>
-    <h3>checklist</h3>
-    <ol>
-      <li>Dossier written</li>
-      <li>Published on this site</li>
-    </ol>
-    <p class="dlv"><span>unlock</span>Publish your first n-day root-cause dossier.</p>
-  </div>
-</details>
-<details class="badge">
-  <summary><span class="sq">★</span><span class="nm">Phase Shift</span><span class="mt">end of phase 1 · legendary</span></summary>
-  <div class="steps">
-    <p class="flv">You can do vulnerability research.</p>
-    <h3>resources</h3>
-    <ol class="res">
-      <li><a href="https://exploit.education/phoenix/">Exploit Education: Phoenix, extra reps</a> <span class="kind">lab · free</span></li>
-      <li>Attacking Network Protocols (Forshaw), optional <span class="kind">text · paid</span></li>
-    </ol>
-    <h3>checklist</h3>
-    <ol>
-      <li>All 7 module deliverables passed (70+)</li>
-      <li>All 32 weeks done</li>
-    </ol>
-    <p class="dlv"><span>unlock</span>Finish all 32 weeks of Phase 1.</p>
-  </div>
-</details>
-<p class="phase">phase 2 · real-world</p>
-<details class="badge">
-  <summary><span class="sq">ACK</span><span class="nm">Confirmed</span><span class="mt">phase 2 · legendary</span></summary>
-  <div class="steps">
-    <p class="flv">A real vendor said: confirmed.</p>
-    <h3>resources</h3>
-    <ol class="res">
-      <li><a href="https://www.zerodayinitiative.com/blog">ZDI blog</a> <span class="kind">stay current</span></li>
-      <li><a href="https://googleprojectzero.blogspot.com/">Project Zero blog</a> <span class="kind">stay current</span></li>
-      <li><a href="https://blog.exploits.club/">blog.exploits.club</a> <span class="kind">stay current</span></li>
-    </ol>
-    <h3>checklist</h3>
-    <ol>
-      <li>Specialize in one appliance family</li>
-      <li>Weekly n-day drill</li>
-      <li>Variant analysis turns up a new bug</li>
-      <li>Disclosed; vendor confirms</li>
-    </ol>
-    <p class="dlv"><span>unlock</span>Get your first vendor-acknowledged bug.</p>
-  </div>
-</details>
-<details class="badge">
-  <summary><span class="sq">CVE</span><span class="nm">On the Record</span><span class="mt">phase 2 · mythic</span></summary>
-  <div class="steps">
-    <p class="flv">Your name on a CVE-ID.</p>
-    <h3>checklist</h3>
-    <ol>
-      <li>CVE-ID assigned</li>
-    </ol>
-    <p class="dlv"><span>unlock</span>Receive your first assigned CVE.</p>
-  </div>
-</details>
-<details class="badge">
-  <summary><span class="sq">€€€</span><span class="nm">Bounty Paid</span><span class="mt">phase 2 · mythic</span></summary>
-  <div class="steps">
-    <p class="flv">Paid to find them.</p>
-    <h3>resources</h3>
-    <ol class="res">
-      <li><a href="https://www.zerodayinitiative.com/">Zero Day Initiative</a> <span class="kind">coordinator</span></li>
-      <li><a href="https://ssd-disclosure.com/">SSD Secure Disclosure</a> <span class="kind">coordinator</span></li>
-    </ol>
-    <h3>checklist</h3>
-    <ol>
-      <li>Submitted to ZDI or SSD</li>
-      <li>Acquisition paid</li>
-    </ol>
-    <p class="dlv"><span>unlock</span>Land your first ZDI/SSD acquisition.</p>
-  </div>
-</details>
-<details class="badge">
-  <summary><span class="sq">P2O</span><span class="nm">Main Stage</span><span class="mt">phase 2 · mythic</span></summary>
-  <div class="steps">
-    <p class="flv">The contest floor. The big stage.</p>
-    <h3>checklist</h3>
-    <ol>
-      <li>Register an entry</li>
-      <li>Compete at Pwn2Own</li>
-    </ol>
-    <p class="dlv"><span>unlock</span>Compete at Pwn2Own.</p>
+    <p class="dlv"><span>milestone</span>A previously unknown bug, disclosed</p>
   </div>
 </details>
 </div>
-<p class="tally" data-total="18"><span class="earned"></span> / 18 badges · <span class="ticks"></span> steps done</p>
+<p class="tally" data-total="7"><span class="earned"></span> / 7 badges · <span class="ticks"></span> done</p>
 </div>
 </main>
 <footer class="foot">

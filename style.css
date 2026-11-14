@@ -192,3 +192,5 @@ th { font-weight: 600; color: var(--gold); }
 .kind { margin-left: 6px; font-size: 12px; color: #7d7a76; }
 
 main > .post:first-child { padding-top: 56px; }
+.how { order: -1; max-width: 640px; margin: 0 auto 16px; text-align: center; font: 14px/1.7 var(--mono); color: var(--dim); }
+.dlv a { color: var(--ink); text-decoration-color: var(--deep); }
