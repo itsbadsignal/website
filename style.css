@@ -53,7 +53,7 @@ img { max-width: 100%; height: auto; }
 .pic img { display: block; width: 100%; image-rendering: pixelated; }
 
 /* ---- a post or page ---- */
-.post { max-width: 730px; margin: 0 auto; padding: 0 24px; }
+.post { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 .post > h1 { margin: 8px 0 12px; font-size: 44px; font-weight: 700; line-height: 1.2; color: var(--deep); }
 .post h2 { margin: 48px 0 8px; font-size: 20px; font-weight: 600; color: var(--deep); }
 .post h3 { margin: 32px 0 8px; font-size: 17px; font-weight: 600; }
@@ -70,7 +70,7 @@ table { border-collapse: collapse; width: 100%; font-size: 16px; }
 td, th { padding: 8px 16px 8px 0; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
 th { font-weight: 600; color: var(--gold); }
 .book { width: 72px; }
-.pager { display: flex; justify-content: space-between; max-width: 730px; margin: 64px auto 0; padding: 24px; border-top: 1px solid var(--rule); font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.pager { display: flex; justify-content: space-between; max-width: 1100px; margin: 64px auto 0; padding: 24px; border-top: 1px solid var(--rule); font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
 .pager a { text-decoration: none; }
 
 /* ---- footer ---- */
@@ -120,7 +120,7 @@ th { font-weight: 600; color: var(--gold); }
 .down { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); font-size: 13px; color: var(--dim); text-decoration: none; }
 
 /* ---- front page: the log ---- */
-.log { max-width: 680px; margin: 0 auto; padding: 96px 24px 0; }
+.log { max-width: 1100px; margin: 0 auto; padding: 96px 24px 0; }
 .log h2 { margin: 0 0 16px; font-size: 13px; font-weight: 400; color: var(--dim); }
 .log article { margin-bottom: 56px; }
 .log time { font-size: 13px; color: var(--dim); }
@@ -138,7 +138,7 @@ th { font-weight: 600; color: var(--gold); }
   }
 
 /* ---- roadmap: a vertical rail of badges; progress is edited in the HTML ---- */
-.road { display: flex; flex-direction: column; max-width: 720px; margin: 0 auto; padding: 0 24px; counter-reset: earned ticks; }
+.road { display: flex; flex-direction: column; max-width: 1100px; margin: 0 auto; padding: 0 24px; counter-reset: earned ticks; }
 .tally { order: -1; margin: -8px 0 56px; text-align: center; font: 13px var(--mono); color: var(--dim); }
 .tally .earned::before { content: counter(earned); color: var(--gold); }
 .tally .ticks::before { content: counter(ticks); color: var(--gold); }

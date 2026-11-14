@@ -48,7 +48,7 @@ style.css  prank.js  mark.svg  favicon.svg  fonts/  og.png  .well-known/
 ```
 
 Every page, the front page included, uses the same `<head>`, `<header>`
-(logo + the seven main links) and `<footer>` (projects, tags, rss). Contact
+(logo + the eight main links) and `<footer>` (tags, rss). Contact
 details and outside profiles live on the About page. Copy them from any existing page.
 
 ## Writing a post
