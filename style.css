@@ -91,8 +91,8 @@ th { font-weight: 600; color: var(--gold); }
 .name { position: absolute; z-index: 2; top: 50%; left: 50%; margin: 0; transform: translate(-50%, -50%); display: flex; align-items: center; gap: .12em;
   font: 300 clamp(72px, 12vw, 168px)/1 Poppins, sans-serif; letter-spacing: -.04em; white-space: nowrap;
   text-shadow: 12px 22px 5px rgba(237, 234, 230, .22), 24px 44px 10px rgba(237, 234, 230, .12), 36px 66px 16px rgba(237, 234, 230, .06); }
-.portrait { position: absolute; z-index: 1; top: 1%; right: 1%; margin: 0; padding: 0; background: none; border: 0; font: 8px/1 var(--mono); color: #a9a5a0; opacity: .55; white-space: pre;
-  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 55% 45%, #000 40%, transparent 78%); mask-image: radial-gradient(ellipse 60% 60% at 55% 45%, #000 40%, transparent 78%); }
+.portrait { position: absolute; z-index: 1; top: 7%; right: 5%; margin: 0; padding: 0; background: none; border: 0; font: 7px/1 var(--mono); color: #b9b5b0; opacity: .7; white-space: pre;
+  -webkit-mask-image: linear-gradient(#000 70%, transparent); mask-image: linear-gradient(#000 70%, transparent); }
 .q { position: absolute; z-index: 2; margin: 0; padding: 0; border: 0; max-width: 300px; font: 400 italic 15px/1.6 Poppins, sans-serif; color: #b5b1ac; }
 .q cite { display: block; margin-top: 4px; font: normal 12px var(--mono); color: var(--deep); letter-spacing: .1em; }
 .q cite::before { content: "— "; }
