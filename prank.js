@@ -190,13 +190,13 @@
       '<h2 class="pwned__title">nothing happened.</h2>' +
       '<p>No keys, no passwords, no history. This site has no server-side anything ' +
       'and nothing left your machine.</p>' +
-      '<p>But a stranger’s website just ran code on your computer while you ' +
-      'weren’t even looking at it. This one is about 200 lines of harmless ' +
+      '<p>But a stranger\'s website just ran code on your computer while you ' +
+      'weren\'t even looking at it. This one is about 200 lines of harmless ' +
       'JavaScript. The next one might not be.</p>' +
       '<p><strong>Disable JavaScript by default</strong> and allow it only on sites ' +
       'you trust. This one works fine without it.</p>' +
       '<p><a href="https://disable-javascript.org" target="_blank" rel="noopener">' +
-      'disable-javascript.org →</a></p>' +
+      'disable-javascript.org</a></p>' +
       '<button type="button" class="pwned__close">[ close ]</button>' +
       '</div>';
     root.querySelector('.pwned__art').textContent = art;

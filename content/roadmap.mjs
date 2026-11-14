@@ -5,57 +5,57 @@ const OST2 = (id) => `https://p.ost2.fyi/courses/course-v1:OpenSecurityTraining2
 export const ROADMAP = [
   {
     code: 'FND', icon: 'code', name: 'Segfault Survivor', state: 'now', rarity: 'common', flavor: 'You speak C now.',
-    meta: 'foundations · programming, linux, c, assembly, debugging',
+    meta: 'foundations: programming, linux, c, assembly, debugging',
     groups: [
-      ['programming · skip if you can write 100 lines without a tutorial', [
-        ['CS50x (Harvard)', 'https://cs50.harvard.edu/x/', 'free · 11 weeks'],
+      ['programming (skip if you can write 100 lines without a tutorial)', [
+        ['CS50x (Harvard)', 'https://cs50.harvard.edu/x/', 'free, 11 weeks'],
       ]],
       ['linux', [
         ['Linux Luminarium (pwn.college)', 'https://pwn.college/linux-luminarium/', 'free'],
         ['Computing 101 (pwn.college)', 'https://pwn.college/computing-101/', 'free'],
       ]],
-      ['c · in this order', [
-        ["Beej's Guide to C Programming", 'https://beej.us/guide/bgc/', 'free · book · the introduction'],
-        ['Modern C (Jens Gustedt)', 'https://gustedt.gitlabpages.inria.fr/modern-c/', 'free · book'],
-        ['Effective C, 2nd ed. (Robert Seacord)', '', 'paid · book · secure, modern C, after Modern C'],
+      ['c, in this order', [
+        ["Beej's Guide to C Programming", 'https://beej.us/guide/bgc/', 'free book, the introduction'],
+        ['Modern C (Jens Gustedt)', 'https://gustedt.gitlabpages.inria.fr/modern-c/', 'free book'],
+        ['Effective C, 2nd ed. (Robert Seacord)', '', 'paid book, secure, modern C, after Modern C'],
       ]],
       ['systems, assembly, debugging', [
         ['Arch1001: x86-64 Assembly (OST2)', OST2('Arch1001_x86-64_Asm+2021_v1'), 'free'],
         ['Dbg1012: Introductory GDB (OST2)', OST2('Dbg1012_IntroGDB+2024_v1'), 'free'],
-        ['CS:APP3e labs: Data, Bomb, Attack', 'https://csapp.cs.cmu.edu/3e/labs.html', 'labs free · book paid'],
-        ['Operating Systems: Three Easy Pieces', 'https://pages.cs.wisc.edu/~remzi/OSTEP/', 'free · book'],
+        ['CS:APP3e labs: Data, Bomb, Attack', 'https://csapp.cs.cmu.edu/3e/labs.html', 'free labs, paid book'],
+        ['Operating Systems: Three Easy Pieces', 'https://pages.cs.wisc.edu/~remzi/OSTEP/', 'free book'],
       ]],
     ],
     unlock: ['Intro to Cybersecurity (pwn.college) + CS:APP Bomb and Attack labs', 'https://pwn.college/intro-to-cybersecurity/'],
   },
   {
     code: 'RE', icon: 'ghost', name: 'Stripped Bare', rarity: 'rare', flavor: 'Stripped means nothing to you.',
-    meta: 'reverse engineering · read code you did not write',
+    meta: 'reverse engineering: read code you did not write',
     groups: [
       ['', [
         ['Dbg1102: Introductory Ghidra (OST2)', OST2('Dbg1102_IntroGhidra+2024_v2'), 'free'],
-        ['pwn.college Reverse Engineering', 'https://pwn.college/program-security/reverse-engineering/', 'free · 36 challenges'],
-        ['Reverse Engineering for Beginners (Yurichev)', 'https://beginners.re/', 'free · book'],
+        ['pwn.college Reverse Engineering', 'https://pwn.college/program-security/reverse-engineering/', 'free, 36 challenges'],
+        ['Reverse Engineering for Beginners (Yurichev)', 'https://beginners.re/', 'free book'],
       ]],
     ],
     unlock: ['10 crackmes of rising difficulty, unaided; one written up in full', 'https://crackmes.one/'],
   },
   {
     code: 'BX', icon: 'crosshair', name: 'RIP Control', rarity: 'epic', flavor: 'Crash in, primitive out.',
-    meta: 'binary exploitation · memory bug to control, against current mitigations',
+    meta: 'binary exploitation: memory bug to control, against current mitigations',
     groups: [
       ['', [
-        ['pwn.college Program Security', 'https://pwn.college/program-security/', 'free · 162 challenges'],
-        ['ROP Emporium', 'https://ropemporium.com/', 'free · 8 challenges'],
-        ['pwn.college Software Exploitation', 'https://pwn.college/software-exploitation/', 'free · 90 challenges'],
-        ['how2heap (shellphish)', 'https://github.com/shellphish/how2heap', 'free · check the glibc version'],
+        ['pwn.college Program Security', 'https://pwn.college/program-security/', 'free, 162 challenges'],
+        ['ROP Emporium', 'https://ropemporium.com/', 'free, 8 challenges'],
+        ['pwn.college Software Exploitation', 'https://pwn.college/software-exploitation/', 'free, 90 challenges'],
+        ['how2heap (shellphish)', 'https://github.com/shellphish/how2heap', 'free, check the glibc version'],
       ]],
     ],
     unlock: ['Program Security + Software Exploitation through Dynamic Allocator Exploitation; one how2heap technique on its newest glibc with ASLR, PIE, NX and full RELRO on', ''],
   },
   {
     code: 'VD', icon: 'search', name: 'Déjà Vuln', rarity: 'epic', flavor: 'Old bugs, found again by hand.',
-    meta: 'vulnerability discovery · audit, fuzzing, variants, patch diffing',
+    meta: 'vulnerability discovery: audit, fuzzing, variants, patch diffing',
     groups: [
       ['bug classes + audit', [
         ['Vulns1001: C-Family Implementation Vulns (OST2)', OST2('Vulns1001_C-family+2023_v1'), 'free'],
@@ -63,19 +63,19 @@ export const ROADMAP = [
       ]],
       ['fuzzing', [
         ['Fuzz1001: Intro to AFL++ (OST2)', OST2('Fuzz1001_Intro_AFL+2025_v1'), 'free'],
-        ['Fuzzing101 (GitHub Security Lab)', 'https://github.com/antonio-morales/Fuzzing101', 'free · 10 exercises'],
+        ['Fuzzing101 (GitHub Security Lab)', 'https://github.com/antonio-morales/Fuzzing101', 'free, 10 exercises'],
         ['Testing Handbook: Fuzzing (Trail of Bits)', 'https://appsec.guide/docs/fuzzing/', 'free'],
       ]],
       ['variants + patch diffing', [
         ['CodeQL for C and C++', 'https://codeql.github.com/docs/codeql-language-guides/codeql-for-cpp', 'free'],
-        ['Patch Diffing with Ghidra', 'https://ihack4falafel.github.io/Patch-Diffing-with-Ghidra', 'free · article'],
+        ['Patch Diffing with Ghidra', 'https://ihack4falafel.github.io/Patch-Diffing-with-Ghidra', 'free article'],
       ]],
     ],
     unlock: ['Rediscover a known CVE with your own fuzzer setup, root-cause it to the line, then find it again from the patch alone', ''],
   },
   {
     code: 'PRO', icon: 'id', name: 'On the Record', rarity: 'legendary', flavor: 'Your name on a CVE-ID.',
-    meta: 'disclosure · bug to fix, CVE and public write-up',
+    meta: 'disclosure: bug to fix, CVE and public write-up',
     groups: [
       ['', [
         ['CERT Guide to Coordinated Vulnerability Disclosure', 'https://certcc.github.io/CERT-Guide-to-CVD/', 'free'],
@@ -88,7 +88,7 @@ export const ROADMAP = [
   },
   {
     phase: 2, code: 'SPC', icon: 'trophy', name: 'Pick a Lane', rarity: 'legendary', flavor: 'The contest floor. The big stage.',
-    meta: 'specialisation · pick one, after disclosure',
+    meta: 'specialisation: pick one, after disclosure',
     groups: [
       ['linux kernel', [
         ['Arch2001: x86-64 OS Internals (OST2)', OST2('Arch2001_x86-64_OS_Internals+2024_v1'), 'free'],
@@ -97,7 +97,7 @@ export const ROADMAP = [
         ['pwn.college Kernel Exploitation', 'https://pwn.college/software-exploitation/kernel-exploitation/', 'free'],
       ]],
       ['windows', [
-        ['Windows Internals, 7th ed.', 'https://learn.microsoft.com/en-us/sysinternals/resources/windows-internals', 'paid · book'],
+        ['Windows Internals, 7th ed.', 'https://learn.microsoft.com/en-us/sysinternals/resources/windows-internals', 'paid book'],
         ['HackSys Extreme Vulnerable Driver', 'https://github.com/hacksysteam/HackSysExtremeVulnerableDriver', 'free'],
         ['Exp4011: Windows Kernel Race + UAF in KTM (OST2)', OST2('Exp4011_Windows_Kernel_UAF_KTM+2023_v1'), 'free'],
       ]],
@@ -122,7 +122,7 @@ export const ROADMAP = [
   },
   {
     code: '0DAY', icon: 'checkbadge', name: 'Zero Day', rarity: 'mythic', flavor: 'A real vendor said: confirmed.',
-    meta: 'final project · find, root-cause and disclose a new bug',
+    meta: 'final project: find, root-cause and disclose a new bug',
     checklist: [
       'Pick a target you are allowed to test',
       'Map its attack surface: top three entry points, and why',

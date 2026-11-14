@@ -93,7 +93,6 @@ th { font-weight: 600; color: var(--gold); }
   -webkit-mask-image: linear-gradient(#000 70%, transparent); mask-image: linear-gradient(#000 70%, transparent); }
 .q { position: absolute; z-index: 2; margin: 0; padding: 0; border: 0; max-width: 300px; font: 400 italic 15px/1.6 var(--font); color: #b5b1ac; }
 .q cite { display: block; margin-top: 4px; font: normal 12px var(--font); color: var(--deep); letter-spacing: .1em; }
-.q cite::before { content: "— "; }
 .q1 { bottom: 14%; left: 6%; }
 .q2 { top: 64%; right: 6%; text-align: right; }
 .run { position: absolute; z-index: 2; top: 27%; left: 46%; width: 28px; height: 28px; display: grid; place-items: center; border: 1px solid var(--ink); background: #000; font-size: 13px; text-decoration: none; box-shadow: 0 0 24px rgba(237, 234, 230, .25); }

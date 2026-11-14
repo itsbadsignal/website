@@ -47,7 +47,7 @@ const SOURCE_NOTE = `<!--
 -->`;
 
 const head = ({ title, desc = DESC, route, image = '/og.png', note = false }) => {
-  const full = title ? `${title} — ${NAME}` : NAME;
+  const full = title ? `${title} | ${NAME}` : NAME;
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -125,8 +125,8 @@ ${p.body}
 </section>
 </article>
 <nav class="pager">
-${newer ? `<a href="/blog/${newer.slug}/">‹ Newer</a>` : '<a href="/blog/">‹ Blog</a>'}
-${older ? `<a href="/blog/${older.slug}/">Older ›</a>` : '<span></span>'}
+${newer ? `<a href="/blog/${newer.slug}/">Newer</a>` : '<a href="/blog/">Back to blog</a>'}
+${older ? `<a href="/blog/${older.slug}/">Older</a>` : '<span></span>'}
 </nav>`,
   }));
 });
@@ -144,11 +144,11 @@ ${p.cover ? `<a class="pic" href="/blog/${p.slug}/" tabindex="-1"><img src="/blo
 const listing = (route, title, sub, desc, current, list) => write(`${route.slice(1)}index.html`, page({ title, desc, route, body: `${hero(title, sub)}
 <nav class="filters" aria-label="Topics">
 <p><a href="/blog/"${current === 'all' ? ' aria-current="page"' : ''}>all</a></p>
-<p>${tags.map(([t]) => `<a href="/tags/${t}/"${current === t ? ' aria-current="page"' : ''}>${t}</a>`).join('<span>·</span>')}</p>
+<p>${tags.map(([t]) => `<a href="/tags/${t}/"${current === t ? ' aria-current="page"' : ''}>${t}</a>`).join('<span>/</span>')}</p>
 </nav>
 ${list.length ? list.map(entry).join('\n') : '<p class="empty">Nothing here yet.</p>'}` }));
 
-listing('/blog/', 'Blog', `${NAME} · notes, research and ctf writeups`, 'Every post, newest first.', 'all', posts);
+listing('/blog/', 'Blog', 'notes, research and ctf writeups', 'Every post, newest first.', 'all', posts);
 for (const [t, c] of tags) listing(`/tags/${t}/`, t, `${c} ${c === 1 ? 'post' : 'posts'} tagged ${t}`, `Posts tagged ${t}.`, t, posts.filter((p) => p.tags.includes(t)));
 write('tags/index.html', page({ title: 'Tags', desc: 'Browse posts by tag.', route: '/tags/', body: `${hero('Tags', `${tags.length} topics, most used first`)}
 <nav class="filters" aria-label="Topics">
@@ -182,7 +182,7 @@ write('library/index.html', plain('/library/', 'Library', 'Books I have read, am
   // A resource is [title, url, note, done?]; a checklist step is 'text' or ['text', true] once done.
   const li = ([t, u, n, done]) => `      <li${done ? ' class="done"' : ''}>${u ? `<a href="${u}">${esc(t)}</a>` : esc(t)}${n ? ` <span class="kind">${esc(n)}</span>` : ''}</li>`;
   const badge = (b) => `<details class="badge${b.state ? ' ' + b.state : ''}">
-  <summary><span class="bdg"><svg viewBox="0 0 64 72" aria-hidden="true"><polygon class="hex" points="32,3 60,19 60,53 32,69 4,53 4,19"/><g class="ico" transform="translate(21 15) scale(.92)">${ICONS[b.icon]}</g><text x="32" y="55">${esc(b.code)}</text></svg></span><span class="nm">${esc(b.name)}</span><span class="mt">${esc(b.meta)} · ${b.rarity}</span></summary>
+  <summary><span class="bdg"><svg viewBox="0 0 64 72" aria-hidden="true"><polygon class="hex" points="32,3 60,19 60,53 32,69 4,53 4,19"/><g class="ico" transform="translate(21 15) scale(.92)">${ICONS[b.icon]}</g><text x="32" y="55">${esc(b.code)}</text></svg></span><span class="nm">${esc(b.name)}</span><span class="mt">${esc(b.meta)}, ${b.rarity}</span></summary>
   <div class="steps">
     <p class="flv">${esc(b.flavor)}</p>
 ${[
@@ -192,12 +192,12 @@ ${[
     <p class="dlv"><span>unlock</span>${b.unlock[1] ? `<a href="${b.unlock[1]}">${esc(b.unlock[0])}</a>` : esc(b.unlock[0])}</p>
   </div>
 </details>`;
-  write('roadmap/index.html', page({ title: 'Roadmap', desc: 'OSVR: from a terminal to a disclosed 0-day, using existing, mostly free resources.', route: '/roadmap/', body: `${hero('Roadmap', 'osvr · vulnerability research, from the terminal to pwn2own')}
+  write('roadmap/index.html', page({ title: 'Roadmap', desc: 'OSVR: from a terminal to a disclosed 0-day, using existing, mostly free resources.', route: '/roadmap/', body: `${hero('Roadmap', 'osvr: vulnerability research, from the terminal to pwn2own')}
 <div class="road">
 <div class="rail">
-${ROADMAP.map((b) => (b.phase ? '<p class="phase">phase 2 · real-world</p>\n' : '') + badge(b)).join('\n')}
+${ROADMAP.map((b) => (b.phase ? '<p class="phase">phase 2: real world</p>\n' : '') + badge(b)).join('\n')}
 </div>
-<p class="tally"><span class="earned"></span> / ${ROADMAP.length} badges · <span class="ticks"></span> done</p>
+<p class="tally"><span class="earned"></span>/${ROADMAP.length} badges, <span class="ticks"></span> done</p>
 </div>` }));
 }
 
