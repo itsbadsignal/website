@@ -20,12 +20,14 @@ img { max-width: 100%; height: auto; }
 .foot .mark img { width: 44px; height: 44px; }
 
 /* ---- header (every page but the front) ---- */
-.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
-.top nav { font-size: 13px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; }
-.top nav a { text-decoration: none; }
-.top nav span { margin: 0 14px; color: var(--dim); }
-@media (max-width: 600px) { .top nav { display: flex; flex-wrap: wrap; row-gap: 4px; } .top nav span { margin: 0 8px; } }
-.top nav [aria-current] { color: var(--gold); }
+.top { max-width: 1100px; margin: 0 auto; padding: 40px 24px 0; }
+.top nav { display: grid; grid-template-columns: repeat(4, max-content); column-gap: 72px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); font: 15px/1 var(--mono); }
+.top nav div { display: flex; flex-direction: column; align-items: flex-start; gap: 13px; }
+.top nav .mark { margin-bottom: 18px; }
+.top nav a:not(.mark) { color: var(--ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; text-decoration-color: #6a6763; }
+.top nav a:not(.mark):hover { color: var(--gold); text-decoration-color: var(--gold); }
+.top nav [aria-current] { color: var(--gold); text-decoration-color: var(--gold); }
+@media (max-width: 700px) { .top nav { grid-template-columns: repeat(2, max-content); column-gap: 48px; row-gap: 13px; } .top nav div:first-child { grid-row: span 2; } }
 
 /* ---- ZDE-style title block and topic filter ---- */
 .hero { text-align: center; padding: 40px 24px 24px; }
@@ -77,7 +79,7 @@ th { font-weight: 600; color: var(--gold); }
 .foot { text-align: center; margin: 96px auto 0; padding: 48px 24px; max-width: 1100px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--dim); }
 
 /* ---- front page: the frame ---- */
-.frame { position: relative; min-height: max(620px, calc(100vh - 168px)); margin: 0 12px 12px; overflow: hidden; background-color: #050505;
+.frame { position: relative; min-height: max(740px, calc(100vh - 120px)); margin: 28px 12px 12px; overflow: hidden; background-color: #050505;
   background-image: linear-gradient(#121110 1px, transparent 1px), linear-gradient(90deg, #121110 1px, transparent 1px); background-size: 40px 40px; }
 .frame, .frame h2, .home .log { font-family: var(--mono); }
 .c { position: absolute; width: 22px; height: 22px; border: 0 solid #4a4743; }
@@ -183,10 +185,6 @@ th { font-weight: 600; color: var(--gold); }
   .phase { margin-left: -64px; }
 }
 
-/* ---- footer links: everything not in the header ---- */
-.more-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 20px; margin: 16px 0 10px; font: 13px var(--mono); }
-.more-links a { color: var(--ink); text-decoration: none; }
-.more-links a:hover { color: var(--gold); }
 
 /* ---- roadmap resources ---- */
 .steps h3 { margin: 16px 0 0; font: 13px var(--mono); color: var(--gold); letter-spacing: .1em; }

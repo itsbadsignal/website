@@ -13,7 +13,7 @@ deep `#8a7a5a`). Poppins for reading, JetBrains Mono for labels.
   corrupted block of ▓▒░ characters and a signal wave, two quotes (Feynman, Fischer), a ▶ button
   that runs the prank (`/?prank`) and faint shapes, then a dated feed of posts
   beside an index of every page.
-- **Blog, writeups, tags** after zerodayengineering.com/research: logo and
+- **Blog and tags** after zerodayengineering.com/research: logo and
   uppercase `BLOG / WRITEUPS / …` nav, a big gold centred title, uppercase
   topic links, and entries with `author | date | tags |`, gold title,
   summary, `—— Read more` and the cover on the right.
@@ -33,8 +33,8 @@ Then open http://localhost:8000.
 
 In the Pages project settings: **Framework preset: None**, **Build command:
 empty**, **Build output directory: `/`**. `_headers` and `404.html` are picked
-up automatically. `_redirects` sends the old `/hacking/` address to
-`/roadmap/`.
+up automatically. `_redirects` sends old addresses on: `/hacking/` to `/roadmap/`,
+`/contact/` to `/about/`, `/writeups/` to `/blog/`.
 
 ## Layout
 
@@ -42,13 +42,13 @@ up automatically. `_redirects` sends the old `/hacking/` address to
 index.html                 home: lede, now, latest posts
 blog/index.html            every post
 blog/<slug>/index.html     a post (+ its cover.png)
-writeups/ roadmap/ projects/ library/ dotfiles/ wetware/ now/ about/ tags/
+roadmap/ projects/ library/ dotfiles/ wetware/ now/ about/ tags/
 404.html  rss.xml  sitemap.xml  _redirects
 style.css  prank.js  mark.svg  favicon.svg  fonts/  og.png  .well-known/
 ```
 
 Every page, the front page included, uses the same `<head>`, `<header>`
-(logo + the nine main links) and `<footer>` (tags, rss). Contact
+(the logo and the menu in link columns) and `<footer>` (logo and copyright). Contact
 details and outside profiles live on the About page. Copy them from any existing page.
 
 ## Writing a post
@@ -61,7 +61,7 @@ details and outside profiles live on the About page. Copy them from any existing
 3. Replace `cover.png` (640×360, black-and-white dithered) or delete the
    `<img class="cover">`.
 4. Copy an `<article class="entry">` block to the top of `blog/index.html`
-   (and `writeups/index.html` if tagged ctf or writeup, and each
+   (and each
    `tags/<tag>/index.html`) and edit it. A new tag needs a new `tags/<tag>/`
    folder and a link in every page's `.filters` and in `tags/index.html`.
 5. On the front page, add an `<article>` to the top of the `.log` feed.
