@@ -53,7 +53,7 @@ details and outside profiles live on the About page. Copy them from any existing
 
 ## Writing a post
 
-1. Copy `blog/one-script-and-its-a-prank/` to `blog/<new-slug>/`.
+1. Copy `blog/learning-vulnerability-research-in-public/` to `blog/<new-slug>/`.
 2. In the new `index.html` change: `<title>`, the `description` / `og:*`
    meta tags, the `canonical` link, the `.meta` line, the `<h1>`, the italic
    `.lede`, the body, the Metadata block and the pager. Body is plain HTML:

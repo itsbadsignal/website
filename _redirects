@@ -6,3 +6,7 @@
 /writeups/ /blog/ 301
 /dotfiles /setup/ 301
 /dotfiles/ /setup/ 301
+/blog/one-script-and-its-a-prank /blog/ 301
+/blog/one-script-and-its-a-prank/ /blog/ 301
+/tags/meta/ /tags/ 301
+/tags/web/ /tags/ 301

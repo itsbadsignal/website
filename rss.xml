@@ -2,17 +2,17 @@
 <rss version="2.0">
 <channel>
 <title>miguelc</title>
-<link>https://miguelc.pages.dev/</link>
+<link>https://miguelc.space/</link>
 <description>Systems, reverse engineering, vulnerability research and CTF writeups.</description>
 <language>en</language>
 <item>
-  <title>One script, and it is a prank</title>
-  <link>https://miguelc.pages.dev/blog/one-script-and-its-a-prank/</link>
-  <guid>https://miguelc.pages.dev/blog/one-script-and-its-a-prank/</guid>
-  <description>Why this site is plain HTML on a black page, why the only JavaScript on it exists to scare you, and what will be posted here.</description>
-  <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
-  <category>meta</category>
-  <category>web</category>
+  <title>Learning vulnerability research in public</title>
+  <link>https://miguelc.space/blog/learning-vulnerability-research-in-public/</link>
+  <guid>https://miguelc.space/blog/learning-vulnerability-research-in-public/</guid>
+  <description>I am a security engineer teaching myself vulnerability research, six hours a week, and logging every step here.</description>
+  <pubDate>Sat, 14 Nov 2026 00:00:00 GMT</pubDate>
+  <category>roadmap</category>
+  <category>vulnerability-research</category>
 </item>
 </channel>
 </rss>
