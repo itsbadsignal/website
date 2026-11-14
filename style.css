@@ -1,12 +1,14 @@
-/* black, warm white, muted gold. Poppins for reading, Cormorant for post titles, JetBrains Mono for labels. */
+/* black, warm white, muted gold. Poppins for reading, Cormorant with Cinzel capitals for post titles, JetBrains Mono for labels. */
 @font-face { font-family: Poppins; src: url(/fonts/poppins-300.woff2) format("woff2"); font-weight: 300; font-display: swap; }
 @font-face { font-family: Poppins; src: url(/fonts/poppins-400.woff2) format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: Poppins; src: url(/fonts/poppins-600.woff2) format("woff2"); font-weight: 600; font-display: swap; }
 @font-face { font-family: Poppins; src: url(/fonts/poppins-700.woff2) format("woff2"); font-weight: 700; font-display: swap; }
 @font-face { font-family: Cormorant; src: url(/fonts/cormorant-garamond-600.woff2) format("woff2"); font-weight: 600; font-display: swap; }
+/* noble capitals: Cinzel Decorative draws only A–Z, Cormorant everything else */
+@font-face { font-family: Capitals; src: url(/fonts/cinzel-decorative-700.woff2) format("woff2"); font-weight: 600; font-display: swap; unicode-range: U+0041-005A; }
 @font-face { font-family: Mono; src: url(/fonts/jetbrains-mono-400.woff2) format("woff2"); font-display: swap; }
 
-:root { --ink: #edeae6; --dim: #8f8c88; --gold: #c8b99a; --deep: #8a7a5a; --rule: #262422; --mono: Mono, ui-monospace, Menlo, monospace; --serif: Cormorant, Georgia, serif; }
+:root { --ink: #edeae6; --dim: #8f8c88; --gold: #c8b99a; --deep: #8a7a5a; --rule: #262422; --mono: Mono, ui-monospace, Menlo, monospace; --serif: Capitals, Cormorant, Georgia, serif; }
 html { background: #000; color: var(--ink); color-scheme: dark; }
 body { margin: 0; font: 400 17px/1.85 Poppins, system-ui, sans-serif; }
 ::selection { background: var(--gold); color: #000; }

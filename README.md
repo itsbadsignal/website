@@ -27,7 +27,7 @@ Each page and post starts with a small header, then plain HTML:
 
 ```html
 <!--
-title: Post title
+title: Post Title in Title Case
 description: One sentence, used in lists, previews and the feed.
 date: 2026-11-20
 tags: ctf, pwn
@@ -70,5 +70,5 @@ to their replacements.
 ## Style
 
 Black page, warm white text `#edeae6`, muted gold `#c8b99a` / `#8a7a5a`.
-Poppins for text, Cormorant Garamond for post titles, JetBrains Mono for
-labels. Fonts are self-hosted under `fonts/` with their licences.
+Poppins for text; post titles in Cormorant Garamond with Cinzel Decorative
+capitals (write them in Title Case); JetBrains Mono for labels. Fonts are self-hosted under `fonts/` with their licences.
