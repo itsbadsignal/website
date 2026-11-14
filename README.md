@@ -34,7 +34,7 @@ Then open http://localhost:8000.
 In the Pages project settings: **Framework preset: None**, **Build command:
 empty**, **Build output directory: `/`**. `_headers` and `404.html` are picked
 up automatically. `_redirects` sends old addresses on: `/hacking/` to `/roadmap/`,
-`/contact/` to `/about/`, `/writeups/` to `/blog/`.
+`/contact/` to `/about/`, `/writeups/` to `/blog/`, `/dotfiles/` to `/setup/`.
 
 ## Layout
 
@@ -42,13 +42,13 @@ up automatically. `_redirects` sends old addresses on: `/hacking/` to `/roadmap/
 index.html                 home: lede, now, latest posts
 blog/index.html            every post
 blog/<slug>/index.html     a post (+ its cover.png)
-roadmap/ projects/ library/ dotfiles/ wetware/ now/ about/ tags/
+roadmap/ projects/ library/ setup/ wetware/ now/ about/ tags/
 404.html  rss.xml  sitemap.xml  _redirects
 style.css  prank.js  mark.svg  favicon.svg  fonts/  og.png  .well-known/
 ```
 
 Every page, the front page included, uses the same `<head>`, `<header>`
-(the logo and the menu in link columns) and `<footer>` (logo and copyright). Contact
+(the logo and the menu in link columns) and `<footer>` (logo, rss, copyright). Contact
 details and outside profiles live on the About page. Copy them from any existing page.
 
 ## Writing a post

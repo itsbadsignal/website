@@ -4,3 +4,5 @@
 /contact/ /about/ 301
 /writeups /blog/ 301
 /writeups/ /blog/ 301
+/dotfiles /setup/ 301
+/dotfiles/ /setup/ 301
