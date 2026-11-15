@@ -8,7 +8,7 @@ export const DESC = 'Systems, security research and human optimization.';
 export const MENU = [
   [['about', '/about/'], ['blog', '/blog/'], ['roadmap', '/roadmap/']],
   [['projects', '/projects/'], ['library', '/library/'], ['now', '/now/']],
-  [['setup', '/setup/'], ['wetware', '/wetware/'], ['tags', '/tags/']],
+  [['setup', '/setup/'], ['tags', '/tags/']],
 ];
 
 // /now/ and the columns at the top of the front page.

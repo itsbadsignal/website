@@ -46,13 +46,13 @@ const SOURCE_NOTE = `<!--
 
 -->`;
 
-const head = ({ title, desc = DESC, route, image = '/og.png', note = false }) => {
+const head = ({ title, desc = DESC, route, image = '/og.png', note = false, noindex = false }) => {
   const full = title ? `${title} | ${NAME}` : NAME;
   return `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">${noindex ? '\n<meta name="robots" content="noindex, nofollow">' : ''}
 <title>${esc(full)}</title>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${SITE}${route}">
@@ -79,7 +79,7 @@ const footer = `<footer class="foot">
   <p>© 2026 ${NAME}</p>
 </footer>`;
 const prank = '<div id="pwned" role="dialog" aria-modal="true" aria-label="Site defaced" hidden></div>\n<script src="/prank.js" defer></script>\n';
-const page = ({ title, desc, route, image, body, withPrank = true }) => `${head({ title, desc, route, image })}
+const page = ({ title, desc, route, image, body, withPrank = true, noindex = false }) => `${head({ title, desc, route, image, noindex })}
 <body>
 ${header(route)}
 <main>
@@ -156,9 +156,14 @@ ${tags.map(([t, c]) => `<p><a href="/tags/${t}/">${t}</a> <span>(${c})</span></p
 </nav>` }));
 
 // ---- pages ----
+// A page with `hidden: true` in its header is still built, but left out of the
+// sitemap and marked noindex. Keep it out of MENU in content/site.mjs too.
+const hiddenPages = [];
 for (const name of ['about', 'projects', 'setup', 'wetware']) {
   const p = read(`content/pages/${name}.html`);
-  write(`${name}/index.html`, plain(`/${name}/`, p.title, p.description, p.body));
+  const hidden = p.hidden === 'true';
+  if (hidden) hiddenPages.push(`/${name}/`);
+  write(`${name}/index.html`, plain(`/${name}/`, p.title, p.description, p.body, { noindex: hidden }));
 }
 {
   const p = read('content/pages/404.html');
@@ -246,7 +251,7 @@ ${p.tags.map((t) => `  <category>${t}</category>`).join('\n')}
 </rss>
 `);
 const routes = ['/', '/blog/', '/tags/', '/now/', '/projects/', '/setup/', '/wetware/', '/library/', '/roadmap/', '/about/',
-  ...posts.map((p) => `/blog/${p.slug}/`), ...tags.map(([t]) => `/tags/${t}/`)];
+  ...posts.map((p) => `/blog/${p.slug}/`), ...tags.map(([t]) => `/tags/${t}/`)].filter((r) => !hiddenPages.includes(r));
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes.map((r) => `<url><loc>${SITE}${r}</loc></url>`).join('\n')}
