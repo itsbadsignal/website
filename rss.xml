@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
 <channel>
-<title>miguelc</title>
+<title>miguel</title>
 <link>https://miguelc.space/</link>
-<description>Systems, reverse engineering, vulnerability research and CTF writeups.</description>
+<description>Systems, security research and human optimization.</description>
 <language>en</language>
 <item>
   <title>Learning Vulnerability Research in Public</title>
